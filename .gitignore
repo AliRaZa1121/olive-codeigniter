@@ -23,8 +23,8 @@ dist/
 target/
 dist/
 
-# JetBrains IDE
-.idea/
+# Large File Codeigniter
+# system/
 
 # Unit test reports
 TEST*.xml
@@ -47,4 +47,8 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+# Production files
+bckup/
+
 
