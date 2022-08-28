@@ -19,8 +19,11 @@ class User_model extends CI_Model
 
     public function get_user($user_id = 0)
     {
-        if ($user_id > 0) {
+      if ($user_id > 0) {
             $this->db->where('id', $user_id);
+        }
+        else{
+            $this->db->where('is_instructor', 0);
         }
         $this->db->where('role_id', 2);
         return $this->db->get('users');

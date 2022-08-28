@@ -17,40 +17,40 @@
 
     <li class="text-nowrap fw-bold">
 
-      <a href="<?php echo site_url(); ?>">
+      <a class="<?php if ($page_name == 'home') echo 'active'; ?>" href="<?php echo site_url(); ?>">
         <span class="fw-500"><?php echo site_phrase('home'); ?></span>
       </a>
 
 
-      <a href="<?php echo site_url('home/about_us'); ?>" >
+      <a class="<?php if ($page_name == 'about_us') echo 'active'; ?>" href="<?php echo site_url('home/about_us'); ?>" >
         <span class="fw-500"><?php echo site_phrase('about'); ?></span>
       </a>
 
-      <a href="<?php echo site_url('home/all_programs'); ?>">
+      <a class="<?php if ($page_name == 'courses_page') echo 'active'; ?>"  href="<?php echo site_url('home/all_programs'); ?>">
         <span class="fw-500"><?php echo site_phrase('programs'); ?></span>
       </a>
 
-      <a href="<?php echo site_url('home/team'); ?>">
+      <a class="<?php if ($page_name == 'team') echo 'active'; ?>"  href="<?php echo site_url('home/team'); ?>">
         <span class="fw-500"><?php echo site_phrase('team'); ?></span>
       </a>
 
-      <a href="<?php echo site_url('home/organizations'); ?>">
+      <a class="<?php if ($page_name == 'organizations') echo 'active'; ?>"  href="<?php echo site_url('home/organizations'); ?>">
         <span class="fw-500"><?php echo site_phrase('organizations'); ?></span>
       </a>
 
-      <a href="<?php echo site_url('home/books'); ?>">
+      <a class="<?php if ($page_name == 'books') echo 'active'; ?>"  href="<?php echo site_url('home/books'); ?>">
         <span class="fw-500"><?php echo site_phrase('books'); ?></span>
       </a>
 
-      <a href="<?php echo site_url('home/events'); ?>">
+      <a class="<?php if ($page_title == 'events') echo 'active'; ?>"  href="<?php echo site_url('home/events'); ?>">
         <span class="fw-500"><?php echo site_phrase('events'); ?></span>
       </a>
 
-      <a href="<?php echo site_url('home/news'); ?>">
+      <a class="<?php if ($page_title == 'news') echo 'active'; ?>"  href="<?php echo site_url('home/news'); ?>">
         <span class="fw-500"><?php echo site_phrase('news'); ?></span>
       </a>
 
-      <a href="<?php echo site_url('home/articles'); ?>">
+      <a class="<?php if ($page_title == 'articles') echo 'active'; ?>"  href="<?php echo site_url('home/articles'); ?>">
         <span class="fw-500"><?php echo site_phrase('articles'); ?></span>
       </a>
 

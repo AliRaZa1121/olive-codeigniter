@@ -33,12 +33,12 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 				<span><?php echo get_phrase('dashboard'); ?></span>
 			</a>
 		</li>
-		<li class="side-nav-item <?php if ($page_name == 'allcategories') echo 'active'; ?>">
-			<a href="<?php echo site_url('admin/allcategories'); ?>" class="side-nav-link">
-				<i class="dripicons-view-apps"></i>
-				<span>All Categories</span>
-			</a>
-		</li>
+		<!--<li class="side-nav-item <?php if ($page_name == 'allcategories') echo 'active'; ?>">-->
+		<!--	<a href="<?php echo site_url('admin/allcategories'); ?>" class="side-nav-link">-->
+		<!--		<i class="dripicons-view-apps"></i>-->
+		<!--		<span>All Categories</span>-->
+		<!--	</a>-->
+		<!--</li>-->
 
 		<!-- //courses comment -->
 		<?php if (has_permission('course')) : ?>

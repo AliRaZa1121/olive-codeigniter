@@ -27,7 +27,7 @@
             <div class="card-body">
                 
                 <?php if($this->session->userdata('is_instructor')): ?>
-                     <h4 class="header-title mb-4"><?php echo get_phrase('instructor_revenue'); ?></h4>
+                     <h4 class="header-title mb-4"><?php echo get_phrase('coach_revenue'); ?></h4>
                 <?php  else : ?>
                     <h4 class="header-title mb-4"><?php echo 'Organization Revenue'; ?></h4>
                 <?php endif; ?>
@@ -109,7 +109,7 @@
                         <h3 class="font-weight-normal">
                             <span><?php echo $this->crud_model->get_status_wise_courses_for_instructor('active')->num_rows(); ?></span>
                         </h3>
-                        <p class="text-muted mb-0"><?php echo get_phrase('active_courses'); ?></p>
+                        <p class="text-muted mb-0"><?php echo get_phrase('active_programs'); ?></p>
                     </div>
                     <div class="col-6">
                         <i class="mdi mdi-trending-down text-warning mt-3 h3"></i>

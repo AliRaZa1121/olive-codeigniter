@@ -12,14 +12,14 @@
 				<div class="program-box-content">
 					<h5 class="program-title"><?php echo substr($course['title'],0,45); ?></h5>
 					<p class="program-discription"><?php echo substr($course['short_description'],0,100); ?></p>
-					<a class="program-btn" onclick="$(location).attr('href', '<?php echo site_url('home/course/' . rawurlencode(slugify($course['title'])) . '/' . $course['id']); ?>');" href="javascript:;" >Read more</a>
+					<a class="program-btn" onclick="$(location).attr('href', '<?php echo site_url('home/program/' . rawurlencode(slugify($course['title'])) . '/' . $course['id']); ?>');" href="javascript:;" >Read more</a>
 				</div>
 			</div>
         </a>
 
 
             <!-- <div class="course-box-wrap">
-                <a onclick="$(location).attr('href', '<?php echo site_url('home/course/' . rawurlencode(slugify($course['title'])) . '/' . $course['id']); ?>');" href="javascript:;" class="has-popover">
+                <a onclick="$(location).attr('href', '<?php echo site_url('home/program/' . rawurlencode(slugify($course['title'])) . '/' . $course['id']); ?>');" href="javascript:;" class="has-popover">
                     <div class="course-box">
                         <div class="course-image">
                             <img src="<?php echo $this->crud_model->get_course_thumbnail_url($course['id']); ?>" alt="" class="img-fluid">

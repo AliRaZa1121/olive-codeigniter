@@ -5639,7 +5639,7 @@ section.main-wrapper {
     text-transform: uppercase;
 }
 .left-sidebar-menu {
-    background-color: #194b90;
+    background-color: #e95b1d;
     height: 100%;
     padding: 50px 0px 50px 30px;
 }
@@ -5748,7 +5748,7 @@ a.theme-btn.secondary-btn:hover {
     margin-right: 5px;
 }
 .left-sidebar-menu .print-hidden>li>a:hover {
-    color: #f38134;
+    color: #000;
 }
 
 .left-sidebar-menu .print-hidden>li.active>a:hover {
@@ -6023,6 +6023,11 @@ a.theme-btn.secondary-btn:hover {
     padding: 10px 0;
 }
 .menu-area .navbar li.text-nowrap>a:hover {
+    background: rgba(20,23,28,.05);
+    border-radius: 5px;
+}
+
+.menu-area .navbar li.text-nowrap> .active {
     background: rgba(20,23,28,.05);
     border-radius: 5px;
 }

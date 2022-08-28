@@ -69,10 +69,6 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
         </div>
       </div>
       <div class="col-lg-4">
-
-        <div class="detail-image">
-                <img class="img-fluid" src="<?php echo $this->crud_model->get_course_thumbnail_url($course_details['id']); ?>" />
-            </div>
       </div>
     </div>
   </div>
@@ -208,11 +204,11 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                 <div class="course-comparism-item-container this-course">
                   <div class="course-comparism-item clearfix">
                     <div class="item-image float-start  mt-4 mt-md-0">
-                      <a href="<?php echo site_url('home/course/' . slugify($other_realted_course['title']) . '/' . $other_realted_course['id']); ?>"><img src="<?php $this->crud_model->get_course_thumbnail_url($other_realted_course['id']); ?>" alt="" class="img-fluid"></a>
+                      <a href="<?php echo site_url('home/program/' . slugify($other_realted_course['title']) . '/' . $other_realted_course['id']); ?>"><img src="<?php $this->crud_model->get_course_thumbnail_url($other_realted_course['id']); ?>" alt="" class="img-fluid"></a>
                       <div class="item-duration"><b><?php echo $this->crud_model->get_total_duration_of_lesson_by_course_id($other_realted_course['id']); ?></b></div>
                     </div>
                     <div class="item-title float-start">
-                      <div class="title"><a href="<?php echo site_url('home/course/' . slugify($other_realted_course['title']) . '/' . $other_realted_course['id']); ?>"><?php echo $other_realted_course['title']; ?></a></div>
+                      <div class="title"><a href="<?php echo site_url('home/program/' . slugify($other_realted_course['title']) . '/' . $other_realted_course['id']); ?>"><?php echo $other_realted_course['title']; ?></a></div>
                       <?php if ($other_realted_course['last_modified'] > 0) : ?>
                         <div class="updated-time"><?php echo site_phrase('updated') . ' ' . date('D, d-M-Y', $other_realted_course['last_modified']); ?></div>
                       <?php else : ?>
@@ -321,14 +317,19 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                     <p class="fw-500 text-14px w-100"><?php echo $instructor_details['title']; ?></p>
                     <div class="rating">
                       <div class="d-inline-block">
-                        <span class="text-dark fw-800 text-muted ms-1 text-13px"><?php echo $this->crud_model->get_instructor_wise_course_ratings($instructor_details['id'], 'course')->num_rows().' '.site_phrase('reviews'); ?></span>
+                        <span class="text-dark fw-800 text-muted ms-1 text-13px"><?php $get_instructor_wise_course_ratings =$this->crud_model->get_instructor_wise_course_ratings($instructor_details['id'], 'program');
+                          echo count($get_instructor_wise_course_ratings).' '.site_phrase('reviews'); ?></span>
                         |
                         <span class="text-dark fw-800 text-13px text-muted mx-1">
-                            <?php $course_ids = $this->crud_model->get_instructor_wise_courses($instructor_details['id'], 'simple_array');
-                          $this->db->select('user_id');
-                          $this->db->distinct();
-                          $this->db->where_in('course_id', $course_ids);
-                          echo $this->db->get('enrol')->num_rows().' '.site_phrase('students'); ?>
+                          <?php $course_ids = $this->crud_model->get_instructor_wise_courses($instructor_details['id'], 'simple_array');
+                          $total_enrol_student_number = [];
+                          if(count($course_ids)){
+                            $this->db->select('user_id');
+                            $this->db->distinct();
+                            $this->db->where_in('course_id', $course_ids);
+                            $total_enrol_student_number =  $this->db->get('enrol'); 
+                          }
+                          echo count($total_enrol_student_number).' '.site_phrase('students'); ?>
                         </span>
                         |
                         <span class="text-dark fw-800 text-14px text-muted">
@@ -346,9 +347,8 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                       <span class="badge badge-sub-warning text-12px my-1 py-2"><?php echo $skill; ?></span>
                     <?php endforeach; ?>
 
-                    
                     <div class="description">
-                      <?php echo ellipsis(strip_tags($instructor_details['biography']), 180); ?>
+                      <?php echo html_entity_decode(strip_tags($instructor_details['biography']), 180); ?>
                     </div>
                 </div>
             </div>
@@ -908,7 +908,6 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
         $.ajax({
             url: form.attr('action'),
             type: 'post',
-            
             data: form.serialize(),
             success: function(data){
                 

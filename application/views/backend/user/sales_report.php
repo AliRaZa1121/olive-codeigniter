@@ -37,8 +37,8 @@
                     <table id="sales-report-datatable" class="table table-striped table-centered mb-0">
                         <thead>
                             <tr>
-                                <th><?php echo get_phrase('course_name'); ?></th>
-                                <th><?php echo get_phrase('instructor_revenue'); ?></th>
+                                <th><?php echo get_phrase('program_name'); ?></th>
+                                <th><?php echo get_phrase('coach_revenue'); ?></th>
                             </tr>
                         </thead>
                         <tbody>

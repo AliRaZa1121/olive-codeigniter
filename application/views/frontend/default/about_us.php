@@ -1,6 +1,7 @@
+<?php $section_1 = $this->crud_model->get_content_settings('about', 'section-1'); ?>
 <style>
 section.org-first-fold, section.arc-first-fold {
-    background-image: url(<?php echo base_url('uploads/olive-images/team.jpeg'); ?>);
+    background-image: url(<?php echo base_url('uploads/system/' . $section_1['image']); ?>);
     min-height: 500px !important;
 }
 </style>

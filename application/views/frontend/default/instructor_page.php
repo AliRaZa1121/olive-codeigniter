@@ -42,7 +42,7 @@ if (count($course_ids) > 0) {
                     <div class="biography-content-box view-more-parent">
                         <div class="view-more" onclick="viewMore(this,'hide')"><b><?php echo site_phrase('show_full_biography'); ?></b></div>
                         <div class="biography-content">
-                            <?php echo $instructor_details['biography']; ?>
+                            <?php echo html_entity_decode($instructor_details['biography']); ?>
                         </div>
                     </div>
                 </div>

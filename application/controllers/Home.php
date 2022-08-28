@@ -30,6 +30,13 @@ class Home extends CI_Controller
         $page_data['page_title'] = site_phrase('our_team');
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
     }
+    
+    public function contact_us()
+    {
+        $page_data['page_name'] = "contact_us";
+        $page_data['page_title'] = site_phrase('contact_us');
+        $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
+    }
 
     public function organizations($slug = null)
     {
@@ -266,7 +273,7 @@ class Home extends CI_Controller
             $page_data['courses'] = $this->db->get('course', $config['per_page'], $this->uri->segment(3))->result_array();
             $page_data['total_result'] = $total_rows;
         } else {
-            $courses = $this->crud_model->filter_course($selected_category_id, $selected_price, $selected_level, $selected_language, $selected_rating);
+            $courses = $this->crud_model->filter_course(null,$selected_category_id, $selected_price, $selected_level, $selected_language, $selected_rating);
             $page_data['courses'] = $courses;
             $page_data['total_result'] = count($courses);
         }

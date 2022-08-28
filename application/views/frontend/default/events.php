@@ -1,9 +1,16 @@
+<?php $section_1 = $this->crud_model->get_content_settings('articles', 'section-2'); ?>
+<style>
+section.org-first-fold, section.arc-first-fold {
+    background-image: url(<?php echo base_url('uploads/system/' . $section_1['image']); ?>);
+    min-height: 500px !important;
+}
+</style>
 <section class="arc-first-fold">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-6">
 				<div class="content">
-					<h1 class="text-uppercase fw-bold text-white"><?php echo $page_title ?></h1>
+					<!--<h1 class="text-uppercase fw-bold text-white"><?php echo $page_title ?></h1>-->
 					<!-- <h4 class="text-white">Lorem ipsum dolor Lorem ipsum</h4> -->
 				</div>
 			</div>

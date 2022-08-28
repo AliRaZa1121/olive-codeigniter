@@ -58,37 +58,37 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 			
 		<?php else : ?>
 		
-			<li class="side-nav-item">
-				<a href="<?php echo site_url('user/become_an_instructor'); ?>" class="side-nav-link <?php if ($page_name == 'become_an_instructor') echo 'active'; ?>">
-					<i class="dripicons-archive"></i>
-					<span><?php echo get_phrase('become_an_coach'); ?></span>
+			<!--<li class="side-nav-item">-->
+			<!--	<a href="<?php echo site_url('user/become_an_instructor'); ?>" class="side-nav-link <?php if ($page_name == 'become_an_instructor') echo 'active'; ?>">-->
+			<!--		<i class="dripicons-archive"></i>-->
+			<!--		<span><?php echo get_phrase('become_an_coach'); ?></span>-->
 					
-				</a>
-			</li>
+			<!--	</a>-->
+			<!--</li>-->
 		<?php endif; ?>
 		
 		
 		
 		<?php if($this->session->userdata('is_instructor')): ?>
 		
-		    <li class="side-nav-item">
-				<a href="javascript: void(0);" class="side-nav-link <?php if ($page_name == 'join_academy' || $page_name == 'requested_academy_list' || $page_name == 'joined_academy_list') echo 'active'; ?>">
-					<i class="dripicons-gear"></i>
-					<span><?php echo get_phrase('Academy'); ?></span>
-					<span class="menu-arrow"></span>
-				</a>
-				<ul class="side-nav-second-level" aria-expanded="false">
-					<li class="<?php if ($page_name == 'join_academy') echo 'active'; ?>">
-						<a href="<?php echo site_url('user/join_academy'); ?>"><?php echo get_phrase('Join Academy'); ?></a>
-					</li>
-					<li class="<?php if ($page_name == 'requested_academy_list') echo 'active'; ?>">
-						<a href="<?php echo site_url('user/requested_academy_list'); ?>"><?php echo get_phrase('Requested Academy List'); ?></a>
-					</li>
-					<li class="<?php if ($page_name == 'joined_academy_list') echo 'active'; ?>">
-						<a href="<?php echo site_url('user/joined_academy_list'); ?>"><?php echo get_phrase('Joined Academy List'); ?></a>
-					</li>
-				</ul>
-			</li>
+		 <!--   <li class="side-nav-item">-->
+			<!--	<a href="javascript: void(0);" class="side-nav-link <?php if ($page_name == 'join_academy' || $page_name == 'requested_academy_list' || $page_name == 'joined_academy_list') echo 'active'; ?>">-->
+			<!--		<i class="dripicons-gear"></i>-->
+			<!--		<span><?php echo get_phrase('Academy'); ?></span>-->
+			<!--		<span class="menu-arrow"></span>-->
+			<!--	</a>-->
+			<!--	<ul class="side-nav-second-level" aria-expanded="false">-->
+			<!--		<li class="<?php if ($page_name == 'join_academy') echo 'active'; ?>">-->
+			<!--			<a href="<?php echo site_url('user/join_academy'); ?>"><?php echo get_phrase('Join Academy'); ?></a>-->
+			<!--		</li>-->
+			<!--		<li class="<?php if ($page_name == 'requested_academy_list') echo 'active'; ?>">-->
+			<!--			<a href="<?php echo site_url('user/requested_academy_list'); ?>"><?php echo get_phrase('Requested Academy List'); ?></a>-->
+			<!--		</li>-->
+			<!--		<li class="<?php if ($page_name == 'joined_academy_list') echo 'active'; ?>">-->
+			<!--			<a href="<?php echo site_url('user/joined_academy_list'); ?>"><?php echo get_phrase('Joined Academy List'); ?></a>-->
+			<!--		</li>-->
+			<!--	</ul>-->
+			<!--</li>-->
 		<?php endif; ?>
 		
 		<?php if($this->session->userdata('is_organization')): ?>

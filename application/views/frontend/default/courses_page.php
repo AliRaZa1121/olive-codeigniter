@@ -113,7 +113,7 @@ if (isset($sub_category_id)) {
                     <div id="collapseFilter" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body p-0">
                             <div class="filter_type px-4">
-                                <h5 class="fw-700 mb-4"><?php echo site_phrase('categories'); ?></h5>
+                                <h5 class="fw-700 mb-3 mt-3"><?php echo site_phrase('categories'); ?></h5>
                                 <ul>
                                     <li class="">
                                         <div class="text-15px fw-700">
@@ -152,13 +152,14 @@ if (isset($sub_category_id)) {
                                     <?php endforeach; ?> -->
 
 
-                                    <?php
+                                       <?php
                                     $counter = 1;
                                     $total_number_of_categories = $this->db->get('category')->num_rows();
                                     $categories = $this->crud_model->get_categories()->result_array();
                                     foreach ($categories as $category) :
                                         $programs_count =  $this->crud_model->get_active_course_by_category_id($category['id'], 'category_id')->num_rows();
-                                        if ($programs_count > 0) { ?>
+                                        if ($programs_count > 0) {
+                                            ?>
                                             <li class="mt-3">
                                                 <div class="text-15px fw-700 <?php if ($counter > $number_of_visible_categories) : ?> hidden-categories hidden <?php endif; ?>">
                                                     <input type="radio" id="category-<?php echo $category['id']; ?>" name="sub_category" class="categories custom-radio" value="<?php echo $category['slug']; ?>" onclick="filter(this)" <?php if ($selected_category_id == $category['id']) echo 'checked'; ?>>
@@ -166,7 +167,21 @@ if (isset($sub_category_id)) {
                                                     <span class="float-end">(<?php echo $programs_count ?>)</span>
                                                 </div>
                                             </li>
-                                        <?php } ?>
+
+                                            <?php foreach ($this->crud_model->get_sub_categories($category['id']) as $sub_category) :
+                                            $counter++; ?>
+                                            <li class="ms-3">
+                                                <div class="<?php if ($counter > $number_of_visible_categories) : ?> hidden-categories hidden <?php endif; ?>">
+                                                    <input type="radio" id="sub_category-<?php echo $sub_category['id']; ?>" name="sub_category" class="categories custom-radio" value="<?php echo $sub_category['slug']; ?>" onclick="filter(this)" <?php if ($selected_category_id == $sub_category['id']) echo 'checked'; ?>>
+                                                    <label for="sub_category-<?php echo $sub_category['id']; ?>"><?php echo $sub_category['name']; ?></label>
+                                                    <span class="float-end">(<?php echo $this->crud_model->get_active_course_by_category_id($sub_category['id'], 'sub_category_id')->num_rows(); ?>)</span>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+
+                                        <?php
+                                         }
+                                         ?>
                                     <?php endforeach; ?>
 
                                 </ul>

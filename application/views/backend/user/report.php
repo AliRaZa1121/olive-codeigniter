@@ -18,7 +18,7 @@
     
     
     <div class="form-group">
-        <label for="course_id"><?php echo 'Courses'; ?></label>
+        <label for="course_id"><?php echo 'Programs'; ?></label>
         <select class="form-control select2" data-toggle="select2" name="course_id" id="course_id" required>
             <option value=""> Select Program</option>
            

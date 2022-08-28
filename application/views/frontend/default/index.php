@@ -53,6 +53,7 @@ section.org-first-fold, section.arc-first-fold {
     background-repeat: no-repeat;;;;
     background-size: cover;;;;
 }
+
 </style>
 
 </head>

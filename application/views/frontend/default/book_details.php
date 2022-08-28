@@ -34,7 +34,7 @@
 <section class="course-content-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 order-last order-lg-first radius-10 mt-4 bg-white p-30-40">
+            <div class="col-lg-12 order-last order-lg-first radius-10 mt-4 bg-white p-30-40">
 
                 <div class="description-box view-more-parent course-border">
                     <div class="view-more" onclick="viewMore(this,'hide')">+ <?php echo site_phrase('view_more'); ?></div>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
 <div class="text-center mt-5">
-                        <a href="<?php echo base_url('uploads/thumbnails/category_thumbnails/' . $book['file']); ?>" class="site-btn btn-lg">Read Book<i class=" fas fa-solid fa-arrow-right"></i></a>
+                        <a target="blank" href="<?php echo base_url('uploads/thumbnails/category_thumbnails/' . $book['file']); ?>" class="site-btn btn-lg">Read Book<i class=" fas fa-solid fa-arrow-right"></i></a>
                         </div>
             </div>
 

@@ -200,7 +200,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="fold-thumbnail">
-                    <img class="img-fluid" src="<?= base_url("uploads/olive-images/train.jpeg") ?>" alt="">
+                    <img class="img-fluid" src="<?php echo base_url('uploads/system/' . $section_5['image']); ?>" alt="">
                 </div>
             </div>
             <div class="col-lg-6">

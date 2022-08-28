@@ -1435,5 +1435,14 @@
     "trainees_enrolled": "Trainees enrolled",
     "trainee_enrolled": "Trainee enrolled",
     "total_trainees": "Total trainees",
-    "enrolled_trainee": "Enrolled trainee"
+    "enrolled_trainee": "Enrolled trainee",
+    "coach_payouts": "Coach payouts",
+    "become_an_coach": "Become an coach",
+    "banner_image": "Banner image",
+    "home_teams_contents": "Home teams contents",
+    "program_name": "Program name",
+    "coach_add": "Coach add",
+    "coach_add_form": "Coach add form",
+    "coach_edit": "Coach edit",
+    "contact_us": "Contact us"
 }

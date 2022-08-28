@@ -1,11 +1,9 @@
+<?php $section_1 = $this->crud_model->get_content_settings('team', 'section-2'); ?>
 <style>
-    .nav-link .active {
-        color: red;
-    }
-    section.org-first-fold, section.arc-first-fold {
-        background-image: url(<?php echo base_url('uploads/olive-images/ourteam.jpeg'); ?>);
-        min-height: 500px !important;
-    }
+section.org-first-fold, section.arc-first-fold {
+    background-image: url(<?php echo base_url('uploads/system/' . $section_1['image']); ?>);
+    min-height: 500px !important;
+}
 </style>
 
 
