@@ -31,8 +31,13 @@ class Home extends CI_Controller
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
     }
     
-    public function contact_us()
+    public function contact_us($action = null)
     {
+        if($action != null){
+            $this->email_model->send_email_contact_mail('aliraxa987@gmail.com');
+            $this->session->set_flashdata('info_message', get_phrase('thank_you_for_contacting_us'));
+            redirect(site_url('home/contact_us'), 'refresh');
+        }
         $page_data['page_name'] = "contact_us";
         $page_data['page_title'] = site_phrase('contact_us');
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);

@@ -18,6 +18,25 @@ class Email_model extends CI_Model {
 		$email_template = $this->load->view('email/email_verification', $email_data, TRUE);
 		$this->send_smtp_mail($email_template, $email_data['subject'], $email_data['to'], $email_data['from'], 'verification');
 	}
+	
+	
+	public function send_email_contact_mail($to = "") {
+		    $data['name'] = html_escape($this->input->post('name'));
+            $data['phone']  = html_escape($this->input->post('phone'));
+            $data['email']  = html_escape($this->input->post('email'));
+            $data['message']  = html_escape($this->input->post('message'));
+            
+    		$email_data['subject'] = "Contact Messages";
+    		$email_data['from'] = get_settings('system_email');
+    		$email_data['to'] = $to;
+    		$email_data['to_name'] = $data['name'];
+    		$email_data['email'] = $data['email'];
+    		$email_data['message'] =  $data['message'];
+    		$email_data['phone'] =  $data['phone'];
+    		
+    		$email_template = $this->load->view('email/message', $email_data, TRUE);
+    		$this->send_smtp_mail($email_template, $email_data['subject'], $email_data['to'], $email_data['from']);
+	}
 
 
 	function password_reset_email($new_password = '' , $email = '') {

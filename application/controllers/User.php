@@ -992,7 +992,11 @@ class User extends CI_Controller
 
     function is_the_programs_belongs_to_current_instructor($course_id, $id = null, $type = null)
     {
-        $course_details = $this->crud_model->get_programs_by_id($course_id)->row_array();
+        if ($this->session->userdata('admin_login') == true) {
+            return true;
+        }
+        else{
+           $course_details = $this->crud_model->get_programs_by_id($course_id)->row_array();
 
         if ($course_details['multi_instructor']) {
             $instructor_ids = explode(',', $course_details['user_id']);
@@ -1018,7 +1022,9 @@ class User extends CI_Controller
         if ($type == 'quize' && $this->db->get_where('lesson', array('id' => $id, 'course_id' => $course_id))->num_rows() <= 0) {
             $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_quize'));
             redirect(site_url('user/programs'), 'refresh');
+        }  
         }
+       
     }
 
     public function ajax_sort_section()
