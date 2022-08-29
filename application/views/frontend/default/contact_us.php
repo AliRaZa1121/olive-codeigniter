@@ -83,7 +83,7 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col-lg-12">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.5134407337896!2d55.2602652!3d25.185901899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f69d09681df43%3A0xc222838ff425a54!2sIris%20Bay%20-%20Business%20Bay%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1661760686376!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="<?php echo get_settings('address_link');  ?>"></iframe>
                         </div>
                     </div>
                 </div>
