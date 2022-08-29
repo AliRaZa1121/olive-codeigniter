@@ -1445,5 +1445,7 @@
     "coach_add_form": "Coach add form",
     "coach_edit": "Coach edit",
     "contact_us": "Contact us",
-    "thank_you_for_contacting_us": "Thank you for contacting us"
+    "thank_you_for_contacting_us": "Thank you for contacting us",
+    "recaptcha_verification_failed": "Recaptcha verification failed",
+    "contact": "Contact"
 }

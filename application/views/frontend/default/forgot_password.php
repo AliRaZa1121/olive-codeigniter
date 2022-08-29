@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-lg-6 d-none d-lg-block text-center">
-            <img style="margin-top:-20%;" class="" width="75%" src="<?php echo base_url('uploads/olive-images/forgot-password.png'); ?>">
+            <img style="margin-top:-20%;" class="" width="75%" src="<?php echo base_url('uploads/olive-images/forgotpas.png'); ?>">
           </div>
           <div class="col-lg-6">
           <div class="sign-up-form">

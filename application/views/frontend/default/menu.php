@@ -53,6 +53,10 @@
       <a class="<?php if ($page_title == 'articles') echo 'active'; ?>"  href="<?php echo site_url('home/articles'); ?>">
         <span class="fw-500"><?php echo site_phrase('articles'); ?></span>
       </a>
+      
+      <a class="<?php if ($page_title == 'Contact Us') echo 'active'; ?>"  href="<?php echo site_url('home/contact_us'); ?>">
+        <span class="fw-500"><?php echo site_phrase('contact'); ?></span>
+      </a>
 
   <!--  <ul class="category corner-triangle top-left is-hidden pb-0">
         <li class="go-back"><a href=""><i class="fas fa-angle-left"></i><?php echo site_phrase('menu'); ?></a></li>

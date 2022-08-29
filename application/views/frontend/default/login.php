@@ -12,7 +12,7 @@
       </div>
       <div class="row">
         <div class="col-lg-6 d-none d-lg-block text-center">
-            <img style="margin-top:-20%;" class="" width="75%" src="<?php echo base_url('uploads/olive-images/login.png'); ?>">
+            <img style="margin-top:-20%;" class="" width="75%" src="<?php echo base_url('uploads/olive-images/log-in.png'); ?>">
           </div>
           <div class="col-lg-6">
           <div class="sign-up-form">
@@ -37,7 +37,7 @@
               </div>
               <!--captcha static-->
                <!--<div class="form-group">-->
-               <!--             <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>-->
+               <!--             <div class="g-recaptcha" data-sitekey="6LftKLchAAAAAFOrXSmkiU8dr5APbaj0NV5udZ_8" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>-->
                <!--             <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">-->
                <!--             <div class="help-block with-errors"></div>-->
                <!--         </div>-->

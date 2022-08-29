@@ -34,6 +34,10 @@ class Home extends CI_Controller
     public function contact_us($action = null)
     {
         if($action != null){
+              if ($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true) {
+                $this->session->set_flashdata('error_message', get_phrase('recaptcha_verification_failed'));
+                redirect(site_url('home/contact_us'), 'refresh');
+            }
             $this->email_model->send_email_contact_mail('aliraxa987@gmail.com');
             $this->session->set_flashdata('info_message', get_phrase('thank_you_for_contacting_us'));
             redirect(site_url('home/contact_us'), 'refresh');

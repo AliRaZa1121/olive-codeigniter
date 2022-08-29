@@ -14,7 +14,7 @@
         </div>
         <div class="row">
           <div class="col-lg-6 d-none d-lg-block text-center">
-            <img class="mt-5" width="80%" src="<?php echo base_url('uploads/olive-images/signup.png'); ?>">
+            <img class="mt-5" width="80%" src="<?php echo base_url('uploads/olive-images/sign-up.png'); ?>">
             
           </div>
           <div class="col-lg-6">

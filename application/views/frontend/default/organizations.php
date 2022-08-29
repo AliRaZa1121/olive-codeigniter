@@ -10,7 +10,7 @@ section.org-first-fold, section.arc-first-fold {
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="content">
-                    <h1 class="text-uppercase fw-bold clr-yellow"><?php echo $page_title; ?></h1>
+                    <h1 class="text-uppercase fw-bold clr-yellow"><?php //echo $page_title; ?></h1>
                     <!-- <h4 class="text-white">Lorem ipsum dolor Lorem ipsum</h4>
                     <p class="text-white mb-1">lorem ipsum</p>
                     <p class="text-white mb-1">Lorem ipsum dolor Lorem ipsum</p>
@@ -26,7 +26,7 @@ section.org-first-fold, section.arc-first-fold {
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="fold-title mb-5">
-                <h2 class="text-uppercase fw-bold clr-black text-center"><?php echo $section['title']; ?></h2>
+                <h2 class="text-uppercase fw-bold clr-black text-center"><?php //echo $section['title']; ?></h2>
                     <p class="text-left"><?php echo $section['description_1']; ?></p>
                 </div>
             </div>

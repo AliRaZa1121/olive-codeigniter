@@ -31,6 +31,7 @@
           <li class="mb-1"><a class="link-light footer-hover-link" href="<?php echo site_url('home/about_us'); ?>"><?php echo site_phrase('about_us'); ?></a></li>
           <li class="mb-1"><a class="link-light footer-hover-link" href="<?php echo site_url('home/privacy_policy'); ?>"><?php echo site_phrase('privacy_policy'); ?></a></li>
           <li class="mb-1"><a class="link-light footer-hover-link" href="<?php echo site_url('home/terms_and_condition'); ?>"><?php echo site_phrase('terms_and_condition'); ?></a></li>
+          <li class="mb-1"><a class="link-light footer-hover-link" href="<?php echo site_url('home/contact_us'); ?>"><?php echo site_phrase('contact'); ?></a></li>
          <!-- <li class="mb-1"><a class="link-light footer-hover-link" href="<?php echo site_url('home/refund_policy'); ?>"><?php echo site_phrase('refund_policy'); ?></a></li>-->
         </ul>
       </div>

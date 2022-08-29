@@ -1,3 +1,6 @@
+<?php if(get_frontend_settings('recaptcha_status')): ?>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<?php endif; ?>
 
 <section class="contact-section"></section>
 <section class="contact-second-fold">
@@ -26,6 +29,12 @@
                                         <textarea class="form-control" placeholder="Message" name="message" required rows="3"></textarea>
                                     </div>
                                     
+                                       <?php if(get_frontend_settings('recaptcha_status')): ?>
+                                        <div class="form-group mt-4 mb-0">
+                                          <div class="g-recaptcha" data-sitekey="<?php echo get_frontend_settings('recaptcha_sitekey'); ?>"></div>
+                                        </div>
+                                      <?php endif; ?>
+                                      
                                     <button class="contact-btn" type="submit">Submit</button>
                                 </form>
                             </div>
@@ -35,10 +44,6 @@
                                 
                                 <div class="contact-info-detail">
                                     <ul>
-                                        <li>
-								            <i class="fas fa-map-marker-alt"></i>
-								            <span><?php echo get_settings('address');  ?></span>
-							            </li>
                                          <li>
 								            <i class="fas fa-phone"></i>
 								            <a href="tel:<?php echo get_settings('phone');  ?>"><span><?php echo get_settings('phone');  ?></span></a>
@@ -46,6 +51,10 @@
 							             <li>
 								           <i class="fas fa-envelope"></i>
 								           <a href="mailto:<?php echo get_settings('system_email');  ?>"><span><?php echo get_settings('system_email');  ?></span></a>
+							            </li>
+							              <li>
+								            <i class="fas fa-map-marker-alt"></i>
+								            <span><?php echo get_settings('address');  ?></span>
 							            </li>
                                     </ul>
                                 </div>
