@@ -57,6 +57,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="address_link"><?php echo get_phrase('address_link'); ?><span class="required">*</span></label>
+                            <input type="text" name = "address_link" placeholder="Embedded Link" id = "address_link" class="form-control" value="<?php echo get_settings('address_link');  ?>" required>
+                        </div>
+
+                        <div class="form-group">
                             <label for="phone"><?php echo get_phrase('phone'); ?></label>
                             <input type="text" name = "phone" id = "phone" class="form-control" value="<?php echo get_settings('phone');  ?>">
                         </div>

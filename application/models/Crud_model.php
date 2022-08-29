@@ -336,6 +336,11 @@ class Crud_model extends CI_Model
         $this->db->where('key', 'address');
         $this->db->update('settings', $data);
 
+        $data['value'] = html_escape($this->input->post('address_link'));
+        $this->db->where('key', 'address_link');
+        $this->db->update('settings', $data);
+        
+
         $data['value'] = html_escape($this->input->post('phone'));
         $this->db->where('key', 'phone');
         $this->db->update('settings', $data);
