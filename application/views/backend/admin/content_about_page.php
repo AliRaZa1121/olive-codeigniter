@@ -25,8 +25,8 @@
                                     <div class="box" style="width: 250px;">
                                         <div class="js--image-preview" style="background-image: url(<?php echo base_url('uploads/system/' . $section['image']); ?>); background-color: #F5F5F5;"></div>
                                         <div class="upload-options">
-                                            <label for="image-sec-3" class="btn"> <i class="mdi mdi-camera"></i> <?php echo get_phrase('section_image'); ?> </label>
-                                            <input id="image-sec-3" style="visibility:hidden;" type="file" class="image-upload" name="image" accept="image/*">
+                                            <label for="image-sec" class="btn"> <i class="mdi mdi-camera"></i> <?php echo get_phrase('section_image'); ?> </label>
+                                            <input id="image-sec" style="visibility:hidden;" type="file" class="image-upload" name="image" accept="image/*">
                                         </div>
                                     </div>
                                 </div>
