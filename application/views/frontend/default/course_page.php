@@ -575,7 +575,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
     $provider = 'html5';
   } else {
     $video_details = $this->video_model->getVideoDetails($course_details['video_url']);
-    $provider = $video_details['provider'];
+    $provider = $video_details !== null ? $video_details['provider'] : null;
   }
 ?>
   <div class="modal fade" id="CoursePreviewModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
