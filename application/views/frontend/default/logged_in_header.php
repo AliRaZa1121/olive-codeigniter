@@ -51,12 +51,12 @@ $user_details = $this->user_model->get_user($this->session->userdata('user_id'))
             <?php endif; ?> -->
 
             <div class="wishlist-box menu-icon-box" id="wishlist_items">
-                <?php // include 'wishlist_items.php'; 
+                <?php  include 'wishlist_items.php'; 
                 ?>
             </div>
 
             <div class="cart-box menu-icon-box" id="cart_items">
-                <?php // include 'cart_items.php'; 
+                <?php  include 'cart_items.php'; 
                 ?>
             </div>
 

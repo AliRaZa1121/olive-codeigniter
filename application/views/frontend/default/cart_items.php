@@ -7,7 +7,7 @@ $total_price = 0;
 </div>
 
 <!-- Cart Dropdown goes here -->
-<div class="dropdown course-list-dropdown corner-triangle top-right" style="display: none;"> <!-- Just remove the display none from the css to make it work -->
+<div class="dropdown course-list-dropdown corner-triangle top-right"> <!-- Just remove the display none from the css to make it work -->
 	<div class="list-wrapper">
 		<div class="item-list">
 			<ul>
