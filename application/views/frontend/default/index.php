@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+
 	<?php if ($page_name == 'course_page'):
 		$title = $this->crud_model->get_course_by_id($course_id)->row_array()?>
 		<title><?php echo $title['title'].' | '.get_settings('system_name'); ?></title>
@@ -60,9 +61,10 @@
 
 <body class="gray-bg">
 	<?php
-	if($this->session->userdata('app_url')):
+
+	if($this->session->userdata('app_url')){
 		include "go_back_to_mobile_app.php";
-	endif;
+	}
 
 	if ($this->session->userdata('user_login') || $this->session->userdata('admin_login')) {
 		include 'logged_in_header.php';
@@ -70,15 +72,16 @@
 		include 'logged_out_header.php';
 	}
 
-	if(get_frontend_settings('cookie_status') == 'active'):
+	if(get_frontend_settings('cookie_status') == 'active'){
     	include 'eu-cookie.php';
-  	endif;
+  	}
   	
   	if($page_name === null){
   		include $path;
   	}else{ 
 		include $page_name.'.php';
 	}
+    
 	include 'footer.php';
 	include 'includes_bottom.php';
 	include 'modal.php';
