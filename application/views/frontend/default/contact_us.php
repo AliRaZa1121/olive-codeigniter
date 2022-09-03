@@ -6,10 +6,10 @@
 <section class="contact-second-fold">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-10 col-md-12">
                 <div class="contact-form-box">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="contact-title">
                                 <h2>Get In Touch</h2>
                                 <p>we are here for you! how can we help you?</p>
@@ -30,7 +30,7 @@
                                     </div>
                                     
                                        <?php if(get_frontend_settings('recaptcha_status')): ?>
-                                        <div class="form-group mt-4 mb-0">
+                                        <div class="form-group">
                                           <div class="g-recaptcha" data-sitekey="<?php echo get_frontend_settings('recaptcha_sitekey'); ?>"></div>
                                         </div>
                                       <?php endif; ?>
@@ -39,7 +39,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="contact-info">
                                 
                                 <div class="contact-info-detail">
@@ -79,11 +79,14 @@
                                 
                             </div>
                             </div>
+                            <div class="contact-form-image">
+                                <img class="img-fluid" src="https://olive.minibigcrm.com/uploads/olive-images/log-in.png">
+                            </div>
                         </div>
                     </div>
-                    <div class="row mt-5">
+                    <div class="row mt-3">
                         <div class="col-lg-12">
-                            <iframe src="<?php echo get_settings('address_link');  ?>"></iframe>
+                            <iframe width="100%" height="300px" src="<?php echo get_settings('address_link');  ?>"></iframe>
                         </div>
                     </div>
                 </div>

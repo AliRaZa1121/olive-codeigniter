@@ -2,7 +2,7 @@
 <style>
 section.org-first-fold, section.arc-first-fold {
     background-image: url(<?php echo base_url('uploads/system/' . $section_1['image']); ?>);
-    min-height: 500px !important;
+    /*min-height: 500px !important;*/
 }
 </style>
 <section class="org-first-fold">
@@ -66,13 +66,13 @@ section.org-first-fold, section.arc-first-fold {
     </div>
     <div class="container">
         <div class="row align-items-center mt-5">
-            <div class="col-lg-6 p-0">
+            <div class="col-lg-6">
                 <div class="fold-content">
                     <p><?php echo $section['description_1']; ?></p>
                 </div>
             </div>
-            <div class="col-lg-6 p-0">
-                <div class="fold-thumbnail" style="margin: 30px;">
+            <div class="col-lg-6">
+                <div class="fold-thumbnail">
                     <img class="img-fluid" src="<?php echo base_url('uploads/system/' . $section['image']); ?>" alt="">
                 </div>
             </div>

@@ -62,8 +62,8 @@
       </div>
     </div>
   </div>
-  <section class="border-top">
-    <div class="container-xl">
+  <section>
+    <div class="container FooterBottom">
       <div class="row mt-3 py-1">
         <div class="col-6 col-sm-6 col-md-3 text-light text-13px">
           &copy; 2021 <?php echo get_settings('system_name'); ?>, <?php echo site_phrase('all_rights_reserved'); ?>

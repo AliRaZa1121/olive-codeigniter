@@ -21,7 +21,7 @@ if (isset($sub_category_id)) {
     section.org-first-fold,
     section.arc-first-fold {
         background-image: url(<?php echo base_url('uploads/olive-images/programs.jpg'); ?>);
-        min-height: 475px !important;
+       /* min-height: 475px !important;*/
     }
 </style>
 <section class="org-first-fold">

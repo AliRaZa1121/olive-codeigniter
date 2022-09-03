@@ -45,15 +45,15 @@
 	<?php include 'includes_top.php';?>
 	
 <style>
-section.org-first-fold, section.arc-first-fold {
-/* section.org-first-fold { */
+/*section.org-first-fold, section.arc-first-fold {
+ section.org-first-fold { 
     padding: 100px 0;
     background-image: url(<?php echo base_url('uploads/olive-images/fold-image4.png'); ?>);
     background-position: center;;;
     background-repeat: no-repeat;;;;
     background-size: cover;;;;
 }
-
+*/
 </style>
 
 </head>

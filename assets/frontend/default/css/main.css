@@ -979,9 +979,11 @@ section.home-banner-area .banner-img img {
 .clr-black {color: #000000 !important;}
 .clr-yellow {color: #f9a623 !important;}
 .second-fold {
-    background: #f2f2f2;
-    padding: 50px 0;
+    position: relative;
+    background: #f2f2f2 url('../img/Waves.png') no-repeat right center;
+    padding: 80px 0;
 }
+
 .fold-title h4 {
     color: #000;
     font-size: 30px;
@@ -1142,13 +1144,21 @@ section.fifth-fold {
     transform: translateY(-5px);
 }
 /***** olive organization page *****/
+/**** olive site banner ****/
 section.org-first-fold, section.arc-first-fold {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+}
+
+/*section.org-first-fold, section.arc-first-fold {
     padding: 100px 0;
     background-image: url(http://localhost/olive/uploads/olive-images/fold-image4.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+}*/
 section.org-first-fold h1 {
     font-size: 60px;
 }
@@ -1158,6 +1168,17 @@ section.org-second-fold {
 section.org-third-fold {
     padding: 50px 0;
 }
+
+
+section.org-third-fold .fold-thumbnail {width: 100%;height: auto;}
+section.org-third-fold .fold-content>p {
+    text-align: justify;
+}
+section.org-third-fold .fold-thumbnail img {
+    width: 100%;
+    height: 100%;
+}
+@media (min-width: 767px) {
 .border-heading {
     position: relative;
     text-align: center;
@@ -1178,14 +1199,6 @@ section.org-third-fold {
     background: #fff;
     padding: 0 50px;
 }
-
-section.org-third-fold .fold-thumbnail {width: 100%;height: auto;}
-section.org-third-fold .fold-content>p {
-    text-align: justify;
-}
-section.org-third-fold .fold-thumbnail img {
-    width: 100%;
-    height: 100%;
 }
 /***** olive article page *****/
 .article-box {
@@ -1421,7 +1434,7 @@ section.course-header-area .detail-image {
 section.course-header-area .detail-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 /**** olive book page ****/
 .book-box {
@@ -1713,7 +1726,8 @@ section.course-header-area .detail-image img {
     width: 100%;
     min-height: 500px;
     position: relative;
-    background-image: url(https://olive.minibigcrm.com/uploads/system/contact-banner.jpg);
+    /*background-image: url(https://olive.minibigcrm.com/uploads/system/contact-banner.jpg);*/
+    background-image: url('../img/Contactus-BG2.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -1775,6 +1789,8 @@ section.contact-second-fold {
 
 .contact-info-detail ul>li {
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .contact-info-detail ul>li>i {
@@ -1790,6 +1806,8 @@ section.contact-second-fold {
 .contact-info-detail ul>li>span, .contact-info-detail ul>li>a {
     margin-left: 10px;
     font-size: 16px;
+    width: 400px;
+
 }
 ul {
     list-style: none;
@@ -1841,7 +1859,16 @@ ul {
 .contact-social-icon>ul>li:last-child {
     margin-bottom: 0;
 }
+.contact-form-box .contact-form-image {
+    width: 100%;
+    height: 360px;
+}
 
+.contact-form-box .contact-form-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 /*
 homepage styles
 */
@@ -4881,7 +4908,7 @@ footer style
 .footer-area{
     background-color: #fff;
     /*padding: 15px 0;*/
-    padding:30px 0 10px 0;
+    padding:80px 0 15px 0;
 }
 .footer-area .list-unstyled>li a.link-light:hover {
     color: #ed5d06 !important;
@@ -4890,7 +4917,10 @@ footer style
 .footer-area img {
     margin-bottom: 10px;
 }
-
+.FooterBottom {
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
 .copyright-text{
     color: #686f7a;
     font-size: 13px;
@@ -6174,5 +6204,72 @@ a.site-btn:hover {
     color: #ed5d06;
     border: 1px solid #ed5d06;
 }
+.menu-area .navbar li.text-nowrap> .active span.fw-500 {
+    color: #ed5d06;
+}
+/***** Responsive css *****/
+@media (max-width: 991px) {
+section.org-first-fold, section.arc-first-fold {
+    min-height: 300px;
+    padding: 100px 0;
+} 
+section.third-fold .fold-thumbnail img {
+    width: 100%;
+}
+section.third-fold .fold-content {
+    padding-left: 0;
+    padding-top: 30px;
+}
+section.third-fold .fold-content h2, section.third-fold .fold-content h4 {
+    font-size: 36px;
+}
+.contact-section {
+    min-height: 300px;
 
+}
+.contact-info-detail ul>li>span, .contact-info-detail ul>li>a {
+    width: 70%;
+}
+
+}
+@media (max-width: 767px) {
+section.org-first-fold, section.arc-first-fold {
+    min-height: auto;
+    padding: 70px 0;
+}
+
+.contact-info {
+    padding-top: 30px;
+}
+.contact-info-detail ul>li {
+    align-items: center;
+    justify-content: start;
+}
+.contact-info-detail ul>li>span, .contact-info-detail ul>li>a {
+    width: 70%;
+}
+.contact-social-icon {
+    position: static;
+    top: 0;
+    right: 0;
+    padding-top: 10px;
+}
+.contact-social-icon ul {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+.contact-social-icon>ul>li {
+    margin-bottom: 0;
+}
+.contact-social-icon>ul>li>a {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+
+}
+}
 

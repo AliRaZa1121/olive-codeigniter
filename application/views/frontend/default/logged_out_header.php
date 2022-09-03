@@ -1,5 +1,5 @@
 <section class="menu-area bg-white">
-  <div class="container">
+  <div class="container-xl">
     <nav class="navbar navbar-expand-lg bg-white">
 
       <ul class="mobile-header-buttons">

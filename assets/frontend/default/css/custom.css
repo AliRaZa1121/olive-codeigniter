@@ -23,10 +23,10 @@ a{
 	.cropped-home-banner{
 	    display: none;
 	}
-	.home-banner-area{
+/*	.home-banner-area{
 	    background: none !important;
 	    padding: 80px 0 75px !important;
-	}
+	}*/
 	.home-banner-wrap{
 		max-width: 100% !important;
 		text-align: center;

@@ -1447,5 +1447,9 @@
     "contact_us": "Contact us",
     "thank_you_for_contacting_us": "Thank you for contacting us",
     "recaptcha_verification_failed": "Recaptcha verification failed",
-    "contact": "Contact"
+    "contact": "Contact",
+    "address_link": "Address link",
+    "alignment": "Alignment",
+    "curiosity": "Curiosity",
+    "impact": "Impact"
 }

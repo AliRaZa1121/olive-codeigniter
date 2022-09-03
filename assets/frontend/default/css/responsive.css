@@ -7,11 +7,22 @@
     }
 }
 
-
+@media screen and (min-device-width: 991px) and (max-device-width: 1024px) { 
+.menu-area .navbar li.text-nowrap>a {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+.sign-in-box > .btn {
+    font-size: 12px;
+    padding: 8px 15px;
+    border-radius: 5px !important;
+    margin: 0;
+}
+}
 /*
     menu resonsive for 768px+
 */
-@media (min-width:768px){
+@media (min-width:990px){
     .navbar-expand-lg {
 
         -webkit-box-orient: horizontal;
@@ -155,7 +166,7 @@
 /*
     responsive mobile menu 767px-
 */
-@media (max-width:767px){
+@media (max-width:990px){
     .navbar-brand {
         margin-right: auto;
         margin-left: auto;
@@ -578,7 +589,8 @@
 
 
     .home-fact-box{
-        margin: 15px 0;
+        margin: 10px 0;
+    transform: scale(0.75);
     }
     .footer-widget{
         margin: 20px;

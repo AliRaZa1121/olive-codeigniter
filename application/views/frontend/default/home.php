@@ -50,12 +50,12 @@
             <?php $courses = $this->crud_model->get_courses(); ?>
             <div class="col-md-4 d-flex">
                 <div class="home-fact-box mr-md-auto mr-auto">
-                    <i class="fas fa-bullseye float-start"></i>
+                    <i class="fas fa-align-center float-start"></i>
                     <div class="text-box">
                         <h4><?php
                             $status_wise_courses = $this->crud_model->get_status_wise_courses();
                             $number_of_courses = $status_wise_courses['active']->num_rows();
-                            echo $number_of_courses . ' ' . site_phrase('professional_programs'); ?></h4>
+                            echo $number_of_courses . ' ' . site_phrase('Alignment'); ?></h4>
                         <!--<p><?php echo site_phrase('explore_a_variety_of_fresh_topics'); ?></p>-->
                         <p><?php echo site_phrase('Programs_are_always_available_online'); ?></p>
 
@@ -65,10 +65,10 @@
 
             <div class="col-md-4 d-flex">
                 <div class="home-fact-box mr-md-auto mr-auto">
-                    <i class="fa fa-check float-start"></i>
+                    <i class="fa fa-question float-start"></i>
                     <div class="text-box">
                         <!--<h4><?php echo site_phrase('expert_instruction'); ?></h4>-->
-                        <h4><?php echo site_phrase('Secure_Payments'); ?></h4>
+                        <h4><?php echo site_phrase('Curiosity'); ?></h4>
 
                         <!--<p><?php echo site_phrase('find_the_right_course_for_you'); ?></p>-->
                         <p><?php echo site_phrase('Encrypted_&_secure_trnasactions'); ?></p>
@@ -79,10 +79,10 @@
 
             <div class="col-md-4 d-flex">
                 <div class="home-fact-box mr-md-auto mr-auto">
-                    <i class="fa fa-clock float-start"></i>
+                    <i class="fa fa-bahai float-start"></i>
                     <div class="text-box">
                         <!--<h4><?php echo site_phrase('lifetime_access'); ?></h4>-->
-                        <h4><?php echo site_phrase('Different_Bundles'); ?></h4>
+                        <h4><?php echo site_phrase('Impact'); ?></h4>
 
                         <!--<p><?php echo site_phrase('learn_on_your_schedule'); ?></p>-->
                         <p><?php echo site_phrase('Get_the_variety_of_access_durations'); ?></p>
@@ -115,17 +115,17 @@
 </section>
 <section class="third-fold">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center justify-content-center">
         <?php $section_3 = $this->crud_model->get_content_settings('home', 'section-3'); ?>
             <div class="col-lg-4">
-                <div class="fold-thumbnail">
-                    <img src="<?php echo base_url('uploads/system/' . $section_3['image']); ?>" alt="">
+                <div class="fold-thumbnail text-center">
+                    <img class="img-fluid" src="<?php echo base_url('uploads/system/' . $section_3['image']); ?>" alt="">
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="fold-content">
-                    <h2 class="text-uppercase fw-bold clr-black"><?php echo $section_3['title']; ?></h2>
-                    <h4><?php echo $section_3['sub_title']; ?></h4>
+                <div class="fold-content px-0">
+                    <h2 class="text-uppercase fw-bold clr-orange"><?php echo $section_3['title']; ?></h2>
+                    <h5><?php echo $section_3['sub_title']; ?></h5>
                     <p><?php echo $section_3['description_1']; ?></p>
                 </div>
             </div>
@@ -213,7 +213,7 @@
         </div>
     </div>
 </section>
-<section class="fifth-fold">
+<section class="fifth-fold d-none">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
