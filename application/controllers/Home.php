@@ -403,6 +403,7 @@ class Home extends CI_Controller
 
     public function programs_page($slug = "", $programs_id = "")
     {
+       
         $this->access_denied_courses($programs_id);
         $page_data['programs_id'] = $programs_id;
         $page_data['page_name'] = "programs_page";

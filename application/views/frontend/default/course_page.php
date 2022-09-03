@@ -685,42 +685,31 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
              <div class="form-group">
                 <label for="user_id"><?php if($this->session->userdata('is_instructor')) echo 'students'; else echo 'teachers'; ?></label>
                 
-                <?php 
+                // <?php 
                 
-                 $conn = mysqli_connect('localhost','edutrainia_stagging','edutrainia_stagging','edutrainia_stagging');
-                 $courssql = "SELECT * FROM `course` WHERE id = $course_id";
-                 $course = $conn->query($courssql);
+                //  $conn = mysqli_connect('localhost','edutrainia_stagging','edutrainia_stagging','edutrainia_stagging');
+                //  $courssql = "SELECT * FROM `course` WHERE id = $course_id";
+                //  $course = $conn->query($courssql);
                
-                 $user_ids = "";
-                 foreach($course as $cours){
-                   $user_ids = $cours['user_id'];
-                 }
-                 $sql = "SELECT * FROM `users` WHERE id IN (".$user_ids.")";
-                 $users = $conn->query($sql);
-                
-                ?>
+                //  $user_ids = "";
+                //  foreach($course as $cours){
+                //   $user_ids = $cours['user_id'];
+                //  }
+                //  $sql = "SELECT * FROM `users` WHERE id IN (".$user_ids.")";
+                //  $users = $conn->query($sql);
+              
+                // ?>
                 
                 
                 <select class="form-control user_id"  name="user_id" id="user_id" required>
                    <option disabled>Select</option>
                   
                     <?php 
-                        // $users =[];
-                        // if($this->session->userdata('is_instructor')){
-                        //     $users = $this->user_model->get_instructors_by_course_id($course_detail['id']);
-                        // }
-                        // else{
-                        //     $users = $this->user_model->get_students_by_course_id($course_detail['id']);
-                        // }
-                        
-                        // if(!empty($users))
-                        // {
+               
                             foreach($users as $user){  ?>
                                 
                                 <option value="<?php echo $user['id']  ?>"><?php echo $user['first_name'] ?></option>
-                        <?php    }
-                        // }
-                   ?>
+                        <?php } ?>
                 </select>
             </div>
             <div class="form-group">
