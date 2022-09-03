@@ -1425,11 +1425,12 @@ class Home extends CI_Controller
         $page_data['type'] = $_GET['course_type'];
         $page_data['page_name'] = 'compare';
         $page_data['page_title'] = site_phrase('course_compare');
-        if ($page_data['type'] == 1) {
-            $page_data['courses'] = $this->crud_model->get_courses()->result_array();
-        } else {
-            $page_data['courses'] = $this->crud_model->get_programs()->result_array();
-        }
+        // if ($page_data['type'] == 1) {
+        //     $page_data['courses'] = $this->crud_model->get_courses()->result_array();
+        // } else {
+        //     $page_data['courses'] = $this->crud_model->get_programs()->result_array();
+        // }
+        $page_data['courses'] = $this->crud_model->get_courses()->result_array();
 
         $page_data['course_1_details'] = $course_id_1 ? $this->crud_model->get_course_by_id($course_id_1)->row_array() : array();
         $page_data['course_2_details'] = $course_id_2 ? $this->crud_model->get_course_by_id($course_id_2)->row_array() : array();
