@@ -230,20 +230,13 @@ if (isset($sub_category_id)) {
                            <div class="tab-pane fade active" id="nav-popular" class="nav-popular" role="tabpanel" aria-labelledby="nav-popular-tab" style="width: 100%">
                               <div class="course-carousel shown-after-loading" style="display: none;">
                             <?php
-                            $conn = mysqli_connect('localhost', 'edutrainia_stagging', 'edutrainia_stagging', 'edutrainia_stagging');
-                            $category_id = $category_details['id'];
-                            $query = "SELECT course.* FROM course JOIN payment ON course.id = payment.course_id  WHERE category_id = ". $category_id;     
-                            $result = mysqli_query($conn, $query);
+                            // $conn = mysqli_connect('localhost', 'edutrainia_stagging', 'edutrainia_stagging', 'edutrainia_stagging');
+                            // $category_id = $category_details['id'];
+                            // $query = "SELECT course.* FROM course JOIN payment ON course.id = payment.course_id  WHERE category_id = ". $category_id;     
+                            // $result = mysqli_query($conn, $query);
+                            // $popular_courses = mysqli_fetch_all($result,MYSQLI_ASSOC);
                           
-                            
-                           
-                            $popular_courses = mysqli_fetch_all($result,MYSQLI_ASSOC);
-                            //   var_dump($popular_courses);
-                            // var_dump($popular_courses);
-                            // $popular_courses = mysqli_fetch_assoc($result);
-                            // echo $popular_courses
-                          
-                            // return 1;
+                            $popular_courses =  $this->crud_model->popular_courses($category_id);
                             if ($popular_courses) {
                                
                                 foreach ($popular_courses as $latest_course) : ?>

@@ -30,6 +30,16 @@ class Crud_model extends CI_Model
         return $this->db->get('category');
     }
 
+    public function popular_courses($category_id)
+    {
+       return $this->db->query('SELECT course.* FROM course JOIN payment ON course.id = payment.course_id  WHERE category_id = '. $category_id);
+    }
+
+    public function popular_courses_for_quiz($id)
+    {
+        return $this->db->query('SELECT id FROM lesson WHERE lesson_type = quiz and id = (SELECT MIN(id) FROM lesson WHERE id >'. $id.')');
+    }
+
     public function get_users($param1 = "")
     {
         if ($param1 != "") {

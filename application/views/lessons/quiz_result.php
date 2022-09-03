@@ -66,11 +66,11 @@ $data = $q->result_array();
             $url= $_SERVER['HTTP_REFERER'];
             $arr =explode('/',$url);
             $id = $arr[7];
-            $conn = mysqli_connect('localhost', 'edutrainia_stagging', 'edutrainia_stagging', 'edutrainia_stagging');
-            $query = "SELECT id FROM lesson WHERE lesson_type = 'quiz' and id = (SELECT MIN(id) FROM lesson WHERE id > $id)";     
-            $result = mysqli_query($conn, $query);
-            $popular_courses = mysqli_fetch_all($result,MYSQLI_ASSOC);
-            
+            // $conn = mysqli_connect('localhost', 'edutrainia_stagging', 'edutrainia_stagging', 'edutrainia_stagging');
+            // $query = "SELECT id FROM lesson WHERE lesson_type = 'quiz' and id = (SELECT MIN(id) FROM lesson WHERE id > $id)";     
+            // $result = mysqli_query($conn, $query);
+            // $popular_courses = mysqli_fetch_all($result,MYSQLI_ASSOC);
+            $popular_courses  =  $this->crud_model->popular_courses_for_quiz($id);
             // $url= $_SERVER['HTTP_REFERER'];
             // $arr =explode('/',$url);
             // $id = $arr[7];

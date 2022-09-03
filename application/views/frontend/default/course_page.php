@@ -685,7 +685,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
              <div class="form-group">
                 <label for="user_id"><?php if($this->session->userdata('is_instructor')) echo 'students'; else echo 'teachers'; ?></label>
                 
-                // <?php 
+                 <?php 
                 
                 //  $conn = mysqli_connect('localhost','edutrainia_stagging','edutrainia_stagging','edutrainia_stagging');
                 //  $courssql = "SELECT * FROM `course` WHERE id = $course_id";
@@ -697,15 +697,12 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                 //  }
                 //  $sql = "SELECT * FROM `users` WHERE id IN (".$user_ids.")";
                 //  $users = $conn->query($sql);
-              
-                // ?>
-                
-                
+                  $users = [];
+                 ?>
                 <select class="form-control user_id"  name="user_id" id="user_id" required>
                    <option disabled>Select</option>
                   
                     <?php 
-               
                             foreach($users as $user){  ?>
                                 
                                 <option value="<?php echo $user['id']  ?>"><?php echo $user['first_name'] ?></option>
