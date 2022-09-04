@@ -845,7 +845,7 @@ class Api_model extends CI_Model
 			$instructor_details = $this->user_model->get_all_user($course['user_id'])->row_array();
 			$courses[$key]['instructor_name'] = $instructor_details['first_name'] . ' ' . $instructor_details['last_name'];
 			$courses[$key]['total_enrollment'] = $this->crud_model->enrol_history($course['id'])->num_rows();
-			$courses[$key]['shareable_link'] = site_url('home/course/' . slugify($course['title']) . '/' . $course['id']);
+			$courses[$key]['shareable_link'] = site_url('home/program/' . slugify($course['title']) . '/' . $course['id']);
 		}
 
 		return $courses;
@@ -2013,7 +2013,7 @@ class Api_model extends CI_Model
 		$instructor_details = $this->user_model->get_all_user($course['user_id'])->row_array();
 		$course['instructor_name'] = $instructor_details['first_name'] . ' ' . $instructor_details['last_name'];
 		$course['total_enrollment'] = $this->crud_model->enrol_history($course['id'])->num_rows();
-		$course['shareable_link'] = site_url('home/course/' . slugify($course['title']) . '/' . $course['id']);
+		$course['shareable_link'] = site_url('home/program/' . slugify($course['title']) . '/' . $course['id']);
 		return $course;
 	}
 

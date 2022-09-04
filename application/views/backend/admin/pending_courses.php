@@ -103,7 +103,7 @@
                                   <button class="btn btn-small btn-default btn-demo-space" data-toggle="dropdown"> <i class = "fa fa-ellipsis-v"></i> </button>
                                   <ul class="dropdown-menu">
                                       <li>
-                                          <a href="<?php echo site_url('home/course/'.slugify($course['title']).'/'.$course['id']); ?>" target="_blank">
+                                          <a href="<?php echo site_url('home/program/'.slugify($course['title']).'/'.$course['id']); ?>" target="_blank">
                                               <?php echo get_phrase('view_course_on_frontend');?>
                                           </a>
                                       </li>

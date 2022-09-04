@@ -1,14 +1,10 @@
 <?php
 $course_details = $this->crud_model->get_course_by_id($payment_info['course_id'])->row_array();
-// echo '<pre>';
-// print_r($course_details);
-// exit;
 $buyer_details = $this->user_model->get_all_user($payment_info['user_id'])->row_array();
 $sub_category_details = $this->crud_model->get_category_details_by_id($course_details['sub_category_id'])->row_array();
 $instructor_details = $this->user_model->get_all_user($course_details['user_id'])->row_array();
 ?>
 
-<?php include "profile_menus.php"; ?>
 <style>
 @media print { 
 	@page { 
@@ -21,10 +17,16 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 	} 
 } 
 </style>
-<section class="purchase-history-list-area">
-    <div class="container">
+<section class="main-wrapper purchase-history-list-area">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col">
+        <div class="col-lg-2 p-0">
+                    <div class="left-sidebar-menu">
+                        <?php include "profile_menus.php"; ?>
+                    </div>
+               </div>
+               <div class="col-lg-10 p-0">
+
                 <div style="margin-left:auto;margin-right:auto;">
                     <link href="<?php echo base_url('assets/frontend/elegant/css/print.css'); ?>" rel="stylesheet">
                     <div style="background: #eceff4;padding: 1.5rem;">
@@ -91,6 +93,12 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                                 <tr class="">
                                     <td></td>
                                     <td class="gry-color"></td>
+                                    <td class="gry-color"> <strong><?php echo site_phrase('discount'); ?>:</strong> </td>
+                                    <td class="text-right"><strong><?php echo currency('0'); ?></strong></td>
+                                </tr>
+                                <tr class="">
+                                    <td></td>
+                                    <td class="gry-color"></td>
                                     <td class="gry-color strong"><strong><?php echo site_phrase('grand_total'); ?></strong>:</td>
                                     <td class="text-right"><strong><?php echo currency($payment_info['amount']); ?></strong></td>
                                 </tr>
@@ -98,6 +106,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                         </table>
                     </div>
                 </div>
+            
             </div>
         </div>
         <div class="d-print-none mb-2">

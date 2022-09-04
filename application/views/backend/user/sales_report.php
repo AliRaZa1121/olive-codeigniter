@@ -47,7 +47,7 @@
                                 $user_data = $this->db->get_where('users', array('id' => $payment['user_id']))->row_array(); ?>
                                 <tr class="gradeU">
                                     <td>
-                                        <strong><a href="<?php echo site_url('home/course/' . rawurlencode(slugify($course_data['title'])) . '/' . $course_data['id']); ?>" target="_blank"><?php echo $course_data['title']; ?></a></strong><br>
+                                        <strong><a href="<?php echo site_url('home/program/' . rawurlencode(slugify($course_data['title'])) . '/' . $course_data['id']); ?>" target="_blank"><?php echo $course_data['title']; ?></a></strong><br>
                                         <small class="text-muted">
                                             <strong><?php echo get_phrase('enrolled_user'); ?></strong>: <?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?>
                                         </small><br>

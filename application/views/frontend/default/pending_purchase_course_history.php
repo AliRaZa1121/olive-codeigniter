@@ -5,7 +5,7 @@
                 <ul class="purchase-history-list">
                     <li class="purchase-history-list-header">
                         <div class="row">
-                            <div class="col-sm-6"><h4 class="purchase-history-list-title"> <?php echo get_phrase('pending_purchase_course'); ?> </h4></div>
+                            <div class="col-sm-6"><h4 class="purchase-history-list-title"> <?php echo get_phrase('pending_purchase_programs'); ?> </h4></div>
                             <div class="col-sm-6 hidden-xxs hidden-xs">
                                 <div class="row">
                                     <div class="col-sm-3"> <?php echo get_phrase('date'); ?> </div>
@@ -26,7 +26,7 @@
                                         <div class="purchase-history-course-img">
                                             <img src="<?php echo $this->crud_model->get_course_thumbnail_url($course_details['id']);?>" class="img-fluid">
                                         </div>
-                                        <a class="purchase-history-course-title" href="<?php echo site_url('home/course/'.slugify($course_details['title']).'/'.$course_details['id']); ?>" >
+                                        <a class="purchase-history-course-title" href="<?php echo site_url('home/program/'.slugify($course_details['title']).'/'.$course_details['id']); ?>" >
                                             <?php
                                             echo $course_details['title'];
                                             ?>

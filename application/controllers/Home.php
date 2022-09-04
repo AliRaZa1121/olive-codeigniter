@@ -703,6 +703,7 @@ class Home extends CI_Controller
         }
         $page_data['total_price_of_checking_out'] = $this->session->userdata('total_price_of_checking_out');
         $page_data['page_title'] = site_phrase("payment_gateway");
+        $page_data['applied_coupon'] = $this->session->userdata('coupon');
         $this->load->view('payment/index', $page_data);
     }
 
@@ -925,18 +926,18 @@ class Home extends CI_Controller
         if (isset($page_data['lesson_id']) && $page_data['lesson_id'] > 0 && $course_details['course_type'] == 'general') {
             if ($this->session->userdata('role_id') != 1 && $course_details['user_id'] != $this->session->userdata('user_id')) {
                 if (!is_purchased($course_id)) {
-                    redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
+                    redirect(site_url('home/program/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
                 }
             }
         } else if ($course_details['course_type'] == 'scorm' && $scorm_course_data->num_rows() > 0) {
             if ($this->session->userdata('role_id') != 1 && $course_details['user_id'] != $this->session->userdata('user_id')) {
                 if (!is_purchased($course_id)) {
-                    redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
+                    redirect(site_url('home/program/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
                 }
             }
         } else {
             if (!is_purchased($course_id)) {
-                redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
+                redirect(site_url('home/program/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
             }
         }
 

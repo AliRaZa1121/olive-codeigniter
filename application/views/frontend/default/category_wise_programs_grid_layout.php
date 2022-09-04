@@ -5,7 +5,7 @@
         $lessons = $this->crud_model->get_lessons_p('programs', $programs['id']); ?>
         <div class="col-md-6 col-xl-4">
             <div class="course-box-wrap">
-                <a onclick="$(location).attr('href', '<?php echo site_url('home/course/' . rawurlencode(slugify($programs['title'])) . '/' . $programs['id']); ?>');" href="javascript:;" class="has-popover">
+                <a onclick="$(location).attr('href', '<?php echo site_url('home/program/' . rawurlencode(slugify($programs['title'])) . '/' . $programs['id']); ?>');" href="javascript:;" class="has-popover">
                     <div class="course-box">
                         <div class="course-image">
                             <img src="<?php echo $this->crud_model->get_programs_thumbnail_url($programs['id']); ?>" alt="" class="img-fluid">

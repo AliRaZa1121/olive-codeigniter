@@ -2918,7 +2918,7 @@ class Crud_model extends CI_Model
             }
         } else {
             $this->session->set_flashdata('error_message', get_phrase('this_course_is_not_free_at_all'));
-            redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_id), 'refresh');
+            redirect(site_url('home/program/' . slugify($course_details['title']) . '/' . $course_id), 'refresh');
         }
     }
 

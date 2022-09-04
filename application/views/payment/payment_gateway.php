@@ -276,7 +276,6 @@ $total_price_of_checking_out = $this->session->userdata('total_price_of_checking
 						$counter++;
 						$course_details = $this->crud_model->get_course_by_id($cart_item)->row_array();
 						$instructor_details = $this->user_model->get_all_user($course_details['user_id'])->row_array(); ?>
-
 						<p class="item float-start">
 							<span class="count-item"><?php echo $counter; ?></span>
 							<span class="item-title"><?php echo $course_details['title']; ?>
@@ -295,6 +294,27 @@ $total_price_of_checking_out = $this->session->userdata('total_price_of_checking
 							</p>
 						<?php endforeach; ?>
 					</div>
+
+					<?php 
+					if ($applied_coupon != null) {
+					$discount_percent = $applied_coupon['discount_percentage'];
+					$total_price_discounted_of_checking_out =	$total_price_of_checking_out / (1 - $discount_percent / 100);
+					$discounted_price = $total_price_discounted_of_checking_out - $total_price_of_checking_out;
+					?>	
+					<div class="w-100 float-start mt-4 indicated-price">
+						<div class="float-end discount-price"><?php echo currency($total_price_discounted_of_checking_out); ?></div>
+						<div class="float-end"><?php echo get_phrase('total_price'); ?></div>
+					</div>
+
+					<div class="w-100 float-start mt-4 indicated-price">
+						<div class="float-end discount-price">-<?php echo currency($discounted_price); ?></div>
+						<div class="float-end"><?php echo get_phrase('discount'); ?></div>
+					</div>
+
+
+					  <?php }
+					?>
+
 					<div class="w-100 float-start mt-4 indicated-price">
 						<div class="float-end total-price"><?php echo currency($total_price_of_checking_out); ?></div>
 						<div class="float-end total"><?php echo get_phrase('total'); ?></div>

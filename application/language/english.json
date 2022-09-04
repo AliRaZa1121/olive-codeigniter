@@ -1455,5 +1455,8 @@
     "coupon_edit": "Coupon edit",
     "coupon_edit_form": "Coupon edit form",
     "coupon_updated_successfully": "Coupon updated successfully",
-    "applied": "Applied"
+    "applied": "Applied",
+    "original_price": "Original price",
+    "pending_purchase_programs": "Pending purchase programs",
+    "program_detail": "Program detail"
 }

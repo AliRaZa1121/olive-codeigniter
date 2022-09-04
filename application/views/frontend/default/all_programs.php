@@ -76,7 +76,7 @@ if (isset($sub_category_id)) {
                                     $course_duration = $this->crud_model->get_total_duration_of_lesson_by_course_id($latest_course['id']);
                                 ?>
                                 <div class="course-box-wrap">
-                                    <a onclick="return check_action(this);" href="<?php echo site_url('home/course/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['id']); ?>" class="has-popover">
+                                    <a onclick="return check_action(this);" href="<?php echo site_url('home/program/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['id']); ?>" class="has-popover">
                                         <div class="course-box">
                                             <div class="course-image course-img">
                                                 <img src="<?php echo $this->crud_model->get_course_thumbnail_url($latest_course['id']); ?>" alt="" class="img-fluid">
@@ -167,7 +167,7 @@ if (isset($sub_category_id)) {
                                             <?php endif; ?>
         
                                             <div class="course-title">
-                                                <a class="text-decoration-none text-15px" href="<?php echo site_url('home/course/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['id']); ?>"><?php echo $latest_course['title']; ?></a>
+                                                <a class="text-decoration-none text-15px" href="<?php echo site_url('home/program/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['id']); ?>"><?php echo $latest_course['title']; ?></a>
                                             </div>
                                             <div class="course-meta">
                                                 <?php if ($latest_course['course_type'] == 'general') : ?>
@@ -249,7 +249,7 @@ if (isset($sub_category_id)) {
                                     ?>
                                   
                                     <div class="course-box-wrap">
-                                        <a onclick="return check_action(this);" href="<?php echo site_url('home/course/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['id']); ?>" class="has-popover">
+                                        <a onclick="return check_action(this);" href="<?php echo site_url('home/program/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['id']); ?>" class="has-popover">
                                             <div class="course-box">
                                                 <div class="course-image course-img">
                                                     <img src="<?php echo $this->crud_model->get_course_thumbnail_url($latest_course['id']); ?>" alt="" class="img-fluid">
@@ -341,7 +341,7 @@ if (isset($sub_category_id)) {
                                                 <?php endif; ?>
             
                                                 <div class="course-title">
-                                                    <a class="text-decoration-none text-15px" href="<?php echo site_url('home/course/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['id']); ?>"><?php echo $latest_course['title']; ?></a>
+                                                    <a class="text-decoration-none text-15px" href="<?php echo site_url('home/program/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['id']); ?>"><?php echo $latest_course['title']; ?></a>
                                                 </div>
                                                 <div class="course-meta">
                                                     <?php if ($latest_course['course_type'] == 'general') : ?>

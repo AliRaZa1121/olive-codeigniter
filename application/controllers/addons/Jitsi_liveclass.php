@@ -98,10 +98,10 @@ class Jitsi_liveclass extends CI_Controller{
                     if(get_bundle_validity($bundle_id, $this->session->userdata('user_id')) == 'valid'){
                         return true;
                     }else{
-                        redirect(site_url('home/course/'.slugify($course_details['title']).'/'.$course_details['id']), 'refresh');
+                        redirect(site_url('home/program/'.slugify($course_details['title']).'/'.$course_details['id']), 'refresh');
                     }
                 }else{
-                    redirect(site_url('home/course/'.slugify($course_details['title']).'/'.$course_details['id']), 'refresh');
+                    redirect(site_url('home/program/'.slugify($course_details['title']).'/'.$course_details['id']), 'refresh');
                 }
 
 

@@ -78,7 +78,7 @@ class Liveclass extends CI_Controller{
         $course_details = $this->crud_model->get_course_by_id($course_id)->row_array();
         if ($this->session->userdata('role_id') != 1 && $course_details['user_id'] != $this->session->userdata('user_id')) {
             if (!is_purchased($course_id)) {
-                redirect(site_url('home/course/'.slugify($course_details['title']).'/'.$course_details['id']), 'refresh');
+                redirect(site_url('home/program/'.slugify($course_details['title']).'/'.$course_details['id']), 'refresh');
             }else{
                 return true;
             }

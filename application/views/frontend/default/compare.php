@@ -101,7 +101,7 @@
                             <?php endif; ?>
 
                             <br>
-                            <a href="<?php echo site_url('home/course/' . rawurlencode(slugify($course_1_details['title'])) . '/' . $course['id']) ?>" class="text-danger fw-500 pt-3 d-inline-block"><?php echo site_phrase('learn_more'); ?> <i class="fas fa-angle-right"></i></a>
+                            <a href="<?php echo site_url('home/program/' . rawurlencode(slugify($course_1_details['title'])) . '/' . $course['id']) ?>" class="text-danger fw-500 pt-3 d-inline-block"><?php echo site_phrase('learn_more'); ?> <i class="fas fa-angle-right"></i></a>
                         <?php endif; ?>
                     </div>
                     <div class="col-md-3 text-center fw-500 text-14px">
@@ -139,7 +139,7 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                             <br>
-                            <a href="<?php echo site_url('home/course/' . rawurlencode(slugify($course_2_details['title'])) . '/' . $course['id']) ?>" class="text-danger fw-500 pt-3 d-inline-block"><?php echo site_phrase('learn_more'); ?> <i class="fas fa-angle-right"></i></a>
+                            <a href="<?php echo site_url('home/program/' . rawurlencode(slugify($course_2_details['title'])) . '/' . $course['id']) ?>" class="text-danger fw-500 pt-3 d-inline-block"><?php echo site_phrase('learn_more'); ?> <i class="fas fa-angle-right"></i></a>
                         <?php endif; ?>
                     </div>
                     <div class="col-md-3 text-center fw-500 text-14px">
@@ -177,7 +177,7 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                             <br>
-                            <a href="<?php echo site_url('home/course/' . rawurlencode(slugify($course_3_details['title'])) . '/' . $course['id']) ?>" class="text-danger fw-500 pt-3 d-inline-block"><?php echo site_phrase('learn_more'); ?> <i class="fas fa-angle-right"></i></a>
+                            <a href="<?php echo site_url('home/program/' . rawurlencode(slugify($course_3_details['title'])) . '/' . $course['id']) ?>" class="text-danger fw-500 pt-3 d-inline-block"><?php echo site_phrase('learn_more'); ?> <i class="fas fa-angle-right"></i></a>
                         <?php endif; ?>
                     </div>
                     <div class="col-md-1"></div>

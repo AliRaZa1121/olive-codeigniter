@@ -202,7 +202,7 @@ class User extends CI_Controller
                     $price = get_phrase('free');
                 }
 
-                $view_course_on_frontend_url = site_url('home/course/' . rawurlencode(slugify($row->title)) . '/' . $row->id);
+                $view_course_on_frontend_url = site_url('home/program/' . rawurlencode(slugify($row->title)) . '/' . $row->id);
                 $edit_this_course_url = site_url('user/course_form/course_edit/' . $row->id);
                 $quiz_analytics = site_url('user/course_form/quiz_analytics/' . $row->id);
                 $section_and_lesson_url = site_url('user/course_form/course_edit/' . $row->id);
