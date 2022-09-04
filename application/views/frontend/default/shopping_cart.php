@@ -180,13 +180,13 @@
 
     function applyCoupon() {
         $("#spinner").removeClass('hidden');
+        var applied = false;
         var couponCode = $("#coupon-code").val();
         if(couponCode != ""){
             url99 = '<?php echo site_url('home/get_coupon_code_details/') ?>'+couponCode;
             $.ajax({
                 url: url99,
                 type: 'GET',
-                
                 success: function(response) {
                     var result = JSON.parse(response);
                     if(result.msg == 'valid'){
@@ -195,10 +195,12 @@
                         var discount_amount = (amount) * (discount_percent/100);
                         var actual_amount = amount - discount_amount;
                         $('#total_price_of_checking_out').text(actual_amount);
-                        $('#total-price').text('₨'+actual_amount)
+                        $('#total-price').text('$'+actual_amount)
+                        applied = true;
                         
                     }else{
                         toastr.error('Invalid Code');
+                        $('#coupon-code').attr('disabled', false);
                     }
                     $("#spinner").addClass('hidden');
                 }
@@ -216,6 +218,10 @@
             success: function(response) {
                 $("#spinner").addClass('hidden');
                 $('#cart_items_details').html(response);
+                if (applied == true) {
+                    $('#coupon-code').attr('disabled', true);
+                    $('#coupon-code').val(couponCode);                       
+                }
             }
         });
     }

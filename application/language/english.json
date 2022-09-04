@@ -1451,5 +1451,9 @@
     "address_link": "Address link",
     "alignment": "Alignment",
     "curiosity": "Curiosity",
-    "impact": "Impact"
+    "impact": "Impact",
+    "coupon_edit": "Coupon edit",
+    "coupon_edit_form": "Coupon edit form",
+    "coupon_updated_successfully": "Coupon updated successfully",
+    "applied": "Applied"
 }
