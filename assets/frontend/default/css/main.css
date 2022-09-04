@@ -948,9 +948,7 @@ menu code was here
     margin-left: auto;
 }
 
-/* div#cart_items {
-    display: none;
-} */
+
 /*section.home-banner-area {
     background: #ff9507;
     padding: 100px 0;
@@ -6275,14 +6273,14 @@ section.org-first-fold, section.arc-first-fold {
 
 
 :root {
-    --bs-font-sans-serif: Jost;
-}
+        --bs-font-sans-serif: Jost;
+    }
     body{
         font-family: var(--bs-font-sans-serif);
     }
     .section {
         position: relative;
-        float: left;
+        /*float: left;*/
         width: 100%;
         padding: 100px 0;
     }
@@ -6321,7 +6319,7 @@ section.org-first-fold, section.arc-first-fold {
         background: #ed5d06 !important;
     }
     .bg-logo {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('logo-dark.svg');
+        background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('../img/logo-dark.svg');
         background-repeat: no-repeat;
         background-position: top 120px left -10%;
         background-size: 400px;
@@ -6373,7 +6371,7 @@ section.org-first-fold, section.arc-first-fold {
 .ImgBoxContainer {
     position: relative;
 }
-.Item {
+.ServiceBox .Item {
     position: relative;
 }
 .Item .ImgBox {
@@ -6386,7 +6384,7 @@ section.org-first-fold, section.arc-first-fold {
     height: 100%;
     z-index: -0;
 }
-.Item .overlay {
+.ServiceBox .Item .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -6396,10 +6394,10 @@ section.org-first-fold, section.arc-first-fold {
     opacity: 1;
     mix-blend-mode: multiply;
 }
-.Item:hover .ImgBox {
+.ServiceBox .Item:hover .ImgBox {
     opacity: 1;
 }
-.Item:hover * {
+.ServiceBox .Item:hover * {
     color: #fff;
 }
 .ItemContainer {
@@ -6661,5 +6659,73 @@ section.org-first-fold, section.arc-first-fold {
   width: 60%;
   right: 50%;
   left: auto;
+}
+.border-bottom.border-md-end {
+    border-bottom: 0px solid transparent !important;
+    border-right: 1px solid #efefef !important;
+}
+@media only screen and  (max-width: 992px){
+    * {
+        text-align: center;
+    }
+    .ImgBoxContainer .Figure2 {
+        top: -3%;
+        background-size: 100% 100%;
+        height: 120%;
+        width: 180px;
+    }
+    .ImgBoxContainer .ImgBox {
+        width: 100%;
+    }
+    .fa-ul li {
+        padding-left: 0px;
+        margin-bottom: 35px;
+        display: flex;
+        flex-direction: column;
+    }
+    .fa-ul li span:first-child {
+        position: relative;
+        top: inherit;
+        left: inherit;
+        margin: 5px auto 15px;
+    }
+    .Timeline_One .Item {
+        padding: 0 0;
+        margin-bottom: 0px;
+        min-width: 200px;
+    }
+    .Timeline_One .Item .DescBox p {
+        font-size: 16px;
+        width: 80%;
+        margin: 0 auto 30px;
+    }
+    .Timeline_Two .Item .DescBox p {
+        font-size: 16px;
+    }
+    .border-bottom.border-md-end {
+        border-bottom: 1px solid #efefef !important;
+        border-right: 1px solid transparent !important;
+    }
+}
+@media only screen and (max-width: 768px){
+    .HeroBanner h1 span:first-child {
+        font-size: 1.25rem;
+    }
+    .HeroBanner h1 span:nth-child(2) {
+        font-size: 2.5rem;
+    }
+    .HeroBanner h1 span:nth-child(3) {
+        font-size: 1.5rem;
+    }
+    .HeroBanner h1 span:nth-child(4) {
+    font-size: 2.5rem;
+}
+    .Timeline_One,
+    .Timeline_Two {
+        width: 100%;
+    }
+    .Timeline_One .Item {
+        margin-bottom: 50px;
+    }
 }
 

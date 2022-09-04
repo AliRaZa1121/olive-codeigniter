@@ -6,6 +6,7 @@ section.org-first-fold, section.arc-first-fold {
    /* min-height: 500px !important;*/
 }
 </style>
+
 <section class="HeroBanner pb-0 section">
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
@@ -34,7 +35,7 @@ section.org-first-fold, section.arc-first-fold {
                 <p>Coached in a variety of organizations ranging from globally recognized corporations to start-ups. We also understand that our clients have high expectations and that giving up valuable time requires a visible ROI.</p>
                 <p>Olive Inc executive coaching consultants thrive at their jobs by keeping things simple while being adaptable to the most complicated, important, and contradictory challenges.</p>
             </div>
-            <div class="col-lg-5 offset-lg-1">
+            <div class="col-lg-5 mt-5 mt-lg-0 offset-lg-1">
                 <div class="ImgBoxContainer">
                     <span class="Figure1"></span>
                     <span class="Figure2"></span>
@@ -77,7 +78,7 @@ section.org-first-fold, section.arc-first-fold {
             </div>
         </div>
         <div class="row ServiceBox">
-            <div class="col-lg-4">
+            <div class="col-lg-4 mb-4">
                 <div class="Item bg-white shadow p-5 pb-3 h-100">
                     <div class="ImgBox overflow-hidden">
                         <img src="<?php echo base_url(); ?>/assets/frontend/default/img/Image18.jpg" />
@@ -92,7 +93,7 @@ section.org-first-fold, section.arc-first-fold {
                     </div>
                 </div>                
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 mb-4">
                 <div class="Item bg-white shadow p-5 pb-3 h-100">
                     <div class="ImgBox overflow-hidden">
                         <img src="<?php echo base_url(); ?>/assets/frontend/default/img/Image19.jpg" />
@@ -107,7 +108,7 @@ section.org-first-fold, section.arc-first-fold {
                     </div>
                 </div>                
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 mb-4">
                 <div class="Item bg-white shadow p-5 pb-3 h-100">
                     <div class="ImgBox overflow-hidden">
                         <img src="<?php echo base_url(); ?>/assets/frontend/default/img/Image20.jpg" />
@@ -142,12 +143,12 @@ section.org-first-fold, section.arc-first-fold {
         <div class="row">
             <div class="col-12 p-5 shadow-lg bg-white">
                 <div class="row">
-                    <div class="col-lg-4 border-end p-5 pb-0">
+                    <div class="col-lg-4 border-bottom border-md-end p-5 pb-lg-0">
                         <h3>ADAPT TO <span>SCHEDULES</span></h3>
                         <p>At the most senior levels, time is valuable and scarce. Schedules are crowded yet unpredictable as opportunities and crises emerge.</p>
                         <p>We offer tailored options that carve out the necessary time and space for reflection and visioning while maintaining the flexibility to address emerging situations. C level leaders often appreciate off-hours coaching work, private coaching retreats, and other formats that fit with time and priorities.</p>
                     </div>
-                    <div class="col-lg-4 border-end p-5 pb-0">
+                    <div class="col-lg-4 border-bottom border-md-end p-5 pb-lg-0">
                         <h3>ALIGNMENT BETWEEN THE <span>CEO & SENIOR EXECUTIVE</span></h3>
                         <p>The first step towards focusing an entire organization on a single, relevant, and well-understood business strategy is a very strong alignment of the Executive Team</p>
                     </div>
@@ -167,7 +168,7 @@ section.org-first-fold, section.arc-first-fold {
                 <h2>Our <span>Services</span></h2>
             </div>
         </div>
-        <div class="row d-lg-flex justify-content-lg-center align-items-lg-center mt-5 pt-5">
+        <div class="row d-lg-flex justify-content-lg-center align-items-lg-center mt-lg-5 pt-lg-5 pt-3">
             <div class="col-lg-6">
                 <h3>
                     ONE TO ONE COACHING FOR SENIOR <span>LEADERS AND EXECUTIVE</span>
@@ -175,7 +176,7 @@ section.org-first-fold, section.arc-first-fold {
                 <p>Senior Managers make decision that determines the company's future. which require a full acknowledgment of the complex business world, aligning and fulfilling the vision of the CEO, getting honest feedback, and more.</p>
                 <p>We match Leaders with experienced former Senior managers or executives and certified coaches to provide a unique and completely customized approach that helps develop a further and drive performance demanded in today's competitive turbulent and ambiguous environment.</p>
             </div>
-            <div class="col-lg-5 offset-lg-1 mb-5">
+            <div class="col-lg-5 offset-lg-1 my-5">
                 <div class="ImgBoxContainer">
                     <span class="Figure1"></span>
                     <span class="Figure2"></span>
@@ -199,7 +200,7 @@ section.org-first-fold, section.arc-first-fold {
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="Timeline_One d-flex justify-content-between align-items-center flex-md-row flex-column">
+                <div class="Timeline_One d-flex justify-content-between align-items-center flex-md-row flex-column overflow-auto">
 					<div class="Item d-flex align-items-center flex-column text-center">
 						<div class="IconBox">
 							<i class="fa fa-check"></i>
@@ -275,7 +276,7 @@ section.org-first-fold, section.arc-first-fold {
                 <p>In an age of change, successful strategy execution needs more from leadership teams than ever before. Becoming a REAL TEAM involves trust from all, a focus on what is most important, and dedication to one. That's why we offer Team Coaching.</p>
                 <p>our program is mix of lessons and insight from business, sport and the military in a pragmatic strategy that develops and engage a high-performance leadership team that enhance impacts.</p>
             </div>
-            <div class="col-lg-5 mb-5  offset-lg-1">
+            <div class="col-lg-5 my-5 offset-lg-1">
                 <div class="ImgBoxContainer">
                     <span class="Figure1"></span>
                     <span class="Figure2"></span>
@@ -299,7 +300,7 @@ section.org-first-fold, section.arc-first-fold {
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="Timeline_One d-flex justify-content-between align-items-center flex-md-row flex-column">
+                <div class="Timeline_One d-flex justify-content-between align-items-center flex-md-row flex-column overflow-auto">
 					<div class="Item d-flex align-items-center flex-column text-center">
 						<div class="IconBox">
 							<i class="fa fa-check"></i>
@@ -387,7 +388,7 @@ section.org-first-fold, section.arc-first-fold {
                 <p>The 360 methods of evaluation used by Olive Inc triangulates previous experience, present company environment, and future aspirations to assist in aligning teams members with organizational goals</p>
                 <p>We recognize the significance of an individual's impact in the matrix and investigate where an individual fits into the corporate plan. Finally, team members leave our assessment process with a thorough awareness of the leadership levers that must be pulled to develop their careers and move the needle for the organization.</p>
             </div>
-            <div class="col-lg-5 mb-5  offset-lg-1">
+            <div class="col-lg-5 my-5 offset-lg-1">
                 <div class="ImgBoxContainer">
                     <span class="Figure1"></span>
                     <span class="Figure2"></span>
@@ -400,7 +401,7 @@ section.org-first-fold, section.arc-first-fold {
         </div>
     </div>
 </section>
-<section class="section">
+<section class="section pb-0">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 mx-auto text-center">
@@ -495,6 +496,7 @@ section.org-first-fold, section.arc-first-fold {
         </div>
     </div>
 </section>
+
 <section class="org-first-fold d-none overflow-hidden">
     <div class="container">
         <div class="row align-items-center">
@@ -510,7 +512,7 @@ section.org-first-fold, section.arc-first-fold {
         </div>
     </div>
 </section>
-<section class="category-course-list-area">
+<section class="category-course-list-area d-none">
     <div class="container">
         <div class="row">
             <div class="col" style="padding: 35px;">
@@ -521,7 +523,7 @@ section.org-first-fold, section.arc-first-fold {
 </section>
 
 <?php $section = $this->crud_model->get_content_settings('about', 'section-2'); ?>
-<section class="org-third-fold">
+<section class="org-third-fold section pt-0">
     <div class="border-heading">
         <div class="container">
             <div class="row align-items-center">
