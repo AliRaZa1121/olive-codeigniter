@@ -58,7 +58,7 @@ if(!empty($request->checkoutSession)){
             'line_items' => [[
                 'price_data' => [
                     'product_data' => [
-                        'name' => get_phrase("pay_for").' '.count($this->session->userdata('cart_items')).' '.get_phrase("courses")
+                        'name' => get_phrase("pay_for").' '.count($this->session->userdata('cart_items')).' '.get_phrase("programs")
                     ],
                     'unit_amount' => $stripeAmount,
                     'currency' => $currency,

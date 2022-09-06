@@ -14,7 +14,7 @@
                         </div>
                         <div class="row" style="padding: 5px;">
                             <div class="col-md-12" style="margin-bottom: 5px;">
-                                <a href="<?php echo site_url('home/program/'.slugify($course_details['title']).'/'.$my_course['id']); ?>" class="btn btn-block"><?php echo site_phrase('course_details'); ?></a>
+                                <a href="<?php echo site_url('home/program/'.slugify($course_details['title']).'/'.$my_course['id']); ?>" class="btn btn-block"><?php echo site_phrase('program_details'); ?></a>
                             </div>
 
                             <div class="col-md-12" style="margin-bottom: 5px;">

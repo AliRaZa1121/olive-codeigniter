@@ -90,12 +90,14 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                                     <td class="gry-color"> <strong><?php echo site_phrase('sub_total'); ?>:</strong> </td>
                                     <td class="text-right"><strong><?php echo currency($payment_info['amount']); ?></strong></td>
                                 </tr>
+                                <?php if($payment_info['discount'] != 0){ ?>
                                 <tr class="">
                                     <td></td>
                                     <td class="gry-color"></td>
                                     <td class="gry-color"> <strong><?php echo site_phrase('discount'); ?>:</strong> </td>
-                                    <td class="text-right"><strong><?php echo currency('0'); ?></strong></td>
+                                    <td class="text-right"><strong><?php echo currency($payment_info['discount']); ?></strong></td>
                                 </tr>
+                                <?php }?>
                                 <tr class="">
                                     <td></td>
                                     <td class="gry-color"></td>

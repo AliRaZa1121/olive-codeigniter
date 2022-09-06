@@ -147,7 +147,7 @@ class Home extends CI_Controller
         if (!$this->session->userdata('cart_items')) {
             $this->session->set_userdata('cart_items', array());
         }
-        $page_data['applied_coupon'] = $this->session->userdata('coupon');
+        $page_data['applied_coupon'] = $this->session->userdata('applied_coupon');
         $page_data['page_name'] = "shopping_cart";
         $page_data['page_title'] = site_phrase('shopping_cart');
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
@@ -614,7 +614,7 @@ class Home extends CI_Controller
             $re = $result->row_array();
             if ($re['expiry_date'] >= time()) {
                 $response['msg'] = 'valid';
-                $this->session->set_userdata('coupon', $re);
+                $this->session->set_userdata('applied_coupon', $re);
                 $response['data'] = $re;
             } else {
                 $response['msg'] = 'invalid';
@@ -671,7 +671,7 @@ class Home extends CI_Controller
     public function refreshShoppingCart()
     {
         $page_data['coupon_code'] = $this->input->post('couponCode');
-        $page_data['applied_coupon'] = $this->session->userdata('coupon');
+        $page_data['applied_coupon'] = $this->session->userdata('applied_coupon');
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/shopping_cart_inner_view', $page_data);
     }
 
@@ -679,7 +679,7 @@ class Home extends CI_Controller
     public function refreshShoppingCartItem()
     {
         $page_data['coupon_code'] = $this->input->post('couponCode');
-        $page_data['applied_coupon'] = $this->session->userdata('coupon');
+        $page_data['applied_coupon'] = $this->session->userdata('applied_coupon');
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/cart_items', $page_data);
     }
 
@@ -703,7 +703,7 @@ class Home extends CI_Controller
         }
         $page_data['total_price_of_checking_out'] = $this->session->userdata('total_price_of_checking_out');
         $page_data['page_title'] = site_phrase("payment_gateway");
-        $page_data['applied_coupon'] = $this->session->userdata('coupon');
+        $page_data['applied_coupon'] = $this->session->userdata('applied_coupon');
         $this->load->view('payment/index', $page_data);
     }
 
@@ -799,6 +799,7 @@ class Home extends CI_Controller
                 redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
             else:
                 $this->session->set_userdata('cart_items', array());
+                $this->session->set_userdata('applied_coupon', null);
                 $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
                 redirect('home/my_programs', 'refresh');
             endif;

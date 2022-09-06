@@ -2972,10 +2972,14 @@ class Crud_model extends CI_Model
 
             // CHECK IF USER HAS APPLIED ANY COUPON CODE
             if ($applied_coupon) {
-                $coupon_details = $this->get_coupon_details_by_code($applied_coupon)->row_array();
-                $discount = ($data['amount'] * $coupon_details['discount_percentage']) / 100;
-                $data['amount'] = $data['amount'] - $discount;
-                $data['coupon'] = $applied_coupon;
+                // $coupon_details = $this->get_coupon_details_by_code($applied_coupon)->row_array();
+                $discount = ($data['amount'] * $applied_coupon['discount_percentage']) / 100;
+                $data['discount'] = $data['amount'] - $discount;
+                $data['coupon'] = $applied_coupon['id'];
+                // $discount_percent = $applied_coupon['discount_percentage'];
+                // $total_price_discounted_of_checking_out = $data['amount'] / (1 - $discount_percent / 100);
+                // $data['discount'] = $total_price_discounted_of_checking_out - $data['amount'];
+                // $data['coupon'] = $applied_coupon['id'];
             }
 
             if (get_user_role('role_id', $course_details['creator']) == 1) {
