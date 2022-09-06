@@ -16,7 +16,7 @@ class Offline_payment_model extends CI_Model
 		$user_id = $this->session->userdata('user_id');
 		$curse_id = json_encode($this->session->userdata('cart_items'));
         $applied_coupon = $this->session->userdata('applied_coupon');
-
+		
 
 		$data['user_id'] = $user_id;
 		$data['amount'] = $total_amount;
@@ -26,11 +26,13 @@ class Offline_payment_model extends CI_Model
 			$total_price_discounted_of_checking_out = $data['amount'] / (1 - $discount_percent / 100);
 			$data['discount'] = $total_price_discounted_of_checking_out - $data['amount'];
 		}
+	
 		$data['course_id'] = $curse_id;
 		$data['document_image'] = rand(6000, 10000000) . '.' . $file_extension;
 		$data['timestamp'] = strtotime(date('H:i'));
 		$data['status'] = 0;
-
+		// var_dump($data);
+		// exit;
 		$this->db->insert('offline_payment', $data);
 		move_uploaded_file($_FILES['payment_document']['tmp_name'], 'uploads/payment_document/' . $data['document_image']);
 

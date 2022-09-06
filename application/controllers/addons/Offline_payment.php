@@ -31,7 +31,7 @@ class Offline_payment extends CI_Controller
 			$cart_item = json_decode($this->offline_payment_model->offline_payment_all_data($id)->row('course_id'));
 
 			$this->session->set_userdata('cart_items', $cart_item);
-
+			$this->session->set_userdata('coupon_for_user',$this->offline_payment_model->offline_payment_all_data($id)->row_array());
 			// check already enrolled student
 			foreach ($cart_item as $purchased_course) {
 				$already_enrolled = $this->db->get_where('enrol', array('user_id' => $user_id, 'course_id' => $purchased_course))->num_rows();
@@ -47,6 +47,7 @@ class Offline_payment extends CI_Controller
 			$this->email_model->course_purchase_notification($user_id, 'offline', $amount_paid);
 
 			$this->offline_payment_model->approve_offline_payment($id);
+			$this->session->set_userdata('coupon_for_user',null);
 			$this->session->set_flashdata('flash_message', get_phrase('data_updated_successfully'));
 			redirect(site_url('addons/offline_payment/pending'), 'refresh');
 		elseif ($param1 == 'suspended') :

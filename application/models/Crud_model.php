@@ -2959,6 +2959,8 @@ class Crud_model extends CI_Model
                 $data['transaction_id'] = $param1;
             }
 
+          
+
             $data['user_id'] = $user_id;
             $data['payment_type'] = $method;
             $data['course_id'] = $purchased_course;
@@ -2975,11 +2977,21 @@ class Crud_model extends CI_Model
                 // $coupon_details = $this->get_coupon_details_by_code($applied_coupon)->row_array();
                 $discount = ($data['amount'] * $applied_coupon['discount_percentage']) / 100;
                 $data['discount'] = $data['amount'] - $discount;
+                $data['discount'] = $data['amount'] -  $data['discount'];
                 $data['coupon'] = $applied_coupon['id'];
                 // $discount_percent = $applied_coupon['discount_percentage'];
                 // $total_price_discounted_of_checking_out = $data['amount'] / (1 - $discount_percent / 100);
                 // $data['discount'] = $total_price_discounted_of_checking_out - $data['amount'];
                 // $data['coupon'] = $applied_coupon['id'];
+            }
+
+            if($method == 'offline'){
+                $coupon_for_user = $this->session->userdata('coupon_for_user');
+                if($coupon_for_user){
+                    $data['discount'] = $coupon_for_user['discount'];
+                    $data['amount'] = $coupon_for_user['amount'];
+
+                }
             }
 
             if (get_user_role('role_id', $course_details['creator']) == 1) {

@@ -1458,5 +1458,7 @@
     "applied": "Applied",
     "original_price": "Original price",
     "pending_purchase_programs": "Pending purchase programs",
-    "program_detail": "Program detail"
+    "program_detail": "Program detail",
+    "program_price": "Program price",
+    "the_request_was_already_approved": "The request was already approved"
 }

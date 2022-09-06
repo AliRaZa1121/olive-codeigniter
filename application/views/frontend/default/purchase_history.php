@@ -37,8 +37,8 @@ $purchase_history = $this->db->get('payment', $per_page, $this->uri->segment(3))
                         </div>
                     </li>
                     <?php if ($purchase_history->num_rows() > 0):
-    foreach ($purchase_history->result_array() as $each_purchase):
-        $course_details = $this->crud_model->get_course_by_id($each_purchase['course_id'])->row_array();?>
+   		 foreach ($purchase_history->result_array() as $each_purchase):
+                $course_details = $this->crud_model->get_course_by_id($each_purchase['course_id'])->row_array();?>
 		                            <li class="purchase-history-items mb-2">
 		                                <div class="row">
 		                                    <div class="col-sm-6">
@@ -47,8 +47,8 @@ $purchase_history = $this->db->get('payment', $per_page, $this->uri->segment(3))
 		                                        </div>
 		                                        <a class="purchase-history-course-title" href="<?php echo site_url('home/program/' . slugify($course_details['title']) . '/' . $course_details['id']); ?>" >
 		                                            <?php
-        echo $course_details['title'];
-        ?>
+													echo $course_details['title'];
+													?>
 		                                        </a>
 		                                    </div>
 		                                    <div class="col-sm-6 purchase-history-detail">
