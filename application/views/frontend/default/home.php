@@ -1,3 +1,15 @@
+ <style>
+    @media only screen and (max-width: 992px) {
+        .home-fact-box i {
+            font-size: 36px;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .home-fact-box i {
+            font-size: 28px;
+        }
+    } 
+ </style>
  <section class="home-banner-area">
     <div class="container-fluid">
         <div class="row align-items-center">
@@ -48,7 +60,7 @@
     <div class="container-lg">
         <div class="row">
             <?php $courses = $this->crud_model->get_courses(); ?>
-            <div class="col-md-4 d-flex">
+            <div class="col-md-4 d-md-flex">
                 <div class="home-fact-box mr-md-auto mr-auto">
                     <i class="fas fa-align-center float-start"></i>
                     <div class="text-box">
@@ -63,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 d-flex">
+            <div class="col-md-4 d-md-flex">
                 <div class="home-fact-box mr-md-auto mr-auto">
                     <i class="fa fa-question float-start"></i>
                     <div class="text-box">
@@ -77,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 d-flex">
+            <div class="col-md-4 d-md-flex">
                 <div class="home-fact-box mr-md-auto mr-auto">
                     <i class="fa fa-bahai float-start"></i>
                     <div class="text-box">

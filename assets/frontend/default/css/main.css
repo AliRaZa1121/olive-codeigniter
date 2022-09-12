@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;500;600&display=swap');
 html {
     color: #222;
     font-size: 1em;
@@ -6272,8 +6273,8 @@ section.org-first-fold, section.arc-first-fold {
 }
 }
 
-
-:root {
+/* DESIGNED FOR ABOUT US PAGE */
+    :root {
         --bs-font-sans-serif: Jost;
     }
     body{
