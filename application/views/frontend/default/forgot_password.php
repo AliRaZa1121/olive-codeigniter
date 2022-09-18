@@ -1,3 +1,6 @@
+<?php if(get_frontend_settings('recaptcha_status')): ?>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<?php endif; ?>
 <section class="category-course-list-area">
     <div class="container">
       <div class="row mb-5 mt-3">
@@ -26,6 +29,7 @@
                   <div class="g-recaptcha" data-sitekey="<?php echo get_frontend_settings('recaptcha_sitekey'); ?>"></div>
                 </div>
               <?php endif; ?>
+              
 
               <div class="form-group">
                 <button type="submit" class="btn red radius-10 mt-4 w-100"><?php echo site_phrase('reset_password'); ?></button>

@@ -26,17 +26,6 @@ class Login extends CI_Controller
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     public function validate_login($from = "")
     {
         if ($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true) {
@@ -53,17 +42,17 @@ class Login extends CI_Controller
 
         if ($query->num_rows() > 0) {
             $row = $query->row();
-            if($row->status == 3){
+            if ($row->status == 3) {
                 $this->session->set_flashdata('error_message', get_phrase('Your account is banned. Please contact adminstrator for further details'));
-                 redirect(site_url('home/login'), 'refresh');
+                redirect(site_url('home/login'), 'refresh');
             }
-            if($row->status == 2){
+            if ($row->status == 2) {
                 $this->session->set_flashdata('error_message', get_phrase('Your account is suspended. Please contact adminstrator for further details'));
-                 redirect(site_url('home/login'), 'refresh');
+                redirect(site_url('home/login'), 'refresh');
             }
-            if($row->status == 0){
+            if ($row->status == 0) {
                 $this->session->set_flashdata('error_message', get_phrase('Your account is not active. Please contact adminstrator for further details'));
-                 redirect(site_url('home/login'), 'refresh');
+                redirect(site_url('home/login'), 'refresh');
             }
             $this->session->set_userdata('user_id', $row->id);
             $this->session->set_userdata('role_id', $row->role_id);
@@ -78,7 +67,7 @@ class Login extends CI_Controller
             } else if ($row->role_id == 2) {
                 $this->session->set_userdata('user_login', '1');
 
-                if($this->session->userdata('url_history')){
+                if ($this->session->userdata('url_history')) {
                     redirect($this->session->userdata('url_history'), 'refresh');
                 }
                 redirect(site_url('home'), 'refresh');
@@ -88,109 +77,11 @@ class Login extends CI_Controller
             redirect(site_url('home/login'), 'refresh');
         }
     }
-    
-    public function fb_validate_login($access_token = "", $fb_user_id = "") {
+
+    public function fb_validate_login($access_token = "", $fb_user_id = "")
+    {
         $this->social_login_modal->fb_validate_login($access_token, $fb_user_id);
     }
-
-
-
-
-
-
-
-
-//  public function register()
-//     {
-//       // return 'maaz';
-
-//         if ($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true) {
-//             $this->session->set_flashdata('error_message', get_phrase('recaptcha_verification_failed'));
-//             redirect(site_url('home/login'), 'refresh');
-//         }
-
-
-//         $data['first_name'] = html_escape($this->input->post('full_name'));
-//         $data['username']  = html_escape($this->input->post('username'));
-//         $data['email']  = html_escape($this->input->post('email'));
-         
-//         $data['phone']  = html_escape($this->input->post('phone'));
-        
-//         $data['password']  = sha1($this->input->post('password'));
-//         $data['gender']  = sha1($this->input->post('gender'));
-        
-//         $data['is_instructor']  = sha1($this->input->post('is_instructor'));
-        
-
-//         if (empty($data['first_name']) || empty($data['username']) || empty($data['email']) || empty($data['password'])) {
-//             $this->session->set_flashdata('error_message', site_phrase('your_sign_up_form_is_empty') . '. ' . site_phrase('fill_out_the_form with_your_valid_data'));
-//             redirect(site_url('home/sign_up'), 'refresh');
-//         }
-
-//         $verification_code =  rand(100000, 200000);
-//         $data['verification_code'] = $verification_code;
-
-//         if (get_settings('student_email_verification') == 'enable') {
-//             $data['status'] = 0;
-//         } else {
-//             $data['status'] = 1;
-//         }
-
-//         $data['wishlist'] = json_encode(array());
-//         $data['watch_history'] = json_encode(array());
-//         $data['date_added'] = strtotime(date("Y-m-d H:i:s"));
-//         $social_links = array(
-//             'facebook' => "",
-//             'twitter'  => "",
-//             'linkedin' => ""
-//         );
-//         $data['social_links'] = json_encode($social_links);
-//         $data['role_id']  = 2;
-        
-
-//         // Add paypal keys
-//         $paypal_info = array();
-//         $paypal['production_client_id'] = "";
-//         array_push($paypal_info, $paypal);
-//         $data['paypal_keys'] = json_encode($paypal_info);
-//         // Add Stripe keys
-//         $stripe_info = array();
-//         $stripe_keys = array(
-//             'public_live_key' => "",
-//             'secret_live_key' => ""
-//         );
-//         array_push($stripe_info, $stripe_keys);
-//         $data['stripe_keys'] = json_encode($stripe_info);
-
-//         $validity = $this->user_model->check_duplication('on_create', $data['email']);
-
-//         if ($validity === 'unverified_user' || $validity == true) {
-//             if ($validity === true) {
-//                 $this->user_model->register_user($data);
-//             } else {
-//                 $this->user_model->register_user_update_code($data);
-//             }
-
-//             if (get_settings('student_email_verification') == 'enable') {
-//                 $this->email_model->send_email_verification_mail($data['email'], $verification_code);
-
-//                 if ($validity === 'unverified_user') {
-//                     $this->session->set_flashdata('info_message', get_phrase('you_have_already_registered') . '. ' . get_phrase('please_verify_your_email_address'));
-//                 } else {
-//                     $this->session->set_flashdata('flash_message', get_phrase('your_registration_has_been_successfully_done') . '. ' . get_phrase('please_check_your_mail_inbox_to_verify_your_email_address') . '.');
-//                 }
-//                 $this->session->set_userdata('register_email', $this->input->post('email'));
-//                 redirect(site_url('home/verification_code'), 'refresh');
-//             } else {
-//                 $this->session->set_flashdata('flash_message', get_phrase('your_registration_has_been_successfully_done'));
-//                 redirect(site_url('home/login'), 'refresh');
-//             }
-//         } else {
-//             $this->session->set_flashdata('error_message', get_phrase('you_have_already_registered'));
-//             redirect(site_url('home/login'), 'refresh');
-//         }
-//     }
-
 
     public function register()
     {
@@ -200,25 +91,22 @@ class Login extends CI_Controller
             redirect(site_url('home/login'), 'refresh');
         }
 
-
         $data['first_name'] = html_escape($this->input->post('full_name'));
         // $data['last_name']  = html_escape($this->input->post('last_name'));
-        $data['email']  = html_escape($this->input->post('email'));
-        $data['password']  = sha1($this->input->post('password'));
-        
-        $data['username']  = html_escape($this->input->post('username'));
-        $data['phone']  = html_escape($this->input->post('phone'));
-        $data['gender']  = html_escape($this->input->post('gender'));
-        
-         $data['is_instructor']  = html_escape($this->input->post('is_instructor'));;
-         $data['is_organization']  = html_escape($this->input->post('is_organization'));;
+        $data['email'] = html_escape($this->input->post('email'));
+        $data['password'] = sha1($this->input->post('password'));
+        $data['username'] = html_escape($this->input->post('username'));
+        $data['phone'] = html_escape($this->input->post('phone'));
+        $data['gender'] = html_escape($this->input->post('gender'));
+        $data['is_instructor'] = html_escape($this->input->post('is_instructor'));
+        $data['is_organization'] = html_escape($this->input->post('is_organization'));
 
-        if (empty($data['first_name'])  || empty($data['email']) || empty($data['password'])) {
+        if (empty($data['first_name']) || empty($data['email']) || empty($data['password'])) {
             $this->session->set_flashdata('error_message', site_phrase('your_sign_up_form_is_empty') . '. ' . site_phrase('fill_out_the_form with_your_valid_data'));
             redirect(site_url('home/sign_up'), 'refresh');
         }
 
-        $verification_code =  rand(100000, 200000);
+        $verification_code = rand(100000, 200000);
         $data['verification_code'] = $verification_code;
 
         if (get_settings('student_email_verification') == 'enable') {
@@ -232,11 +120,12 @@ class Login extends CI_Controller
         $data['date_added'] = strtotime(date("Y-m-d H:i:s"));
         $social_links = array(
             'facebook' => "",
-            'twitter'  => "",
-            'linkedin' => ""
+            'twitter' => "",
+            'linkedin' => "",
+            'instagram' => "",
         );
         $data['social_links'] = json_encode($social_links);
-        $data['role_id']  = 2;
+        $data['role_id'] = 2;
 
         // Add paypal keys
         $paypal_info = array();
@@ -247,7 +136,7 @@ class Login extends CI_Controller
         $stripe_info = array();
         $stripe_keys = array(
             'public_live_key' => "",
-            'secret_live_key' => ""
+            'secret_live_key' => "",
         );
         array_push($stripe_info, $stripe_keys);
         $data['stripe_keys'] = json_encode($stripe_info);
@@ -280,98 +169,6 @@ class Login extends CI_Controller
             redirect(site_url('home/login'), 'refresh');
         }
     }
-    
-    
-    
-    //   public function register()
-    // {
-
-    //     if ($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true) {
-    //         $this->session->set_flashdata('error_message', get_phrase('recaptcha_verification_failed'));
-    //         redirect(site_url('home/login'), 'refresh');
-    //     }
-
-
-    //     $data['first_name'] = html_escape($this->input->post('first_name'));
-    //     $data['last_name']  = html_escape($this->input->post('last_name'));
-    //     $data['email']  = html_escape($this->input->post('email'));
-    //     $data['password']  = sha1($this->input->post('password'));
-        
-    //     $data['username']  = 'sdgvsv';
-    //     $data['phone']  = 'sdgvs';
-    //     $data['gender']  = 'male';
-        
-    //      $data['is_instructor']  = 1;
-
-    //     if (empty($data['first_name']) || empty($data['last_name']) || empty($data['email']) || empty($data['password'])) {
-    //         $this->session->set_flashdata('error_message', site_phrase('your_sign_up_form_is_empty') . '. ' . site_phrase('fill_out_the_form with_your_valid_data'));
-    //         redirect(site_url('home/sign_up'), 'refresh');
-    //     }
-
-    //     $verification_code =  rand(100000, 200000);
-    //     $data['verification_code'] = $verification_code;
-
-    //     if (get_settings('student_email_verification') == 'enable') {
-    //         $data['status'] = 0;
-    //     } else {
-    //         $data['status'] = 1;
-    //     }
-
-    //     $data['wishlist'] = json_encode(array());
-    //     $data['watch_history'] = json_encode(array());
-    //     $data['date_added'] = strtotime(date("Y-m-d H:i:s"));
-    //     $social_links = array(
-    //         'facebook' => "",
-    //         'twitter'  => "",
-    //         'linkedin' => ""
-    //     );
-    //     $data['social_links'] = json_encode($social_links);
-    //     $data['role_id']  = 2;
-
-    //     // Add paypal keys
-    //     $paypal_info = array();
-    //     $paypal['production_client_id'] = "";
-    //     array_push($paypal_info, $paypal);
-    //     $data['paypal_keys'] = json_encode($paypal_info);
-    //     // Add Stripe keys
-    //     $stripe_info = array();
-    //     $stripe_keys = array(
-    //         'public_live_key' => "",
-    //         'secret_live_key' => ""
-    //     );
-    //     array_push($stripe_info, $stripe_keys);
-    //     $data['stripe_keys'] = json_encode($stripe_info);
-
-    //     $validity = $this->user_model->check_duplication('on_create', $data['email']);
-        
-    //     $validity2 = $this->user_model->username_duplication('on_create', $data['username']);
-
-    //     if ($validity === 'unverified_user' || $validity == true && $validity2 == true) {
-    //         if ($validity === true && $validity2 === true) {
-    //             $this->user_model->register_user($data);
-    //         } else {
-    //             $this->user_model->register_user_update_code($data);
-    //         }
-
-    //         if (get_settings('student_email_verification') == 'enable') {
-    //             $this->email_model->send_email_verification_mail($data['email'], $verification_code);
-
-    //             if ($validity === 'unverified_user') {
-    //                 $this->session->set_flashdata('info_message', get_phrase('you_have_already_registered') . '. ' . get_phrase('please_verify_your_email_address'));
-    //             } else {
-    //                 $this->session->set_flashdata('flash_message', get_phrase('your_registration_has_been_successfully_done') . '. ' . get_phrase('please_check_your_mail_inbox_to_verify_your_email_address') . '.');
-    //             }
-    //             $this->session->set_userdata('register_email', $this->input->post('email'));
-    //             redirect(site_url('home/verification_code'), 'refresh');
-    //         } else {
-    //             $this->session->set_flashdata('flash_message', get_phrase('your_registration_has_been_successfully_done'));
-    //             redirect(site_url('home/login'), 'refresh');
-    //         }
-    //     } else {
-    //         $this->session->set_flashdata('error_message', get_phrase('you_have_already_registered'));
-    //         redirect(site_url('home/login'), 'refresh');
-    //     }
-    // }
 
     public function logout($from = "")
     {
@@ -393,13 +190,13 @@ class Login extends CI_Controller
         } else {
             $this->session->unset_userdata('user_login');
         }
-        
-        if($this->session->userdata('fb_login') == 1){
+
+        if ($this->session->userdata('fb_login') == 1) {
             $this->session->unset_userdata('fb_login');
         }
     }
 
-    function forgot_password($from = "")
+    public function forgot_password($from = "")
     {
         if ($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true) {
             $this->session->set_flashdata('error_message', get_phrase('recaptcha_verification_failed'));
@@ -449,11 +246,11 @@ class Login extends CI_Controller
         if ($user_details->num_rows() > 0) {
             $user_details = $user_details->row_array();
             $updater = array(
-                'status' => 1
+                'status' => 1,
             );
             $this->db->where('id', $user_details['id']);
             $this->db->update('users', $updater);
-            $this->session->set_flashdata('flash_message', get_phrase('congratulations') . '!' . get_phrase('your_email_address_has_been_successfully_verified') . '.');
+            $this->session->set_flashdata('flash_message', get_phrase('congratulations') . '!' . get_phrase('your_email_has_been_verified_your_account_verification_is_under_process') . '.');
             $this->session->set_userdata('register_email', null);
             echo true;
         } else {
@@ -462,8 +259,7 @@ class Login extends CI_Controller
         }
     }
 
-
-    function check_recaptcha_with_ajax()
+    public function check_recaptcha_with_ajax()
     {
         if ($this->crud_model->check_recaptcha()) {
             echo true;

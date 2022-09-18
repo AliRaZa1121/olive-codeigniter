@@ -14,7 +14,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="mb-3 header-title"><?php echo get_phrase('student'); ?></h4>
+                <h4 class="mb-3 header-title"><?php echo get_phrase('Trainee'); ?></h4>
                 <div class="table-responsive-sm mt-4">
                     <table id="basic-datatable" class="table table-striped table-centered mb-0">
                         <thead>
@@ -24,6 +24,7 @@
                                 <th><?php echo get_phrase('name'); ?></th>
                                 <th><?php echo get_phrase('email'); ?></th>
                                 <th><?php echo get_phrase('enrolled_programs'); ?></th>
+                                <th><?php echo get_phrase('account_status'); ?></th>
                                 <th><?php echo get_phrase('actions'); ?></th>
                             </tr>
                         </thead>
@@ -52,6 +53,19 @@
                                                 <li><?php echo $course_details['title']; ?></li>
                                             <?php endforeach; ?>
                                         </ul>
+                                    </td>
+                                    <td><?php if ($user['account_status'] != 1) : ?>
+                                        <p><?php echo get_phrase('active'); ?>:<a href="#" onclick="confirm_modal('<?php echo site_url('admin/users/account-verified/' . $user['id']); ?>');"
+                                            title="Make active"
+                                            class="btn btn-sm btn-default btn-text-primary btn-hover-success btn-icon">
+                                                <i class="fas fa-check"></i>
+                                            </a></p>
+                                            <small>
+                                                <p><?php echo get_phrase('account_status'); ?>: <span class="badge badge-danger-lighten"><?php echo get_phrase('unverified'); ?></span></p>
+                                            </small>
+                                            <?php else: ?>
+                                                <p><?php echo get_phrase('account_status'); ?>: <span class="badge badge-success-lighten"><?php echo get_phrase('verified'); ?></span></p>
+                                        <?php endif; ?>
                                     </td>
                                     <td>
                                         <div class="dropright dropright">

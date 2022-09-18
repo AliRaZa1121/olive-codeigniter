@@ -85,6 +85,9 @@ if (count($course_ids) > 0) {
                             <?php if ($social_links['linkedin']) : ?>
                                 <a href="<?php echo $social_links['linkedin']; ?>" target="_blank"><i class="fab fa-linkedin-in"></i> <?php echo site_phrase('linkedin'); ?></a>
                             <?php endif; ?>
+                            <?php if ($social_links['instagram']) : ?>
+                                <a href="<?php echo $social_links['instagram']; ?>" target="_blank"><i class="fab fa-instagram"></i> <?php echo site_phrase('instagram'); ?></a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

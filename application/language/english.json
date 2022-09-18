@@ -1460,5 +1460,12 @@
     "pending_purchase_programs": "Pending purchase programs",
     "program_detail": "Program detail",
     "program_price": "Program price",
-    "the_request_was_already_approved": "The request was already approved"
+    "the_request_was_already_approved": "The request was already approved",
+    "your_email_has_been_verified_your_account_verification_is_under_process": "Your email has been verified your account verification is under process",
+    "your_account_verification_is_under_process": "Your account verification is under process",
+    "account_status": "Account status",
+    "make_active": "Make active",
+    "verified": "Verified",
+    "instagram_link": "Instagram link",
+    "instagram": "Instagram"
 }

@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class User_model extends CI_Model
 {
 
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         /*cache control*/
@@ -19,10 +19,9 @@ class User_model extends CI_Model
 
     public function get_user($user_id = 0)
     {
-      if ($user_id > 0) {
+        if ($user_id > 0) {
             $this->db->where('id', $user_id);
-        }
-        else{
+        } else {
             $this->db->where('is_instructor', 0);
         }
         $this->db->where('role_id', 2);
@@ -75,7 +74,7 @@ class User_model extends CI_Model
 
             // Add paypal keys
             $paypal_info = array();
-            $paypal['production_client_id']  = html_escape($this->input->post('paypal_client_id'));
+            $paypal['production_client_id'] = html_escape($this->input->post('paypal_client_id'));
             $paypal['production_secret_key'] = html_escape($this->input->post('paypal_secret_key'));
             array_push($paypal_info, $paypal);
             $data['paypal_keys'] = json_encode($paypal_info);
@@ -84,7 +83,7 @@ class User_model extends CI_Model
             $stripe_info = array();
             $stripe_keys = array(
                 'public_live_key' => html_escape($this->input->post('stripe_public_key')),
-                'secret_live_key' => html_escape($this->input->post('stripe_secret_key'))
+                'secret_live_key' => html_escape($this->input->post('stripe_secret_key')),
             );
             array_push($stripe_info, $stripe_keys);
             $data['stripe_keys'] = json_encode($stripe_info);
@@ -136,7 +135,7 @@ class User_model extends CI_Model
 
             // Add paypal keys
             $paypal_info = array();
-            $paypal['production_client_id']  = '';
+            $paypal['production_client_id'] = '';
             $paypal['production_secret_key'] = '';
             array_push($paypal_info, $paypal);
             $data['paypal_keys'] = json_encode($paypal_info);
@@ -145,7 +144,7 @@ class User_model extends CI_Model
             $stripe_info = array();
             $stripe_keys = array(
                 'public_live_key' => '',
-                'secret_live_key' => ''
+                'secret_live_key' => '',
             );
             array_push($stripe_info, $stripe_keys);
             $data['stripe_keys'] = json_encode($stripe_info);
@@ -153,9 +152,9 @@ class User_model extends CI_Model
             if ($is_instructor) {
                 $data['is_instructor'] = 1;
             }
-            if ($is_organization) {
-                $data['is_organization'] = 1;
-            }
+            // if ($is_organization) {
+            //     $data['is_organization'] = 1;
+            // }
             $this->db->insert('users', $data);
 
             $this->session->set_flashdata('flash_message', get_phrase('user_added_successfully'));
@@ -166,8 +165,11 @@ class User_model extends CI_Model
 
     public function check_duplication($action = "", $email = "", $user_id = "")
     {
-
-        $duplicate_email_check = $this->db->get_where('users', array('email' => $email));
+        if ($email !== "") {
+            $duplicate_email_check = $this->db->get_where('users', array('email' => $email));
+        } else {
+            return true;
+        }
         if ($action == 'on_create') {
             if ($duplicate_email_check->num_rows() > 0) {
                 if ($duplicate_email_check->row()->status == 1) {
@@ -190,7 +192,6 @@ class User_model extends CI_Model
             }
         }
     }
-
 
     public function username_duplication($action = "", $username = "", $user_id = "")
     {
@@ -226,9 +227,9 @@ class User_model extends CI_Model
             $data['first_name'] = html_escape($this->input->post('first_name'));
             $data['last_name'] = html_escape($this->input->post('last_name'));
 
-            $data['phone']  = html_escape($this->input->post('phone'));
+            $data['phone'] = html_escape($this->input->post('phone'));
             // $data['gender']  = html_escape($this->input->post('gender'));
-
+            $data['username'] = html_escape($this->input->post('username'));
             $data['address'] = html_escape($this->input->post('address'));
             $data['country'] = html_escape($this->input->post('country'));
             $data['age'] = html_escape($this->input->post('age'));
@@ -244,6 +245,8 @@ class User_model extends CI_Model
             $social_link['facebook'] = html_escape($this->input->post('facebook_link'));
             $social_link['twitter'] = html_escape($this->input->post('twitter_link'));
             $social_link['linkedin'] = html_escape($this->input->post('linkedin_link'));
+            $social_link['instagram'] = html_escape($this->input->post('instagram_link'));
+
             $data['social_links'] = json_encode($social_link);
             $data['biography'] = $this->input->post('biography');
             $data['title'] = html_escape($this->input->post('title'));
@@ -258,7 +261,7 @@ class User_model extends CI_Model
 
             // Update paypal keys
             $paypal_info = array();
-            $paypal['production_client_id']  = html_escape($this->input->post('paypal_client_id'));
+            $paypal['production_client_id'] = html_escape($this->input->post('paypal_client_id'));
             $paypal['production_secret_key'] = html_escape($this->input->post('paypal_secret_key'));
             array_push($paypal_info, $paypal);
             $data['paypal_keys'] = json_encode($paypal_info);
@@ -266,7 +269,7 @@ class User_model extends CI_Model
             $stripe_info = array();
             $stripe_keys = array(
                 'public_live_key' => html_escape($this->input->post('stripe_public_key')),
-                'secret_live_key' => html_escape($this->input->post('stripe_secret_key'))
+                'secret_live_key' => html_escape($this->input->post('stripe_secret_key')),
             );
             array_push($stripe_info, $stripe_keys);
             $data['stripe_keys'] = json_encode($stripe_info);
@@ -376,7 +379,6 @@ class User_model extends CI_Model
         $this->session->set_flashdata('flash_message', get_phrase('password_updated'));
     }
 
-
     // public function get_instructor($id = 0)
     // {
     //     if ($id > 0) {
@@ -389,15 +391,15 @@ class User_model extends CI_Model
     public function get_instructor($id = 0)
     {
         if ($id > 0) {
-            return $this->db->get_where('users', array('id' => $id, 'role_id'=> 2 , 'is_instructor' => 1));
+            return $this->db->get_where('users', array('id' => $id, 'role_id' => 2, 'is_instructor' => 1));
         } else {
-            return $this->db->get_where('users', array('role_id'=> 2 , 'is_instructor' => 1));
+            return $this->db->get_where('users', array('role_id' => 2, 'is_instructor' => 1));
         }
     }
 
     public function get_student_quizes()
     {
-        $q_id  = $this->uri->segment($this->uri->total_segments());
+        $q_id = $this->uri->segment($this->uri->total_segments());
 
         $row = $this->db->where('quiz_id', $q_id)->get('question')->row_array();
 
@@ -420,8 +422,6 @@ class User_model extends CI_Model
 
         return $query_result;
     }
-
-
 
     public function get_instructor_by_email($email = null)
     {
@@ -479,22 +479,22 @@ class User_model extends CI_Model
     {
         $this->db->where('id', $user_id);
         $user = $this->db->get('users')->row_array();
-        if (file_exists('uploads/user_image/' . $user['image'] . '.jpg'))
+        if (file_exists('uploads/user_image/' . $user['image'] . '.jpg')) {
             return base_url() . 'uploads/user_image/' . $user['image'] . '.jpg';
-        else
+        } else {
             return base_url() . 'uploads/user_image/placeholder.png';
+        }
     }
 
     public function get_student_certificate($certificate_id)
     {
         $certificate = $this->db->get_where('certificates', array('id' => $certificate_id))->row('shareable_url');
-        if (file_exists('uploads/certificates/' . $certificate))
+        if (file_exists('uploads/certificates/' . $certificate)) {
             return base_url() . 'uploads/certificates/' . $certificate;
-        else
+        } else {
             return base_url() . 'uploads/user_image/placeholder.png';
+        }
     }
-
-
 
     public function get_instructor_list()
     {
@@ -553,7 +553,7 @@ class User_model extends CI_Model
         $stripe_info = array();
         $stripe_keys = array(
             'public_live_key' => html_escape($this->input->post('stripe_public_key')),
-            'secret_live_key' => html_escape($this->input->post('stripe_secret_key'))
+            'secret_live_key' => html_escape($this->input->post('stripe_secret_key')),
         );
         array_push($stripe_info, $stripe_keys);
         $data['stripe_keys'] = json_encode($stripe_info);
@@ -577,7 +577,6 @@ class User_model extends CI_Model
                 $this->session->set_flashdata('error_message', get_phrase('already_submitted'));
                 redirect(site_url('user/become_an_instructor'), 'refresh');
             }
-
 
             $data['user_id'] = $this->input->post('id');
             $data['address'] = $this->input->post('address');
@@ -612,7 +611,6 @@ class User_model extends CI_Model
             redirect(site_url('user/become_an_instructor'), 'refresh');
         }
     }
-
 
     // GET INSTRUCTOR APPLICATIONS
     public function get_applications($id = "", $type = "")
@@ -689,7 +687,7 @@ class User_model extends CI_Model
         }
 
         $permission_data['admin_id'] = $admin_id;
-        $previous_permissions = json_decode($this->get_admins_permission_json($permission_data['admin_id']), TRUE);
+        $previous_permissions = json_decode($this->get_admins_permission_json($permission_data['admin_id']), true);
 
         if (in_array($module, $previous_permissions)) {
             $new_permission = array();
@@ -751,6 +749,17 @@ class User_model extends CI_Model
         }
     }
 
+    public function verified_user($user_id)
+    {
+        $user = $this->user_model->get_user($user_id)->row_array();
+        $status = 1;
+        $data['account_status'] = $status;
+        $this->db->where('id', $user_id);
+        $this->db->update('users', $data);
+        $this->email_model->send_mail_on_account_verify($user_id);
+        $this->session->set_flashdata('flash_message', 'User Active Successfully');
+    }
+
     public function get_student($id = 0)
     {
 
@@ -764,15 +773,10 @@ class User_model extends CI_Model
     public function get_users_according_role($role = "", $course_id, $user_id = "")
     {
 
-
         $this->db->where('id', $course_id);
         $course = $this->db->get('course')->row_array();
 
-
-
         $user_ids = explode(',', $course['user_id']);
-
-
 
         $students = [];
         $instructors = [];
@@ -781,8 +785,7 @@ class User_model extends CI_Model
 
         if ($role == "instructor" || $role == "organization") {
             $this->db->where('course_id', $course_id);
-            $student_ids =  $this->db->get('enrol')->result_array();
-
+            $student_ids = $this->db->get('enrol')->result_array();
 
             foreach ($student_ids as $id) {
                 $this->db->where('id', $id['user_id']);
@@ -828,12 +831,11 @@ class User_model extends CI_Model
         $this->db->where('id', $course_id);
         $course = $this->db->get('course')->row_array();
 
-
         $user_ids = explode(',', $course['user_id']);
 
         if (in_array($user_id, $user_ids)) {
             $this->db->where('course_id', $course_id);
-            $student_ids =  $this->db->get('enrol')->result_array();
+            $student_ids = $this->db->get('enrol')->result_array();
 
             $users = [];
             foreach ($student_ids as $id) {
@@ -865,7 +867,7 @@ class User_model extends CI_Model
     public function get_organizations()
     {
         $this->db->where('is_organization', 1);
-        return  $this->db->get('users');
+        return $this->db->get('users');
     }
 
     public function join_academy_request()
@@ -883,7 +885,6 @@ class User_model extends CI_Model
             $this->session->set_flashdata('error_message', 'You have already requested for this academy');
         }
     }
-
 
     public function register_instructor_in_academy($instructor_id)
     {
@@ -921,7 +922,6 @@ class User_model extends CI_Model
         $this->db->where('quit_academy', null);
         $organizations = $this->db->get('academy_teachers')->result_array();
 
-
         $data = [];
         foreach ($organizations as $key => $organization) {
             $academy = $this->get_user($organization['academy_id'])->row_array();
@@ -944,7 +944,6 @@ class User_model extends CI_Model
     {
         $this->db->where('academy_id', $this->session->userdata('user_id'));
 
-
         // $this->db->orWhere('quit_academy' ,"0");
         $instructors = $this->db->get('academy_teachers')->result_array();
 
@@ -954,8 +953,8 @@ class User_model extends CI_Model
             $data[$key]['id'] = $instructor['id'];
             $data[$key]['teacher_name'] = $teacher['first_name'] . ' ' . $teacher['last_name'];
 
-            $data[$key]['status'] =  $instructor['join_academy'];
-            $data[$key]['quit_status'] =  $instructor['quit_academy'];
+            $data[$key]['status'] = $instructor['join_academy'];
+            $data[$key]['quit_status'] = $instructor['quit_academy'];
         }
 
         return $data;
@@ -1009,7 +1008,6 @@ class User_model extends CI_Model
         //     $status = 2;
         // }
 
-
         // }
         // else{
         //     $status = 2;
@@ -1032,13 +1030,11 @@ class User_model extends CI_Model
     public function get_number_of_active_instructors_of_organization($organization_id)
     {
 
-
         $this->db->where('academy_id', $organization_id);
 
         $result = $this->db->get('academy_teachers')->num_rows();
         return $result;
     }
-
 
     public function add_to_feature($user_id)
     {
@@ -1057,7 +1053,6 @@ class User_model extends CI_Model
             $this->db->update('users', $data);
         }
     }
-
 
     public function get_articles($limit = null)
     {
@@ -1085,8 +1080,8 @@ class User_model extends CI_Model
         }
         return $this->db->get('contents');
     }
-    
-     public function content_details($type, $slug)
+
+    public function content_details($type, $slug)
     {
         $this->db->where('type', $type);
         $this->db->where('slug', $slug);

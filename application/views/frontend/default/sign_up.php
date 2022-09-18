@@ -20,7 +20,7 @@
           <div class="col-lg-6">
             <div class="sign-up-form">
               <?php if(get_settings('fb_social_login')) include "facebook_login.php"; ?>
-              <form action="<?php echo site_url('login/register'); ?>" method="post" id="sign_up">
+              <form action="<?php echo site_url('login/register'); ?>" method="post" id="sign_up" >
                   
                   <input type="hidden"  name="is_instructor" value="0" />
                   
@@ -36,7 +36,7 @@
                   <label for="username"><?php echo site_phrase('username'); ?></label>
                   <div class="input-group">
                     <span class="input-group-text bg-white" for="username"><i class="fas fa-user"></i></span>
-                    <input type="text" name="username" class="form-control" placeholder="<?php echo site_phrase('username'); ?>" aria-label="<?php echo site_phrase('username'); ?>" aria-describedby="<?php echo site_phrase('username'); ?>" id="username" required>
+                    <input type="text" name="username" class="form-control" placeholder="<?php echo site_phrase('username'); ?>" autocomplete="off" aria-label="<?php echo site_phrase('username'); ?>" aria-describedby="<?php echo site_phrase('username'); ?>" id="username" required>
                   </div>
                 </div>
 

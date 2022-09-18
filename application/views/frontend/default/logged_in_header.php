@@ -93,14 +93,14 @@ $user_details = $this->user_model->get_user($this->session->userdata('user_id'))
                                             <?php echo $user_details['first_name'] . ' ' . $user_details['last_name']; ?>
                                         </div>
                                         <div class="user-email">
-                                            <span class="email"><?php echo $user_details['email']; ?></span>
-                                            <span class="welcome"><?php echo site_phrase("welcome_back"); ?></span>
+                                            <span class="email"><?php echo $user_details['email']; ?></span> |
+                                            <span class="username"><?php echo $user_details['username']; ?> </span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </li>
-
+                        <li class="user-dropdown-menu-item"><a href="<?php echo site_url('user/dashboard'); ?>"><i class="far fa-user"></i><?php echo site_phrase('dashboard'); ?></a></li>
                         <li class="user-dropdown-menu-item"><a href="<?php echo site_url('home/my_programs'); ?>"><i class="far fa-gem"></i><?php echo site_phrase('my_programs'); ?></a></li>
                         <li class="user-dropdown-menu-item"><a href="<?php echo site_url('home/my_wishlist'); ?>"><i class="far fa-heart"></i><?php echo site_phrase('my_wishlist'); ?></a></li>
                         <li class="user-dropdown-menu-item"><a href="<?php echo site_url('home/my_messages'); ?>"><i class="far fa-envelope"></i><?php echo site_phrase('my_messages'); ?></a></li>

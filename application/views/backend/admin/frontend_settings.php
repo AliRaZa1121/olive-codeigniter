@@ -65,10 +65,10 @@
                         <label for="cookie_policy"><?php echo get_phrase('cookie_policy'); ?></label>
                         <textarea name="cookie_policy" id = "cookie_policy" class="form-control" rows="5"><?php echo get_frontend_settings('cookie_policy'); ?></textarea>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="about_us"><?php echo get_phrase('about_us'); ?></label>
                         <textarea name="about_us" id = "about_us" class="form-control" rows="5"><?php echo get_frontend_settings('about_us'); ?></textarea>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="terms_and_condition"><?php echo get_phrase('terms_and_condition'); ?></label>
                         <textarea name="terms_and_condition" id ="terms_and_condition" class="form-control" rows="5"><?php echo get_frontend_settings('terms_and_condition'); ?></textarea>

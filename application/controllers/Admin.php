@@ -247,10 +247,13 @@ class Admin extends CI_Controller
             $this->user_model->suspend_user($param2);
             $this->email_model->send_mail_on_suspension($param2);
             redirect(site_url('admin/users'), 'refresh');
+        } elseif ($param1 == 'account-verified') {
+            $this->user_model->verified_user($param2);
+            redirect(site_url('admin/users'), 'refresh');
         }
 
         $page_data['page_name'] = 'users';
-        $page_data['page_title'] = get_phrase('student');
+        $page_data['page_title'] = get_phrase('Trainee');
         $page_data['users'] = $this->user_model->get_user($param2);
         $this->load->view('backend/index', $page_data);
     }
@@ -1979,7 +1982,6 @@ class Admin extends CI_Controller
             redirect(site_url('admin/organizations'), 'refresh');
         }
 
-
         $page_data['page_name'] = 'organizations';
         $page_data['page_title'] = get_phrase('Organizations');
         $page_data['organizations'] = $this->crud_model->get_organizations();
@@ -2007,7 +2009,6 @@ class Admin extends CI_Controller
         }
     }
 
-
     //books
     public function books($action = "", $id = "")
     {
@@ -2031,7 +2032,6 @@ class Admin extends CI_Controller
             $this->crud_model->change_book_status($id);
             redirect(site_url('admin/books'), 'refresh');
         }
-
 
         $page_data['page_name'] = 'books';
         $page_data['page_title'] = get_phrase('Books');
@@ -2142,17 +2142,15 @@ class Admin extends CI_Controller
         $this->load->view('backend/index', $page_data);
     }
 
-
-
     //// website_content_ACCESS
 
     public function content_settings($page = null, $section = null)
     {
 
         if ($page != null) {
-            $page_data['page_name'] = 'content_'.$page.'_page';
+            $page_data['page_name'] = 'content_' . $page . '_page';
             $page_data['page'] = $page;
-            $page_data['page_title'] = get_phrase('home_'.$page.'_contents');
+            $page_data['page_title'] = get_phrase('home_' . $page . '_contents');
 
             if ($section != null) {
                 $this->crud_model->content_settings_update($page, $section);

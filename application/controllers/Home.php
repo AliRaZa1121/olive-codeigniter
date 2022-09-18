@@ -30,11 +30,11 @@ class Home extends CI_Controller
         $page_data['page_title'] = site_phrase('our_team');
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
     }
-    
+
     public function contact_us($action = null)
     {
-        if($action != null){
-              if ($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true) {
+        if ($action != null) {
+            if ($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true) {
                 $this->session->set_flashdata('error_message', get_phrase('recaptcha_verification_failed'));
                 redirect(site_url('home/contact_us'), 'refresh');
             }
@@ -53,8 +53,7 @@ class Home extends CI_Controller
             $page_data['page_name'] = "organizations";
             $page_data['page_title'] = site_phrase('organizations');
             $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
-        }
-        else{
+        } else {
             $page_data['page_name'] = "organization_details";
             $page_data['page_title'] = site_phrase('organization_details');
             $page_data['organization'] = $this->crud_model->get_organization_single($slug);
@@ -283,7 +282,7 @@ class Home extends CI_Controller
             $page_data['courses'] = $this->db->get('course', $config['per_page'], $this->uri->segment(3))->result_array();
             $page_data['total_result'] = $total_rows;
         } else {
-            $courses = $this->crud_model->filter_course(null,$selected_category_id, $selected_price, $selected_level, $selected_language, $selected_rating);
+            $courses = $this->crud_model->filter_course(null, $selected_category_id, $selected_price, $selected_level, $selected_language, $selected_rating);
             $page_data['courses'] = $courses;
             $page_data['total_result'] = count($courses);
         }
@@ -404,7 +403,7 @@ class Home extends CI_Controller
 
     public function programs_page($slug = "", $programs_id = "")
     {
-       
+
         $this->access_denied_courses($programs_id);
         $page_data['programs_id'] = $programs_id;
         $page_data['page_name'] = "programs_page";
@@ -700,6 +699,10 @@ class Home extends CI_Controller
     {
         if ($this->session->userdata('user_login') != 1) {
             redirect('login', 'refresh');
+        }
+        if ($this->session->userdata('attempt_status') != 1) {
+            $this->session->set_flashdata('error_message', get_phrase('your_account_verification_is_under_process') . '.');
+            redirect('/', 'refresh');
         }
         $page_data['total_price_of_checking_out'] = $this->session->userdata('total_price_of_checking_out');
         $page_data['page_title'] = site_phrase("payment_gateway");

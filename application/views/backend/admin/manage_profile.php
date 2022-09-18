@@ -49,6 +49,11 @@
 					</div>
 
 					<div class="form-group">
+						<label><?php echo get_phrase('instagram_link');?></label>
+						<input type="text" class="form-control" name="instagram_link" value="<?php echo $social_links['instagram'];?>"/>
+					</div>
+
+					<div class="form-group">
 						<label><?php echo get_phrase('a_short_title_about_yourself'); ?></label>
 						<textarea rows="5" id="short-title" class="form-control" name="title" placeholder="<?php echo get_phrase('a_short_title_about_yourself'); ?>"><?php echo $row['title']; ?></textarea>
 					</div>
