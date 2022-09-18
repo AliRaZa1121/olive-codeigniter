@@ -606,22 +606,22 @@
 
 												<div class="form-group">
 													<label><?php echo get_phrase('facebook_link'); ?></label>
-													<input type="text" class="form-control" name="facebook_link" value="<?php echo $social_links['facebook']; ?>" />
+													<input type="url" class="form-control" name="facebook_link" value="<?php echo $social_links['facebook']; ?>" />
 												</div>
 
 												<div class="form-group">
 													<label><?php echo get_phrase('twitter_link'); ?></label>
-													<input type="text" class="form-control" name="twitter_link" value="<?php echo $social_links['twitter']; ?>" />
+													<input type="url" class="form-control" name="twitter_link" value="<?php echo $social_links['twitter']; ?>" />
 												</div>
 
 												<div class="form-group">
 													<label><?php echo get_phrase('linkedin_link'); ?></label>
-													<input type="text" class="form-control" name="linkedin_link" value="<?php echo $social_links['linkedin']; ?>" />
+													<input type="url" class="form-control" name="linkedin_link" value="<?php echo $social_links['linkedin']; ?>" />
 												</div>
 
 												<div class="form-group">
 													<label><?php echo get_phrase('instagram_link'); ?></label>
-													<input type="text" class="form-control" name="instagram_link" value="<?php echo $social_links['instagram']; ?>" />
+													<input type="url" class="form-control" name="instagram_link" value="<?php echo $social_links['instagram']; ?>" />
 												</div>
 
 												<div class="form-group">
