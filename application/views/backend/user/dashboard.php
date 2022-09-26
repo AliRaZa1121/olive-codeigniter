@@ -1,15 +1,21 @@
 <?php
-    $instructor_id = $this->session->userdata('user_id');
-    $number_of_courses = $this->crud_model->get_instructor_wise_courses($instructor_id)->num_rows();
-    $number_of_enrolment_result = $this->crud_model->instructor_wise_enrolment($instructor_id);
-    if ($number_of_enrolment_result) {
-        $number_of_enrolment = $number_of_enrolment_result->num_rows();
-    }else{
-        $number_of_enrolment = 0;
-    }
-    $total_pending_amount = $this->crud_model->get_total_pending_amount($instructor_id);
-    $requested_withdrawal_amount = $this->crud_model->get_requested_withdrawal_amount($instructor_id);
- ?>
+$instructor_id = $this->session->userdata('user_id');
+$number_of_courses = $this->crud_model->get_instructor_wise_courses($instructor_id)->num_rows();
+$number_of_enrolment_result = $this->crud_model->instructor_wise_enrolment($instructor_id);
+if ($number_of_enrolment_result) {
+    $number_of_enrolment = $number_of_enrolment_result->num_rows();
+} else {
+    $number_of_enrolment = 0;
+}
+$total_pending_amount = $this->crud_model->get_total_pending_amount($instructor_id);
+$requested_withdrawal_amount = $this->crud_model->get_requested_withdrawal_amount($instructor_id);
+$zoom_meetings = $this->crud_model->get_zoom_meetings($instructor_id);
+
+?>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+
 
 <div class="row">
     <div class="col-xl-12">
@@ -25,10 +31,10 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                
-                <?php if($this->session->userdata('is_instructor')): ?>
-                     <h4 class="header-title mb-4"><?php echo get_phrase('coach_revenue'); ?></h4>
-                <?php  else : ?>
+
+                <?php if ($this->session->userdata('is_instructor')) : ?>
+                    <h4 class="header-title mb-4"><?php echo get_phrase('coach_revenue'); ?></h4>
+                <?php else : ?>
                     <h4 class="header-title mb-4"><?php echo 'Organization Revenue'; ?></h4>
                 <?php endif; ?>
                 <div class="mt-3 chartjs-chart" style="height: 320px;">
@@ -71,7 +77,7 @@
                             <div class="card shadow-none m-0">
                                 <div class="card-body text-center border-left">
                                     <i class="dripicons-inbox text-muted" style="font-size: 24px;"></i>
-                                    <h3><span><?php echo $total_pending_amount > 0 ? currency($total_pending_amount) : currency_code_and_symbol().''.$total_pending_amount; ?></span></h3>
+                                    <h3><span><?php echo $total_pending_amount > 0 ? currency($total_pending_amount) : currency_code_and_symbol() . '' . $total_pending_amount; ?></span></h3>
                                     <p class="text-muted font-15 mb-0"><?php echo get_phrase('pending_balance'); ?></p>
                                 </div>
                             </div>
@@ -83,7 +89,7 @@
                             <div class="card shadow-none m-0">
                                 <div class="card-body text-center border-left">
                                     <i class="dripicons-pin text-muted" style="font-size: 24px;"></i>
-                                    <h3><span><?php echo $requested_withdrawal_amount > 0 ? currency($requested_withdrawal_amount) : currency_code_and_symbol().''.$requested_withdrawal_amount; ?></span></h3>
+                                    <h3><span><?php echo $requested_withdrawal_amount > 0 ? currency($requested_withdrawal_amount) : currency_code_and_symbol() . '' . $requested_withdrawal_amount; ?></span></h3>
                                     <p class="text-muted font-15 mb-0"><?php echo get_phrase('requested_withdrawal_amount'); ?></p>
                                 </div>
                             </div>
@@ -95,6 +101,25 @@
         </div> <!-- end card-box-->
     </div> <!-- end col-->
 </div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card card-custom">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3 class="card-label">
+                        Zoom Meetings
+                    </h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
     <div class="col-xl-12">
         <div class="card overview-card">
@@ -123,3 +148,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var zoomMeetings = <?php $zoom_meetings ?>
+        console.log(zoomMeetings);
+        // page is now ready, initialize the calendar...
+        $('#calendar').fullCalendar({
+            // put your options and callbacks here
+            defaultView: 'agendaWeek',
+            events: [
+                <?php foreach ($zoom_meetings as $meeting) : ?> {
+                        "id": 293,
+                        "title": <?php echo $meeting->title ?>,
+                        "start": <?php echo $meeting->date ?>,
+                        // "url": "http://example.com",
+                        "class": "event-important",
+                        // "start": 1664253899, // Milliseconds
+                        // "end": 1664253899 // Milliseconds
+                    },
+
+                <?php endforeach; ?>
+            ],
+        });
+    });
+</script>

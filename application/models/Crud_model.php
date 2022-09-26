@@ -5297,4 +5297,15 @@ class Crud_model extends CI_Model
             }
         }
     }
+
+    public function get_zoom_meetings($user_id)
+    {
+        $query = $this->db
+        ->select("live_class.*, course.title")
+        ->from("live_class")
+        ->join('course', 'live_class.course_id = course.id')
+        ->where('course.user_id',$user_id)
+        ->get();
+        return $query->result_array();
+    }
 }
