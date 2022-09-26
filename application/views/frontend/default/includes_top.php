@@ -29,10 +29,8 @@
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.16/js/intlTelInput.min.js" integrity="sha512-Po9nSdYOcWIcoADdRjkAbRYPpR8OHjxzA/3RDUERZcDewTLzRTxbG4bUX7Sr7lVEcO3wTCzphdOBWgNFKVmxaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/css/intlTelInput.css" integrity="sha512-pMSlID+ErxHxHX7apBNVwbGg2++qQy57gblWXa1fQ2MSkUCIQ0xLKfICoBK4RNCbYmDbvUbfTH6cKqonWYjTNA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js" integrity="sha512-3m65BCkkH/20qgg69U7oozKvmQReL2HUtwC9TXgWn+WX7zeeRVf09+oolPkkNM+T1xflrD5xO1TKwkvzHg+/rQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
-
-
+<script src="https://kit.fontawesome.com/eea93b01d7.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="<?php echo base_url() . 'assets/frontend/default/css/fullscreen-modal.css'; ?>">
 <style>
 // workaround
 .intl-tel-input {

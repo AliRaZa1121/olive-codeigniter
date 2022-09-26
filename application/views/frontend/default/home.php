@@ -117,7 +117,11 @@
                     <p class="text-center mb-5"><?php echo $section_2['description_1']; ?></p>
                     <p class="text-center mb-0"><?php echo $section_2['description_2']; ?></p>
                     <div class="text-center mt-5">
-                        <a href="<?php echo $section_2['button_link']; ?>" class="site-btn btn-lg"><?php echo $section_2['button_text']; ?><i class=" fas fa-solid fa-arrow-right"></i></a>
+                        <a href="javascript:;" class="site-btn btn-lg" id="SSModal1">
+                            <?php echo $section_2['button_text']; ?>
+                            <i class=" fas fa-solid fa-arrow-right"></i>
+                        </a>
+                        <?php //echo $section_2['button_link']; ?>
                     </div>
                 </div>
 
@@ -219,7 +223,11 @@
                 <div class="fold-content">
                     <h2 class="text-uppercase fw-bold clr-black"><?php echo $section_5['title']; ?></h2>
                     <p><?php echo $section_5['description_1']; ?></p>
-                    <a href="<?php echo $section_5['button_link']; ?>" class="site-btn btn-lg"><?php echo $section_5['button_text']; ?><i class="fas fa-solid fa-book-open"></i></a>
+                    <a href="javascript:;" class="site-btn btn-lg" id="SSModal2">
+                        <?php echo $section_5['button_text']; ?>
+                        <i class="fas fa-solid fa-book-open"></i>
+                    </a>
+                    <?php ///echo $section_5['button_link']; ?>
                 </div>
             </div>
         </div>
@@ -338,13 +346,119 @@
             </div>
         </div>
 </section> -->
-<!---->
+<?php if(get_frontend_settings('recaptcha_status')): ?>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<?php endif; ?>
 
-
-
-
-
-
+<!-- SS Modal 1 Starts From Here  -->
+<div class="page-wrapper bg-gra-02 p-t-100 p-b-100 SSModalWrapper1" style="display:none;">
+    <img src="<?php echo base_url(); ?>/assets/frontend/default/img/logo-white.svg" class="position-absolute bottom-50">
+    <div class="wrapper wrapper--w960 d-flex flex-row bg-white rounded position-relative">
+      <a href="#" class="SSClose close position-absolute"><i class="fa fa-times"></i></a>
+      <div class="col-lg-4 d-none d-lg-flex p-4 bg-gra-01 p-5 d-flex flex-wrap">
+        <div class="d-flex flex-column">
+          <h6 class="mb-3">Lorem ipsum dolor.</h6>
+          <h2 class="title mb-5">Consectetur adipisicing elit aspernatur ipsa.</h2>
+          <div class="artwork">
+            <img src="<?php echo base_url(); ?>/assets/frontend/default/img/fun-3d-cartoon-casual-character-removebg-preview.png" class="w-100" />
+          </div>
+        </div>
+        <div class="foot-note align-self-end mt-auto">
+          Some Text here
+        </div>
+      </div>
+      <div class="bg-white d-flex w-100 py-5">
+        <div class="card-body">
+          <form method="POST">
+            <div class="contact-form-box">
+              <div class="row">
+                <div class="col-sm-8 col-lg-7 mx-auto">
+                  <div class="contact-title">
+                    <h2 class="mb-2">Get In Touch</h2>
+                    <p>We are here for you! how can we help you?</p>
+                  </div>
+                  <div class="contact-form">
+                    <form action="#" method="post">
+                      <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Name" name="name" required="">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="tel" placeholder="Phone Number" name="phone" required="">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="email" placeholder="Email" name="email" required="">
+                      </div>
+                      <div class="form-group">
+                        <?php if(get_frontend_settings('recaptcha_status')): ?>
+                            <div class="g-recaptcha" data-sitekey="<?php echo get_frontend_settings('recaptcha_sitekey'); ?>"></div>
+                        <?php endif; ?>
+                      </div>
+                      <button class="contact-btn" type="submit">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SS Modal 2 Starts From Here  -->
+<div class="page-wrapper bg-gra-02 p-t-100 p-b-100 SSModalWrapper2" style="display:none;">
+    <img src="<?php echo base_url(); ?>/assets/frontend/default/img/logo-white.svg" class="position-absolute bottom-50">
+    <div class="wrapper wrapper--w960 d-flex flex-row bg-white rounded position-relative">
+      <a href="#" class="SSClose close position-absolute"><i class="fa fa-times"></i></a>
+      <div class="col-lg-4 d-none d-lg-flex p-4 bg-gra-01 p-5 d-flex flex-wrap">
+        <div class="d-flex flex-column">
+          <h6 class="mb-3">Lorem ipsum dolor.</h6>
+          <h2 class="title mb-5">Consectetur adipisicing elit aspernatur ipsa.</h2>
+          <div class="artwork">
+            <img src="<?php echo base_url(); ?>/assets/frontend/default/img/fun-3d-cartoon-casual-character-removebg-preview.png" class="w-100" />
+          </div>
+        </div>
+        <div class="foot-note align-self-end mt-auto">
+          Some Text here
+        </div>
+      </div>
+      <div class="bg-white d-flex w-100 py-5">
+        <div class="card-body">
+          <form method="POST">
+            <div class="contact-form-box">
+              <div class="row">
+                <div class="col-sm-8 col-lg-7 mx-auto">
+                  <div class="contact-title">
+                    <h2 class="mb-2">Get In Touch</h2>
+                    <p>We are here for you! how can we help you?</p>
+                  </div>
+                  <div class="contact-form">
+                    <form action="#" method="post">
+                      <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Name" name="name" required="">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="tel" placeholder="Phone Number" name="phone" required="">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="email" placeholder="Email" name="email" required="">
+                      </div>
+                      <div class="form-group">
+                        <?php if(get_frontend_settings('recaptcha_status')): ?>
+                            <div class="g-recaptcha" data-sitekey="<?php echo get_frontend_settings('recaptcha_sitekey'); ?>"></div>
+                        <?php endif; ?>
+                      </div>
+                      <button class="contact-btn" type="submit">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- SS Modal [x] here  -->
 <script type="text/javascript">
     function handleWishList(elem) {
 
@@ -410,14 +524,27 @@
     }
 
 
-
+    function ToggleSSModal(Trgr, Target){
+        if($(Trgr).length){
+           $(Trgr).on("click", function(){
+               $(Target).show();
+               $('body').css('overflow', 'hidden');
+           });
+        }
+    }
 
 
     $(document).ready(function() {
 
-
-
-
+        ToggleSSModal("#SSModal1", ".SSModalWrapper1");
+        ToggleSSModal("#SSModal2", ".SSModalWrapper2");
+        if($(".SSClose").length){
+           $(".SSClose").on("click", function(){
+               $(this).closest(".page-wrapper").hide();
+               $('body').css('overflow', 'auto');
+           }); 
+        }
+        
         $(".course-carousel").slick({
             dots: false,
             infinite: false,

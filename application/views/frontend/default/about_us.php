@@ -5,6 +5,27 @@ section.org-first-fold, section.arc-first-fold {
     background-image: url(<?php echo base_url('uploads/system/' . $section_1['image']); ?>);
    /* min-height: 500px !important;*/
 }
+.font-14 {
+    font-size:14px;
+}
+.core-image {
+    height: 100%; 
+    width: auto; 
+    margin-right: -12%;
+}
+@media only screen and (max-width: 992px){
+    .core-image {
+        height: auto; 
+        width: 100%; 
+        margin-right: 0%;
+    }
+    .fa-ul {
+        margin: 0px !important;
+    }
+    .fa-ul li span {
+        margin-right: 0px;
+    }
+}
 </style>
 
 <section class="HeroBanner pb-0 section">
@@ -51,17 +72,22 @@ section.org-first-fold, section.arc-first-fold {
 <section class="pb-0 section">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 px-0" style="background: url('<?php echo base_url(); ?>/assets/frontend/default/img/two-people-training.jpg');background-position: center center;">
+            <div class="col-lg-6 px-0 overflow-hidden d-lg-flex justify-content-lg-end align-items-lg-center">
+                <img src="<?php echo base_url(); ?>/assets/frontend/default/img/two-people-training.jpg" class="core-image" />
             </div>
             <div class="col-lg-6 bg-orange p-5 overflow-hidden position-relative OrangeBox">
                 <img src="<?php echo base_url(); ?>/assets/frontend/default/img/logo-white.svg" class="position-absolute" />
                 <img src="<?php echo base_url(); ?>/assets/frontend/default/img/logo-white.svg" class="position-absolute" />
                 <div class="TXTBox p-lg-5 p-lg-4 p-3 text-white">
-                    <h2 class="text-white">Our Core Values</h2>
+                    <h2 class="text-white mb-3">Our Core Values</h2>
+                    <p class="text-white">Pioneering Senior Team Coaching, that enables true alignment for the senior leadership, to lead as ONE</p>
                     <ul class="fa-ul">
-                        <li><span class="fa-li"><i class="fa fa-align-center"></i></span> Alignment</li>
-                        <li><span class="fa-li"><i class="fa fa-question"></i></span> Curiosity</li>
-                        <li><span class="fa-li"><i class="fa fa-bahai"></i></span> Impact</li>
+                        <li><span class="fa-li"><i class="fa fa-align-center" aria-hidden="true"></i></span><span> Alignment</span>
+<p class="text-white font-14 my-3">Ensuring that everyone in the business has clarity of the vision, and values and are being intentional in getting us there.</p></li>
+                        <li><span class="fa-li"><i class="fa fa-question" aria-hidden="true"></i></span><span> Curiosity</span>
+<p class="text-white font-14 my-3">We have the constant itch for more knowledge. We look at a problem or process and explore a variety of ways to address it and improve for our clients, our business and ourselves.</p></li>
+                        <li><span class="fa-li"><i class="fa fa-bahai" aria-hidden="true"></i></span><span>Impact</span>
+<p class="text-white font-14 my-3">Being intentional about making tomorrow different and better for our clients, our business and ourselves</p></li>
                     </ul>
                 </div>
             </div>
