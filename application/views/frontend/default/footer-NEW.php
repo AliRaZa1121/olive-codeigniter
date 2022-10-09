@@ -1,7 +1,8 @@
-<footer class="footer-area d-print-none bg-dark position-relative">
+<footer class="footer-area d-print-none bg-dark position-relative overflow-hidden">
+    <div class="Fgr1" bis_skin_checked="1"><img src="https://olive.minibigcrm.com//assets/frontend/default/img/figure6.png"></div>
   <div class="container">
     <div class="row mb-3">
-      <div class="col-6 col-sm-6 col-md-3">
+      <div class="col-6 col-sm-6 col-md-3 d-none">
         <h5 class="text-light"><?php echo site_phrase('top_categories'); ?></h5>
         <ul class="list-unstyled text-small">
           <?php $top_10_categories = $this->crud_model->get_top_categories(6, 'sub_category_id'); ?>
@@ -16,7 +17,7 @@
           <?php endforeach; ?>
         </ul>
       </div>
-      <div class="col-6 col-sm-6 col-md-3">
+      <div class="col-6 col-sm-6 col-md-3 d-none">
         <h5 class="text-light"><?php echo site_phrase('useful_links'); ?></h5>
         <ul class="list-unstyled text-small">
           <li class="mb-1"><a class="link-light footer-hover-link" href="<?php echo site_url('home/all_programs'); ?>"><?php echo site_phrase('all_programs'); ?></a></li>
@@ -25,7 +26,7 @@
           <!--<li class="mb-1"><a class="link-light footer-hover-link" href="<?php echo site_url('home/coach_sign_up'); ?>"><?php echo site_phrase('Become a coach'); ?></a></li>-->
         </ul>
       </div>
-      <div class="col-6 col-sm-6 col-md-3">
+      <div class="col-6 col-sm-6 col-md-3 d-none">
         <h5 class="text-light"><?php echo site_phrase('help'); ?></h5>
         <ul class="list-unstyled text-small">
           <li class="mb-1"><a class="link-light footer-hover-link" href="<?php echo site_url('home/about_us'); ?>"><?php echo site_phrase('about_us'); ?></a></li>
@@ -36,7 +37,7 @@
         </ul>
       </div>
       <!-- col-md-3 -->
-      <div class="col-6 col-sm-6 col-md-3 order-first">
+      <div class="col-md-6 col-lg-4 mx-auto d-flex flex-column justify-content-center align-items-center text-center">
         <img src="<?php echo base_url('uploads/system/'.get_frontend_settings('dark_logo')); ?>" width="130">
         <small style="color:white;" class="d-block mb-3 fw-600"><?php echo get_settings('website_description'); ?></small>
 
@@ -67,7 +68,7 @@
     <div class="container FooterBottom">
       <div class="row mt-3 py-1">
         <!--<div class="col-6 col-sm-6 col-md-3 text-light text-13px">-->
-        <div class="col-lg-12 text-light text-13px">
+        <div class="col-lg-12 text-light text-13px text-center">
           &copy; 2021 <?php echo get_settings('system_name'); ?>, <?php echo site_phrase('all_rights_reserved'); ?>
         </div>
 
