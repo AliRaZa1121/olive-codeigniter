@@ -60,7 +60,9 @@ class Login extends CI_Controller
             $this->session->set_userdata('name', $row->first_name . ' ' . $row->last_name);
             $this->session->set_userdata('is_instructor', $row->is_instructor);
             $this->session->set_userdata('is_organization', $row->is_organization);
+            $this->session->set_userdata('account_status',$row->account_status);
             $this->session->set_flashdata('flash_message', get_phrase('welcome') . ' ' . $row->first_name . ' ' . $row->last_name);
+            
             if ($row->role_id == 1) {
                 $this->session->set_userdata('admin_login', '1');
                 redirect(site_url('admin/dashboard'), 'refresh');

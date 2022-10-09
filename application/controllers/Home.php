@@ -73,7 +73,6 @@ class Home extends CI_Controller
             $page_data['page_title'] = site_phrase('books');
             $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
         }
-
     }
 
     public function articles()
@@ -496,7 +495,7 @@ class Home extends CI_Controller
         $this->pagination->initialize($config);
         $page_data['per_page'] = $config['per_page'];
 
-        if (addon_status('offline_payment') == 1):
+        if (addon_status('offline_payment') == 1) :
             $this->load->model('addons/offline_payment_model');
             $page_data['pending_offline_payment_history'] = $this->offline_payment_model->pending_offline_payment($this->session->userdata('user_id'))->result_array();
         endif;
@@ -700,7 +699,8 @@ class Home extends CI_Controller
         if ($this->session->userdata('user_login') != 1) {
             redirect('login', 'refresh');
         }
-        if ($this->session->userdata('attempt_status') != 1) {
+
+        if ($this->session->userdata('account_status') != 1) {
             $this->session->set_flashdata('error_message', get_phrase('your_account_verification_is_under_process') . '.');
             redirect('/', 'refresh');
         }
@@ -708,6 +708,32 @@ class Home extends CI_Controller
         $page_data['page_title'] = site_phrase("payment_gateway");
         $page_data['applied_coupon'] = $this->session->userdata('applied_coupon');
         $this->load->view('payment/index', $page_data);
+    }
+
+    public function meetings_calendar()
+    {
+        $my_courses = $this->user_model->my_courses()->result_array();
+
+        foreach ($my_courses as $key => $value) {
+            $query = $this->crud_model->get_zoom_meetings_trainee($value['course_id']);
+            $page_data['meetings_calendar'] = [];
+            foreach ($query->result_array() as $key => $course) {
+                $live_class_schedule_data_time = json_decode($course['live_class_schedule_data_time']);
+
+                foreach ($live_class_schedule_data_time as $key => $data_time) {
+                    $data = [
+                        'title' => $course['title'],
+                        'start' => $data_time,
+                        'end' => $data_time,
+                        'backgroundColor' =>  "#f38134"
+                    ];
+                    array_push($page_data['meetings_calendar'], $data);
+                }
+            }
+        }
+        $page_data['page_name'] = "meetings_calendar";
+        $page_data['page_title'] = site_phrase("meetings_calendar");
+        $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
     }
 
     // SHOW PAYPAL CHECKOUT PAGE
@@ -718,9 +744,9 @@ class Home extends CI_Controller
         }
 
         //checking price
-        if ($this->session->userdata('total_price_of_checking_out') == $this->input->post('total_price_of_checking_out')):
+        if ($this->session->userdata('total_price_of_checking_out') == $this->input->post('total_price_of_checking_out')) :
             $total_price_of_checking_out = $this->input->post('total_price_of_checking_out');
-        else:
+        else :
             $total_price_of_checking_out = $this->session->userdata('total_price_of_checking_out');
         endif;
         $page_data['payment_request'] = $payment_request;
@@ -753,10 +779,10 @@ class Home extends CI_Controller
         $this->crud_model->course_purchase($user_id, 'paypal', $amount_paid);
         $this->email_model->course_purchase_notification($user_id, 'paypal', $amount_paid);
         $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
-        if ($payment_request_mobile == 'true'):
+        if ($payment_request_mobile == 'true') :
             $course_id = $this->session->userdata('cart_items');
             redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
-        else:
+        else :
             $this->session->set_userdata('cart_items', array());
             redirect('home/my_programs', 'refresh');
         endif;
@@ -786,32 +812,32 @@ class Home extends CI_Controller
         if ($response['payment_status'] === 'succeeded') {
             // STUDENT ENROLMENT OPERATIONS AFTER A SUCCESSFUL PAYMENT
             $check_duplicate = $this->crud_model->check_duplicate_payment_for_stripe($response['transaction_id'], $session_id);
-            if ($check_duplicate == false):
+            if ($check_duplicate == false) :
                 $this->crud_model->enrol_student($user_id);
                 $this->crud_model->course_purchase($user_id, 'stripe', $response['paid_amount'], $response['transaction_id'], $session_id);
                 $this->email_model->course_purchase_notification($user_id, 'stripe', $response['paid_amount']);
-            else:
+            else :
                 //duplicate payment
                 $this->session->set_flashdata('error_message', site_phrase('session_time_out'));
                 redirect('home/shopping_cart', 'refresh');
             endif;
 
-            if ($payment_request_mobile == 'true'):
+            if ($payment_request_mobile == 'true') :
                 $course_id = $this->session->userdata('cart_items');
                 $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
                 redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
-            else:
+            else :
                 $this->session->set_userdata('cart_items', array());
                 $this->session->set_userdata('applied_coupon', null);
                 $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
                 redirect('home/my_programs', 'refresh');
             endif;
         } else {
-            if ($payment_request_mobile == 'true'):
+            if ($payment_request_mobile == 'true') :
                 $course_id = $this->session->userdata('cart_items');
                 $this->session->set_flashdata('flash_message', $response['status_msg']);
                 redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/error', 'refresh');
-            else:
+            else :
                 $this->session->set_flashdata('error_message', $response['status_msg']);
                 redirect('home/shopping_cart', 'refresh');
             endif;
@@ -857,29 +883,29 @@ class Home extends CI_Controller
                 $this->crud_model->course_purchase($user_id, 'razorpay', $amount, $payment_key);
                 $this->email_model->course_purchase_notification($user_id, 'razorpay', $amount);
                 $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
-                if ($payment_request_mobile == 'true'):
+                if ($payment_request_mobile == 'true') :
                     $course_id = $this->session->userdata('cart_items');
                     redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
-                else:
+                else :
                     $this->session->set_userdata('cart_items', array());
                     redirect('home/my_programs', 'refresh');
                 endif;
             } else {
-                if ($payment_request_mobile == 'true'):
+                if ($payment_request_mobile == 'true') :
                     $course_id = $this->session->userdata('cart_items');
                     $this->session->set_flashdata('flash_message', $response['status_msg']);
                     redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/error', 'refresh');
-                else:
+                else :
                     $this->session->set_flashdata('error_message', site_phrase('payment_failed') . '! ' . site_phrase('something_is_wrong'));
                     redirect('home/shopping_cart', 'refresh');
                 endif;
             }
         } else {
-            if ($payment_request_mobile == 'true'):
+            if ($payment_request_mobile == 'true') :
                 $course_id = $this->session->userdata('cart_items');
                 $this->session->set_flashdata('flash_message', $response['status_msg']);
                 redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/error', 'refresh');
-            else:
+            else :
                 $this->session->set_flashdata('error_message', site_phrase('payment_failed') . '! ' . site_phrase('something_is_wrong'));
                 redirect('home/shopping_cart', 'refresh');
             endif;
@@ -1540,7 +1566,7 @@ class Home extends CI_Controller
     //FOR MOBILE
     public function payment_success_mobile($course_id = "", $user_id = "", $enroll_type = "")
     {
-        if ($course_id > 0 && $user_id > 0):
+        if ($course_id > 0 && $user_id > 0) :
             $page_data['cart_item'] = $course_id;
             $page_data['user_id'] = $user_id;
             $page_data['is_login_now'] = 1;
@@ -1561,7 +1587,7 @@ class Home extends CI_Controller
     //FOR MOBILE
     public function payment_gateway_mobile($course_id = "", $user_id = "")
     {
-        if ($course_id > 0 && $user_id > 0):
+        if ($course_id > 0 && $user_id > 0) :
             $page_data['page_name'] = 'payment_gateway';
             $this->load->view('mobile/index', $page_data);
         endif;

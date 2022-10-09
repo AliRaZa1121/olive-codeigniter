@@ -1,8 +1,8 @@
-<?php $live_class = $this->db->get_where('live_class', array('course_id' => $course_id))->row_array(); ?>
+<?php $live_class = $this->db->get_where('live_class', array('course_id' => $programs_id))->row_array(); ?>
 <div class="tab-pane" id="live-class">
     <div class="row">
         <div class="col-md-7">
-            <div class="form-group row mb-3">
+            <!-- <div class="form-group row mb-3">
                 <label class="col-md-4 col-form-label" for="live_class_schedule_date"><?php echo get_phrase('live_class_schedule').' ('.get_phrase('date').')'; ?></label>
                 <div class="col-md-6">
                     <input type="text" name="live_class_schedule_date" class="form-control date" id="live_class_schedule_date" data-toggle="date-picker" data-single-date-picker="true" value="<?php echo empty($live_class['date']) ? date('m/d/Y', strtotime(date('m/d/Y'))) : date('m/d/Y', $live_class['date']); ?>">
@@ -13,7 +13,65 @@
                 <div class="col-md-6">
                     <input type="text" name="live_class_schedule_time" id="live_class_schedule_time" class="form-control" data-toggle="timepicker" value="<?php echo date('h:i:s A', $live_class['time']); ?>">
                 </div>
+            </div> -->
+
+            <div id="requirement_area">
+                <?php if (count(json_decode($live_class['live_class_schedule_data_time'])) > 0) : ?>
+                    <?php
+                    $counter = 0;
+                    foreach (json_decode($live_class['live_class_schedule_data_time']) as $live_class_schedule_data_time) : ?>
+                        <?php if ($counter == 0) :
+                            $counter++; ?>
+                            <div class="d-flex mt-2">
+                                <div class="flex-grow-1 px-3">
+                                    <div class="form-group">
+                                        <input type="text" name="live_class_schedule_data_time[]" id="live_class_schedule_data_time" class="form-control datetimepicker" value="<?php echo $live_class_schedule_data_time; ?>">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <button type="button" class="btn btn-success btn-sm" style="" name="button" onclick="appendRequirement()"> <i class="fa fa-plus"></i> </button>
+                                </div>
+                            </div>
+                        <?php else : ?>
+                            <div class="d-flex mt-2">
+                                <div class="flex-grow-1 px-3">
+                                    <div class="form-group">
+                                        <input type="text" name="live_class_schedule_data_time[]" id="live_class_schedule_data_time" class="form-control datetimepicker" value="<?php echo $live_class_schedule_data_time; ?>">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <button type="button" class="btn btn-danger btn-sm" style="margin-top: 0px;" name="button" onclick="removeRequirement(this)"> <i class="fa fa-minus"></i> </button>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <div class="d-flex mt-2">
+                        <div class="flex-grow-1 px-3">
+                            <div class="form-group">
+                                <input type="text" name="live_class_schedule_data_time[]" id="live_class_schedule_data_time" class="form-control datetimepicker" value="<?php echo $live_class_schedule_data_time; ?>">
+                            </div>
+                        </div>
+                        <div class="">
+                            <button type="button" class="btn btn-success btn-sm" style="" name="button" onclick="appendRequirement()"> <i class="fa fa-plus"></i> </button>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <div id="blank_requirement_field">
+                    <div class="d-flex mt-2">
+                        <div class="flex-grow-1 px-3">
+                            <div class="form-group">
+                                <input type="text" name="live_class_schedule_data_time[]" id="live_class_schedule_data_time" class="form-control datetimepicker" value="<?php echo $live_class_schedule_data_time; ?>">
+                            </div>
+                        </div>
+                        <div class="">
+                            <button type="button" class="btn btn-danger btn-sm" style="margin-top: 0px;" name="button" onclick="removeRequirement(this)"> <i class="fa fa-minus"></i> </button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="form-group row mb-3">
                 <label class="col-md-4 col-form-label" for="note_to_students"><?php echo get_phrase('note_to_students'); ?></label>
                 <div class="col-md-6">

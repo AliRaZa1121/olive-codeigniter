@@ -10,7 +10,6 @@ if ($number_of_enrolment_result) {
 $total_pending_amount = $this->crud_model->get_total_pending_amount($instructor_id);
 $requested_withdrawal_amount = $this->crud_model->get_requested_withdrawal_amount($instructor_id);
 $zoom_meetings = $this->crud_model->get_zoom_meetings($instructor_id);
-
 ?>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
@@ -149,27 +148,28 @@ $zoom_meetings = $this->crud_model->get_zoom_meetings($instructor_id);
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        var zoomMeetings = <?php $zoom_meetings ?>
-        console.log(zoomMeetings);
-        // page is now ready, initialize the calendar...
-        $('#calendar').fullCalendar({
-            // put your options and callbacks here
-            defaultView: 'agendaWeek',
-            events: [
-                <?php foreach ($zoom_meetings as $meeting) : ?> {
-                        "id": 293,
-                        "title": <?php echo $meeting->title ?>,
-                        "start": <?php echo $meeting->date ?>,
-                        // "url": "http://example.com",
-                        "class": "event-important",
-                        // "start": 1664253899, // Milliseconds
-                        // "end": 1664253899 // Milliseconds
-                    },
 
-                <?php endforeach; ?>
-            ],
-        });
-    });
+
+<script type="text/javascript">
+    var events = <?php echo json_encode($zoom_meetings) ?>;
+
+    var date = new Date()
+    var d = date.getDate(),
+        m = date.getMonth(),
+        y = date.getFullYear()
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        buttonText: {
+            today: 'today',
+            month: 'month',
+            week: 'week',
+            day: 'day'
+        },
+        events: events
+    })
 </script>

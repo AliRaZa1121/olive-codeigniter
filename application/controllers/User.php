@@ -67,7 +67,7 @@ class User extends CI_Controller
         if ($this->session->userdata('user_login') != true) {
             redirect(site_url('login'), 'refresh');
         }
-        
+
         $page_data['page_name'] = 'dashboard';
         $page_data['page_title'] = get_phrase('dashboard');
         $this->load->view('backend/index.php', $page_data);
@@ -510,7 +510,6 @@ class User extends CI_Controller
         } elseif ($param1 == "edit") {
             $this->is_the_programs_belongs_to_current_instructor($param2);
             $this->crud_model->update_programs($param2);
-            redirect(site_url('user/programs/' . $programs_id), 'refresh');
 
             // CHECK IF LIVE CLASS ADDON EXISTS, ADD OR UPDATE IT TO ADDON MODEL
             if (addon_status('live-class')) {
@@ -524,7 +523,7 @@ class User extends CI_Controller
                 $this->jitsi_liveclass_model->update_live_class($param2);
             }
 
-            redirect(site_url('user/programs_form/course_edit/' . $param2));
+            redirect(site_url('user/programs'));
         } elseif ($param1 == 'add_shortcut') {
             echo $this->crud_model->add_shortcut();
         } elseif ($param1 == 'delete') {
@@ -994,37 +993,35 @@ class User extends CI_Controller
     {
         if ($this->session->userdata('admin_login') == true) {
             return true;
-        }
-        else{
-           $course_details = $this->crud_model->get_programs_by_id($course_id)->row_array();
-
-        if ($course_details['multi_instructor']) {
-            $instructor_ids = explode(',', $course_details['user_id']);
-            if (!in_array($this->session->userdata('user_id'), $instructor_ids)) {
-                $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_programs'));
-                redirect(site_url('user/programs'), 'refresh');
-            }
         } else {
-            if ($course_details['user_id'] != $this->session->userdata('user_id')) {
-                $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_programs'));
+            $course_details = $this->crud_model->get_programs_by_id($course_id)->row_array();
+
+            if ($course_details['multi_instructor']) {
+                $instructor_ids = explode(',', $course_details['user_id']);
+                if (!in_array($this->session->userdata('user_id'), $instructor_ids)) {
+                    $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_programs'));
+                    redirect(site_url('user/programs'), 'refresh');
+                }
+            } else {
+                if ($course_details['user_id'] != $this->session->userdata('user_id')) {
+                    $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_programs'));
+                    redirect(site_url('user/programs'), 'refresh');
+                }
+            }
+
+            if ($type == 'section' && $this->db->get_where('section', array('id' => $id, 'course_id' => $course_id))->num_rows() <= 0) {
+                $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_section'));
+                redirect(site_url('user/programs'), 'refresh');
+            }
+            if ($type == 'lesson' && $this->db->get_where('lesson', array('id' => $id, 'course_id' => $course_id))->num_rows() <= 0) {
+                $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_lesson'));
+                redirect(site_url('user/programs'), 'refresh');
+            }
+            if ($type == 'quize' && $this->db->get_where('lesson', array('id' => $id, 'course_id' => $course_id))->num_rows() <= 0) {
+                $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_quize'));
                 redirect(site_url('user/programs'), 'refresh');
             }
         }
-
-        if ($type == 'section' && $this->db->get_where('section', array('id' => $id, 'course_id' => $course_id))->num_rows() <= 0) {
-            $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_section'));
-            redirect(site_url('user/programs'), 'refresh');
-        }
-        if ($type == 'lesson' && $this->db->get_where('lesson', array('id' => $id, 'course_id' => $course_id))->num_rows() <= 0) {
-            $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_lesson'));
-            redirect(site_url('user/programs'), 'refresh');
-        }
-        if ($type == 'quize' && $this->db->get_where('lesson', array('id' => $id, 'course_id' => $course_id))->num_rows() <= 0) {
-            $this->session->set_flashdata('error_message', get_phrase('you_do_not_have_right_to_access_this_quize'));
-            redirect(site_url('user/programs'), 'refresh');
-        }  
-        }
-       
     }
 
     public function ajax_sort_section()

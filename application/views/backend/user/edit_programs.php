@@ -592,6 +592,7 @@ $course_details = $this->crud_model->get_programs_by_id($programs_id)->row_array
     function removeRequirement(requirementElem) {
         jQuery(requirementElem).parent().parent().remove();
     }
+    
 
     function ajax_get_sub_category(category_id) {
         console.log(category_id);

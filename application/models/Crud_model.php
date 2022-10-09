@@ -32,12 +32,12 @@ class Crud_model extends CI_Model
 
     public function popular_courses($category_id)
     {
-       return $this->db->query('SELECT course.* FROM course JOIN payment ON course.id = payment.course_id  WHERE category_id = '. $category_id);
+        return $this->db->query('SELECT course.* FROM course JOIN payment ON course.id = payment.course_id  WHERE category_id = ' . $category_id);
     }
 
     public function popular_courses_for_quiz($id)
     {
-        return $this->db->query('SELECT id FROM lesson WHERE lesson_type = quiz and id = (SELECT MIN(id) FROM lesson WHERE id >'. $id.')');
+        return $this->db->query('SELECT id FROM lesson WHERE lesson_type = quiz and id = (SELECT MIN(id) FROM lesson WHERE id >' . $id . ')');
     }
 
     public function get_users($param1 = "")
@@ -349,7 +349,7 @@ class Crud_model extends CI_Model
         $data['value'] = html_escape($this->input->post('address_link'));
         $this->db->where('key', 'address_link');
         $this->db->update('settings', $data);
-        
+
 
         $data['value'] = html_escape($this->input->post('phone'));
         $this->db->where('key', 'phone');
@@ -2959,7 +2959,7 @@ class Crud_model extends CI_Model
                 $data['transaction_id'] = $param1;
             }
 
-          
+
 
             $data['user_id'] = $user_id;
             $data['payment_type'] = $method;
@@ -2985,12 +2985,11 @@ class Crud_model extends CI_Model
                 // $data['coupon'] = $applied_coupon['id'];
             }
 
-            if($method == 'offline'){
+            if ($method == 'offline') {
                 $coupon_for_user = $this->session->userdata('coupon_for_user');
-                if($coupon_for_user){
+                if ($coupon_for_user) {
                     $data['discount'] = $coupon_for_user['discount'];
                     $data['amount'] = $coupon_for_user['amount'];
-
                 }
             }
 
@@ -3149,7 +3148,7 @@ class Crud_model extends CI_Model
     public function get_instructor_wise_course_ratings($instructor_id = "", $ratable_type = "", $is_sum = false)
     {
         $course_ids = $this->get_instructor_wise_courses($instructor_id, 'simple_array');
-        if(count($course_ids) > 0){
+        if (count($course_ids) > 0) {
             if ($is_sum) {
                 $this->db->where('ratable_type', $ratable_type);
                 $this->db->where_in('ratable_id', $course_ids);
@@ -3160,11 +3159,9 @@ class Crud_model extends CI_Model
                 $this->db->where_in('ratable_id', $course_ids);
                 return $this->db->get('rating');
             }
-        }
-        else{
+        } else {
             return array();
         }
-       
     }
 
     public function get_instructor_wise_programs_ratings($instructor_id = "", $ratable_type = "", $is_sum = false)
@@ -4933,8 +4930,8 @@ class Crud_model extends CI_Model
             return $query->result_array();
         }
     }
-    
-     public function get_books_single($slug)
+
+    public function get_books_single($slug)
     {
         $this->db->where('slug', $slug);
         return $this->db->get('books')->row_array();
@@ -4949,12 +4946,12 @@ class Crud_model extends CI_Model
         return $this->db->get('organizations');
     }
 
-      ///  organizations
-      public function get_organization_single($slug)
-      {
+    ///  organizations
+    public function get_organization_single($slug)
+    {
         $this->db->where('slug', $slug);
         return $this->db->get('organizations')->row_array();
-      }
+    }
 
     public function add_organzation()
     {
@@ -5231,12 +5228,12 @@ class Crud_model extends CI_Model
                 $data['last_modified'] = strtotime(date('D, d-M-Y'));
                 $this->db->insert('content_settings', $data);
             }
-            
-            
+
+
             $this->db->where('page_name', $page_name);
             $this->db->where('section', $section);
             $content = $this->db->get('content_settings')->row_array();
-            
+
             $data['sub_section_title'] = html_escape($this->input->post('sub_section_title'));
             $data['sub_section_sub_title'] = html_escape($this->input->post('sub_section_sub_title'));
             $data['sub_section'] = html_escape($this->input->post('sub_section'));
@@ -5301,11 +5298,33 @@ class Crud_model extends CI_Model
     public function get_zoom_meetings($user_id)
     {
         $query = $this->db
-        ->select("live_class.*, course.title")
-        ->from("live_class")
-        ->join('course', 'live_class.course_id = course.id')
-        ->where('course.user_id',$user_id)
-        ->get();
-        return $query->result_array();
+            ->select("live_class.*, course.title")
+            ->from("live_class")
+            ->join('course', 'live_class.course_id = course.id')
+            ->where('course.user_id', $user_id)
+            ->get();
+        $data = [];
+        foreach ($query->result_array() as $key => $value) {
+            $live_class_schedule_data_time = json_decode($value['live_class_schedule_data_time']);
+
+            foreach ($live_class_schedule_data_time as $key => $value) {
+                $data[$key]['title'] = $value->title;
+                $data[$key]['start'] = $value;
+                $data[$key]['end'] = $value;
+                $data[$key]['backgroundColor'] = "#f38134";
+            }
+        }
+
+        return $data;
+    }
+
+    public function get_zoom_meetings_trainee($course_id)
+    {
+        return $this->db
+            ->select("live_class.*, course.title")
+            ->from("live_class")
+            ->join('course', 'live_class.course_id = course.id')
+            ->where('course.id', $course_id)
+            ->get();
     }
 }

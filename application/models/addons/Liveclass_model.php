@@ -8,10 +8,13 @@ class Liveclass_model extends CI_Model
         parent::__construct();
     }
 
-    public function update_live_class($course_id) {
-        if (!empty($this->input->post('live_class_schedule_date')) && !empty($this->input->post('live_class_schedule_time')) && !empty($this->input->post('zoom_meeting_id')) && !empty($this->input->post('zoom_meeting_password'))) {
-            $data['date']                  = strtotime($this->input->post('live_class_schedule_date'));
-            $data['time']                  = strtotime($this->input->post('live_class_schedule_time'));
+    public function update_live_class($course_id)
+    {
+        if (!empty($this->input->post('live_class_schedule_data_time')) && !empty($this->input->post('zoom_meeting_id')) && !empty($this->input->post('zoom_meeting_password'))) {
+            // $data['date']                  = strtotime($this->input->post('live_class_schedule_date'));
+            // $data['time']                  = strtotime($this->input->post('live_class_schedule_time'));
+            
+            $data['live_class_schedule_data_time'] = $this->trim_and_return_json($this->input->post('live_class_schedule_data_time'));
             $zoom_meeting_id               = $this->input->post('zoom_meeting_id');
             $trimmed_meeting_id            = preg_replace('/\s+/', '', $zoom_meeting_id);
             $data['zoom_meeting_id']       = str_replace("-", "", $trimmed_meeting_id);
@@ -23,13 +26,14 @@ class Liveclass_model extends CI_Model
             if ($previous_data > 0) {
                 $this->db->where('course_id', $course_id);
                 $this->db->update('live_class', $data);
-            }else{
+            } else {
                 $this->db->insert('live_class', $data);
             }
         }
     }
-    
-    public function update_live_class_programs($programs_id) {
+
+    public function update_live_class_programs($programs_id)
+    {
         if (!empty($this->input->post('live_class_schedule_date')) && !empty($this->input->post('live_class_schedule_time')) && !empty($this->input->post('zoom_meeting_id')) && !empty($this->input->post('zoom_meeting_password'))) {
             $data['date']                  = strtotime($this->input->post('live_class_schedule_date'));
             $data['time']                  = strtotime($this->input->post('live_class_schedule_time'));
@@ -43,13 +47,14 @@ class Liveclass_model extends CI_Model
             if ($previous_data > 0) {
                 $this->db->where('course_id', $course_id);
                 $this->db->update('live_class', $data);
-            }else{
+            } else {
                 $this->db->insert('live_class', $data);
             }
         }
     }
 
-    public function update_settings() {
+    public function update_settings()
+    {
         if (empty($this->input->post('zoom_api_key')) || empty($this->input->post('zoom_secret_key'))) {
             $this->session->set_flashdata('error_message', get_phrase('nothing_can_be_empty'));
             redirect(site_url('addons/liveclass/settings'), 'refresh');
@@ -66,7 +71,22 @@ class Liveclass_model extends CI_Model
         redirect(site_url('addons/liveclass/settings'), 'refresh');
     }
 
-    public function get_live_class_details($course_id = "") {
+    public function get_live_class_details($course_id = "")
+    {
         return $this->db->get_where('live_class', array('course_id' => $course_id))->row_array();
+    }
+
+    public function trim_and_return_json($untrimmed_array)
+    {
+        
+        $trimmed_array = array();
+        if (sizeof($untrimmed_array) > 0) {
+            foreach ($untrimmed_array as $row) {
+                if ($row != "") {
+                    array_push($trimmed_array, $row);
+                }
+            }
+        }
+        return json_encode($trimmed_array);
     }
 }
