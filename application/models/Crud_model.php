@@ -5307,10 +5307,10 @@ class Crud_model extends CI_Model
         foreach ($query->result_array() as $key => $value) {
             $live_class_schedule_data_time = json_decode($value['live_class_schedule_data_time']);
 
-            foreach ($live_class_schedule_data_time as $key => $value) {
-                $data[$key]['title'] = $value->title;
-                $data[$key]['start'] = $value;
-                $data[$key]['end'] = $value;
+            foreach ($live_class_schedule_data_time as $key => $data_time) {
+                $data[$key]['title'] = $value['title'];
+                $data[$key]['start'] = $data_time;
+                $data[$key]['end'] = $data_time;
                 $data[$key]['backgroundColor'] = "#f38134";
             }
         }
