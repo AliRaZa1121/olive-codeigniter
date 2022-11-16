@@ -23,8 +23,8 @@ class Home extends CI_Controller
 
     public function index()
     {
-        // $this->home();
-         $this->load->view('coming');
+        $this->home();
+        //  $this->load->view('coming');
     }
 
     public function team()
