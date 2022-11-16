@@ -1,0 +1,113 @@
+/* ==========================================================================
+   #PAGE WRAPPER
+   ========================================================================== */
+.page-wrapper {
+    min-height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+/* ==========================================================================
+   #BACKGROUND
+   ========================================================================== */
+.bg-gra-01 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f3d083), to(#f1d18c));
+  background: -webkit-linear-gradient(bottom, #f3d083 0%, #f1d18c 100%);
+  background: -moz-linear-gradient(bottom, #f3d083 0%, #f1d18c 100%);
+  background: -o-linear-gradient(bottom, #f3d083 0%, #f1d18c 100%);
+  background: linear-gradient(to top, #f3d083 0%, #f1d18c 100%);
+}
+
+.bg-gra-02 {
+  background: -webkit-gradient(linear, left bottom, right top, from(#FAA622), to(#ED5D06));
+  background: -webkit-linear-gradient(bottom left, #FAA622 0%, #ED5D06 100%);
+  background: -moz-linear-gradient(bottom left, #FAA622 0%, #ED5D06 100%);
+  background: -o-linear-gradient(bottom left, #FAA622 0%, #ED5D06 100%);
+  background: linear-gradient(to top right, #FAA622 0%, #ED5D06 100%);
+}
+
+/* ==========================================================================
+   #SPACING
+   ========================================================================== */
+.p-t-100 {
+  padding-top: 100px;
+}
+.p-b-100 {
+  padding-bottom: 100px;
+}
+
+/* ==========================================================================
+   #WRAPPER
+   ========================================================================== */
+.wrapper {
+  margin: 0 auto;
+}
+
+.wrapper--w960 {
+  width: 960px;
+}
+@media only screen and (max-width: 992px){
+  .wrapper--w960 {
+    width: 680px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .wrapper--w960 {
+    width: 90%;
+  }
+}
+
+/* ==========================================================================
+   #BUTTON
+   ========================================================================== */
+.btn-theme {
+  color: #fff;
+  background-color: #e95b1d;
+  border: 1px solid #e95b1d;
+}
+.btn-theme:hover {
+  color: #fff;
+  background-color: #c33333;
+    border-color: #c33333;
+}
+/* ==========================================================================
+   Content
+   ========================================================================== */
+.title {
+  font-size: 24px;
+  color: #525252;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+.aside {
+  border-radius: 1rem 0 0 1rem;
+}
+.content-wrapper {
+  border-radius: 0 1rem 1rem 0;
+}
+
+.close {
+  right: 30px;
+  top: 30px;
+  width: 36px;
+  height: 36px;
+  background: #efefef;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.close:hover {
+  color: #fff;
+  background-color: #e95b1d;
+}
+.close i {
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+.close:hover i {
+  transform: rotate(-180deg);
+}
