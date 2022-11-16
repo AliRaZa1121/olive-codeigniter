@@ -77,7 +77,7 @@
                             </div>
                             </div>
                             <div class="contact-form-image">
-                                <img class="img-fluid" src="https://olive.minibigcrm.com/uploads/olive-images/log-in.png">
+                                <img class="img-fluid" src="<?php echo base_url('uploads/olive-images/meet.png'); ?>">
                             </div>
                         </div>
                     </div>

@@ -38,6 +38,7 @@ class Home extends CI_Controller
     {
         $page_data['page_name'] = "travel";
         $page_data['page_title'] = site_phrase('travel');
+        // $this->load->view('coming');
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
     }
 

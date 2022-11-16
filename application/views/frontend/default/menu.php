@@ -79,6 +79,10 @@
         <span class="fa fa-code"></span>
         <span class="fw-500"><?php echo site_phrase('articles'); ?></span>
       </a>
+        <a class="<?php if ($page_title == 'Travel') echo 'active'; ?>"  href="<?php echo site_url('home/travel'); ?>">
+        <span class="fas fa-phone fa-flip-horizontal"></span>
+        <span class="fw-500"><?php echo site_phrase('travel'); ?></span>
+      </a>
       <a class="<?php if ($page_title == 'Contact us') echo 'active'; ?>"  href="<?php echo site_url('home/contact_us'); ?>">
         <span class="fas fa-phone fa-flip-horizontal"></span>
         <span class="fw-500"><?php echo site_phrase('contact'); ?></span>

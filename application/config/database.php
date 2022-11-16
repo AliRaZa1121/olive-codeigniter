@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'oliveinc_web',
-	'password' => ';Eq[No_vW3dn',
-	'database' => 'oliveinc_web',
+	'username' => 'oliveinco_web',
+	'password' => '+=nO.}5xj9p0',
+	'database' => 'oliveinco_web',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
