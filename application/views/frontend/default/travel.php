@@ -1,7 +1,7 @@
 <?php $section_1 = $this->crud_model->get_content_settings('team', 'section-2'); ?>
 <style>
 section.org-first-fold, section.arc-first-fold {
-    background-image: url(<?php echo base_url('uploads/system/' . $section_1['image']); ?>);
+    background-image: url(<?php echo base_url('uploads/olive-images/travel.jpg'); ?>);
 }
 </style>
 
