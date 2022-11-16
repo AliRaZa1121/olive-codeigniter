@@ -50,8 +50,12 @@
           <!-- <a href="<?php echo site_url('home/login'); ?>" class="btn btn-sign-in"><?php echo site_phrase('login'); ?></a> -->
 
           <!--<a href="<?php echo site_url('home/login'); ?>" class="btn btn-sign-up"><?php echo site_phrase('login'); ?></a-->
-          <button type="button" class="btn btn-sign-up" id="SSModal3">
+          <!-- <button type="button" class="btn btn-sign-up" id="SSModal3">
             Login
+          </button> -->
+
+          <button type="button" class="btn btn-sign-up">
+            <a style="color:#FFF" href="<?php echo site_url('home/coach_loft'); ?>"> Login</a>
           </button>
 
         </div>
@@ -82,7 +86,7 @@
     </div>
     <div class="bg-white d-flex w-100 py-5">
       <div class="card-body">
-        <form method="POST" action="<?php echo site_url('home/coach_loft'); ?>">
+        <form method="POST">
           <div class="contact-form-box">
             <div class="row">
               <div class="col-sm-8 col-lg-7 mx-auto">
