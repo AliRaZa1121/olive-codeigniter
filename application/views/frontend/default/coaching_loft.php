@@ -33,7 +33,7 @@
                                 <span class="input-group-text bg-white" for="password"><i class="fas fa-user"></i></span>
                                 <input type="password" name="password" class="form-control" placeholder="<?php echo site_phrase('password'); ?>" aria-label="<?php echo site_phrase('password'); ?>" aria-describedby="<?php echo site_phrase('password'); ?>" id="login-password" required>
                             </div>
-                            <a class="text-muted text-12px fw-500 float-end" href="<?php echo site_url('home/forgot_password'); ?>"><?php echo site_phrase('forgot_password'); ?>?</a>
+                           
                         </div>
 
                         <?php if (get_frontend_settings('recaptcha_status')) : ?>
@@ -46,10 +46,7 @@
                             <button type="submit" class="btn red radius-10 mt-4 w-100"><?php echo site_phrase('login'); ?></button>
                         </div>
 
-                        <div class="form-group mt-4 mb-0 text-center">
-                            <?php echo site_phrase('do_not_have_an_account'); ?>?
-                            <a class="text-15px fw-700" href="<?php echo site_url('home/sign_up') ?>"><?php echo site_phrase('sign_up'); ?></a>
-                        </div>
+                        
                     </form>
                 </div>
             </div>
