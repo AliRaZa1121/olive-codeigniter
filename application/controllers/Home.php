@@ -90,8 +90,13 @@ class Home extends CI_Controller
             }
             $system_email = get_settings('system_email');
             $this->email_model->send_email_contact_mail($system_email);
-            $this->session->set_flashdata('info_message', get_phrase('thank_you_for_contacting_us'));
-            redirect(site_url('home/contact_us'), 'refresh');
+            if ($action == "post") {
+                $this->session->set_flashdata('info_message', get_phrase('thank_you_for_contacting_us'));
+                redirect(site_url('home'), 'refresh');
+            } else {
+                $this->session->set_flashdata('info_message', get_phrase('thank_you_for_contacting_us'));
+                redirect(site_url('home/contact_us'), 'refresh');
+            }
         }
         $page_data['page_name'] = "contact_us";
         $page_data['page_title'] = site_phrase('contact_us');

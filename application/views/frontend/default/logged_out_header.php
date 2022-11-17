@@ -86,7 +86,7 @@
     </div>
     <div class="bg-white d-flex w-100 py-5">
       <div class="card-body">
-        <form method="POST">
+        <form method="POST" action="<?php echo site_url('home/contact_us/post'); ?>">
           <div class="contact-form-box">
             <div class="row">
               <div class="col-sm-8 col-lg-7 mx-auto">
@@ -97,13 +97,13 @@
                 <div class="contact-form">
 
                   <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Name" name="name" required="">
+                    <input class="form-control" type="text" placeholder="Name" name="name" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="tel" placeholder="Phone Number" name="phone" required="">
+                    <input class="form-control" type="tel" placeholder="Phone Number" name="phone" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email" name="email" required="">
+                    <input class="form-control" type="email" placeholder="Email" name="email" required>
                   </div>
                   <div class="form-group">
                     <?php if (get_frontend_settings('recaptcha_status')) : ?>

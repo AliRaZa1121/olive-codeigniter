@@ -29,8 +29,11 @@ class Email_model extends CI_Model
         $data['phone'] = html_escape($this->input->post('phone'));
         $data['email'] = html_escape($this->input->post('email'));
         $data['message'] = html_escape($this->input->post('message'));
-
-        $email_data['subject'] = "Contact Messages";
+        if ($data['message'] == null) {
+            $email_data['subject'] = "New Popup form submitted by a user";
+        } else {
+            $email_data['subject'] = "Contact Messages";
+        }
         $email_data['from'] = get_settings('system_email');
         $email_data['to'] = $to;
         $email_data['to_name'] = $data['name'];
@@ -87,7 +90,7 @@ class Email_model extends CI_Model
         $admin_id = $this->user_model->get_admin_details()->row('id');
         foreach ($purchased_courses as $course_id) {
             $course_owner_user_id = $this->crud_model->get_course_by_id($course_id)->row('user_id');
-            if ($course_owner_user_id != $admin_id):
+            if ($course_owner_user_id != $admin_id) :
                 $this->course_purchase_notification_admin($course_id, $student_full_name, $student_data['email'], $amount_paid);
             endif;
             $this->course_purchase_notification_instructor($course_id, $student_full_name, $student_data['email']);
@@ -136,7 +139,6 @@ class Email_model extends CI_Model
         $email_data['message'] = $instructor_msg;
         $email_template = $this->load->view('email/common_template', $email_data, true);
         $this->send_smtp_mail($email_template, $email_data['subject'], $email_data['to'], $email_data['from']);
-
     }
 
     public function course_purchase_notification_student($course_id = "", $student_id = "")
@@ -329,7 +331,7 @@ class Email_model extends CI_Model
         $email_data['course_title'] = $course_details['title'];
 
         $enrolled_students = $this->crud_model->enrol_history($course_id)->result_array();
-        foreach ($enrolled_students as $enrolled_student):
+        foreach ($enrolled_students as $enrolled_student) :
             $student_details = $this->user_model->get_user($enrolled_student['user_id'])->row_array();
             $email_data['to'] = $student_details['email'];
             $email_data['to_name'] = $student_details['first_name'] . ' ' . $student_details['last_name'];
@@ -353,7 +355,7 @@ class Email_model extends CI_Model
         $email_data['course_title'] = $course_details['title'];
 
         $enrolled_students = $this->crud_model->enrol_history($course_id)->result_array();
-        foreach ($enrolled_students as $enrolled_student):
+        foreach ($enrolled_students as $enrolled_student) :
             $student_details = $this->user_model->get_user($enrolled_student['user_id'])->row_array();
             $email_data['to'] = $student_details['email'];
             $email_data['to_name'] = $student_details['first_name'] . ' ' . $student_details['last_name'];
@@ -414,5 +416,4 @@ class Email_model extends CI_Model
         //Send email
         $this->email->send();
     }
-
 }
