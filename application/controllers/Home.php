@@ -23,7 +23,7 @@ class Home extends CI_Controller
     {
         if ($param1 == null) {
             $page_data['page_name'] = 'coaching_loft';
-            $page_data['page_title'] = site_phrase('coaching_loft');
+            $page_data['page_title'] = site_phrase('olive_login');
             $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
         } else {
             if ($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true) {
