@@ -11,26 +11,45 @@
     }
  </style>
  <section class="home-banner-area">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-lg-12 gx-0">
-                <div class="banner-img">
-                    <img class="img-fluid" src="<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>" alt="">
-                </div>
+     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="img-fluid" src="<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>" alt="">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<script>
+    var myCarousel = document.querySelector('#myCarousel')
+var carousel = new bootstrap.Carousel(myCarousel)
+</script>
+    <!--<div class="container-fluid">-->
+    <!--    <div class="row align-items-center">-->
+    <!--        <div class="col-lg-12 gx-0">-->
+    <!--            <div class="banner-img">-->
+    <!--                <img class="img-fluid" src="<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>" alt="">-->
+    <!--            </div>-->
                 <!--<div class="fold-content">
                     <h1 class="text-uppercase fw-bold clr-black"><?php echo site_phrase(get_frontend_settings('banner_title')); ?></h1>
                     <h4><?php echo site_phrase(get_frontend_settings('banner_sub_title')); ?></h4>
                     <p><?php echo site_phrase(get_frontend_settings('banner_sub_title')); ?></p>
 
                 </div>-->
-            </div>
+            <!--</div>-->
             <!--<div class="col-lg-6">
                 <div class="fold-thumbnail">
                     <img class="img-fluid" src="<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>" alt="">
                 </div>
             </div>-->
-        </div>
-    </div>
+    <!--    </div>-->
+    <!--</div>-->
 </section>
 <!--<section class="home-banner-area" id="home-banner-area" style="background-image: url('<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>'); background-position: right; background-repeat: no-repeat; padding: 100px 0 75px; background-size: auto 100%; color: #fff;">
     <div class="cropped-home-banner" ></div>
