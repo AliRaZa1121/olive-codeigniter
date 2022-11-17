@@ -55,7 +55,7 @@
           </button> -->
 
           <button type="button" class="btn btn-sign-up">
-            <a style="color:#FFF" href="<?php echo site_url('home/coach_loft'); ?>"> Login</a>
+            <a style="color:#FFF" href="<?php echo site_url('home/olive_login'); ?>"> Login</a>
           </button>
 
         </div>

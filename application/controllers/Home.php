@@ -19,7 +19,7 @@ class Home extends CI_Controller
         $this->session_data();
     }
 
-    public function coach_loft($param1 = null)
+    public function olive_login($param1 = null)
     {
         if ($param1 == null) {
             $page_data['page_name'] = 'coaching_loft';
@@ -47,13 +47,13 @@ class Home extends CI_Controller
             $result = curl_exec($ch);
             if (curl_errno($ch)) {
                 $this->session->set_flashdata('error_message', get_phrase('error_occurred'));
-                redirect(site_url('home/coach_loft'), 'refresh');
+                redirect(site_url('home/olive_login'), 'refresh');
             }
             curl_close($ch);
             $result = json_decode($result, true);
             if ($result['status'] == 'failed') {
                 $this->session->set_flashdata('error_message', get_phrase('invalid_credentials'));
-                redirect(site_url('home/coach_loft'), 'refresh');
+                redirect(site_url('home/olive_login'), 'refresh');
             }
             $url = $result['data']['authorized_redirect_url'];
             redirect($url);

@@ -1468,5 +1468,7 @@
     "verified": "Verified",
     "instagram_link": "Instagram link",
     "instagram": "Instagram",
-    "travel": "Travel"
+    "travel": "Travel",
+    "coaching_loft": "Coaching loft",
+    "invalid_credentials": "Invalid credentials"
 }
