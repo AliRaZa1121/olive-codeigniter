@@ -18,7 +18,7 @@
                 <div class="sign-up-form">
                     <?php if (get_settings('fb_social_login')) include "facebook_login.php"; ?>
 
-                    <form action="<?php echo site_url('home/coach_loft/login'); ?>" method="post" id="sign_up">
+                    <form action="<?php echo site_url('home/olive_login/submit'); ?>" method="post" id="sign_up">
                         <div class="form-group">
                             <label for="login-email"><?php echo site_phrase('email'); ?></label>
                             <div class="input-group">
