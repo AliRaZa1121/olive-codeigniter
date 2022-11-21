@@ -10,26 +10,40 @@
              font-size: 28px;
          }
      }
+     .MainSlider .slick-list.draggable {
+         border-radius: 0px !important;
+     }
+     .MainSlider .slick-prev {
+         left: 25px !important;
+         z-index: 9 !important;
+     }
+     .MainSlider .slick-next {
+         right: 25px !important;
+         z-index: 9 !important;
+     }
  </style>
  <section class="home-banner-area">
-     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="img-fluid" src="<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>" alt="">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+     <div class="container-fluid">
+         <div class="row">
+             <div class="col-lg-12 px-0">
+                 <div class="MainSlider">
+                     <div><img src="<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>" alt="Slide 1" /></div>
+                     <div><img src="<?php echo base_url('uploads/olive-images/travel.jpg'); ?>" alt="Slide 1" /></div>
+                 </div>
+             </div>
+         </div>
+     </div>
 </div>
 <script>
-    var myCarousel = document.querySelector('#myCarousel')
-var carousel = new bootstrap.Carousel(myCarousel)
+$(document).ready(function(){
+    $('.MainSlider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        arrows: true,
+        autoplaySpeed: 2000,
+    });
+});
 </script>
     <!--<div class="container-fluid">-->
     <!--    <div class="row align-items-center">-->
